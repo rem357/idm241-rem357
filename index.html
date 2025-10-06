@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDM241 Alpha </title>
+  <meta name="description" content="Alpha documentation page describing the existing microinteraction for toggling iPhone ringer on/off from Control Center." />
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+  <header>
+    <h1>IDM241 • Alpha </h1>
+    <h2>Microinteraction: Ringer Toggle in Control Center</h2>
+    <p>Riley Mitchell •  IDM241</p>
+  </header>
+
+  <main>
+    <section id="orig">
+      <h2>Interaction</h2>
+      <div class="kvs">
+        <div class="k">Platform</div><div class="v">iOS (iPhone)</div>
+        <div class="k">Feature</div><div class="v">Turning the ringer on/off via Control Center</div>
+      </div>
+    </section>
+
+    <section id="triggers">
+      <h2>TRIGGERS</h2>
+      <ul>
+        <li>The user swipes down from the top right of the screen to open the Control Center</li>
+        <li>The user taps on the Ringer/Silent bell icon that indicates the current state</li>
+        <li>Optional: Long-press to access expanded settings.</li>
+      </ul>
+    </section>
+
+    <section id="rules">
+      <h2>RULES</h2>
+      <ol>
+        <li>If state = Ring, tap → Silent; if state = Silent, tap → Ring.</li>
+        <li>Focus/Do Not Disturb can still mute notifications even if ringer is on.</li>
+        <li>Hardware switch or Action Button can override Control Center state.</li>
+        <li>State persists until changed again.</li>
+      </ol>
+    </section>
+
+    <section id="feedback">
+      <h2>FEEDBACK</h2>
+      <div class="grid two">
+        <div>
+          <h3>Visual</h3>
+          <ul>
+            <li>Icon toggles between bell and bell-slash.</li>
+            <li>Color and label reflect mode.</li>
+            <li>Optional banner/toast confirmation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Auditory & Haptic</h3>
+          <ul>
+            <li>Short tone when enabling Ring (if volume > 0).</li>
+            <li>Haptic tap confirming toggle.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="loops">
+      <h2>LOOPS & MODES (Meta-rules)</h2>
+      <ul>
+        <li>Loop: Toggle repeatable; last state remembered.</li>
+        <li>Modes: Focus or hardware switch create layered states; can conflict with Control Center display.</li>
+        <li>Error prevention: Show clear message like “Silent due to Focus: Do Not Disturb.”</li>
+      </ul>
+    </section>
+
+    <section id="media">
+      <h2>Static Images / Animated GIFs</h2>
+      <figure>
+        <img src="assets/cc-ringer-on.png" alt="Control Center showing Ringer On">
+        <figcaption>Figure 1. Ringer On.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/cc-ringer-off.png" alt="Control Center showing Silent Mode">
+        <figcaption>Figure 2. Silent Mode.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/cc-ringer-toggle.gif" alt="Animated GIF toggling ringer state">
+        <figcaption>Figure 3. Toggle animation.</figcaption>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>
