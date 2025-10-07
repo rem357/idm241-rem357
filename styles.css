@@ -1,9 +1,9 @@
 :root {
-  --bg: #0f1220;
-  --card: #151934;
-  --muted: #8ea1b2;
-  --text: #f3f6fa;
-  --accent: #7bd8ff;
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --muted: #6c7a89;
+  --text: #1c1f2b;
+  --accent: #4da3ff;
 }
 
 * {
@@ -12,8 +12,8 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-  background: linear-gradient(180deg, #0b0e1a, #10152b);
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, #e6ebf5, #f4f6fa);
   color: var(--text);
 }
 
