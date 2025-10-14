@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDM241 Alpha </title>
+  <meta name="description" content="IDM241 assignment page" />
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+  <header>
+    <h1>IDM241 • Alpha-Build </h1>
+    <h2>Microinteraction: Ringer Toggle in Control Center</h2>
+    <p>Riley Mitchell •  IDM241</p>
+  </header>
+
+  <main>
+
+      <button id="ringer" class="ringer" aria-pressed="false" aria-label="Toggle ringer">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="bell"
+        d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z" />
+      <path class="slash-back"  d="M1 4 L23 20" pathLength="100" />
+      <path class="slash-front" d="M1 4 L23 20" pathLength="100" />
+    </svg>
+  </button>
+
+    <section id="interaction">
+      <h2>INTERACTION</h2>
+      <div class="subsection">
+        <div class="sub">Platform</div><div class="sub-content">Mobile - iOS (iPhone)</div>
+        <div class="sub">Feature</div><div class="sub-content">Turning the ringer on/off in Control Center</div>
+        <div class="sub">Description</div><div class="sub-content">The ringer can be turned on or off from the Control Center by swiping down from the top-right corner of the screen. In the Control Center, tap the bell icon to control Silent Mode. When the bell has a line through it, Silent Mode is on and the device will not ring for calls or alerts. When the bell is not crossed out, the ringer is on and sounds will play for notifications and incoming calls.</div>
+      </div>
+    </section>
+
+    <section id="triggers">
+      <h2>TRIGGERS</h2>
+      <ul>
+        <li>The user swipes down from the top right of the screen to open the Control Center</li>
+        <li>The user taps on the Ringer/Silent bell icon that indicates the current state</li>
+      </ul>
+    </section>
+
+    <section id="rules">
+      <h2>RULES</h2>
+      <ol>
+        <li>If state = Ring, tap → Silent; if state = Silent, tap → Ring.</li>
+        <li>Focus/Do Not Disturb can still mute notifications even if ringer is on.</li>
+        <li>Hardware switch or Action Button can override Control Center state.</li>
+        <li>State persists until changed again.</li>
+      </ol>
+    </section>
+
+    <section id="feedback">
+      <h2>FEEDBACK</h2>
+      <div class="grid two">
+
+        <div>
+          <h3>Visual</h3>
+          <ul>
+            <li>Icon toggles between bell and bell-slash.</li>
+            <li>Color and label reflect mode.</li>
+            <li>Banner confirmation that indicates on/off state.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Auditory & Haptic</h3>
+          <ul>
+            <li>Short tone when enabling Ring (if the volume is on).</li>
+            <li>Haptic tap confirming toggle.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="loops">
+
+      <h2>LOOPS & MODES</h2>
+      <ul>
+        <li>Loop: Toggle is repeatable; the last state is remembered.</li>
+        <li>Modes: Focus or hardware switch create layered states; can conflict with Control Center display.</li>
+        <li>Error prevention: Shows clear message like “Silent due to Focus: Do Not Disturb.”</li>
+      </ul>
+
+    </section>
+
+    <section id="media">
+
+      <h2>Static Images of Microinteraction</h2>
+      <figure>
+        <img 
+          src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/microinteraction%20static%20images.png" 
+          alt="Microinteraction static images overview">
+        <figcaption>Microinteraction static images overview.</figcaption>
+        <br>
+      </figure>
+
+        <a href="https://www.figma.com/design/qbxaGHeyI5GFlzZEboLMN3/ringer-microinteraction?node-id=0-1&t=Hk7WvGJ2v96qsceH-1" target="_blank">
+          View microinteraction breakdown in Figma
+        </a>
+
+     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px;">
+
+    <figure style="text-align: center;">
+      <img 
+        src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20off/MOV%20to%20GIF%20(1).gif"   
+        alt="Animated microinteraction GIF demo" 
+        style="width:250px; border-radius:12px;">
+      <figcaption style="font-size:13px; color:#8ea1b2;">Ringer Off</figcaption>
+    </figure>
+
+    <figure style="text-align: center;">
+      <img 
+        src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20on/MOV%20to%20GIF.gif" 
+        alt="Alternate animated microinteraction GIF demo" 
+        style="width:250px; border-radius:12px;">
+      <figcaption style="font-size:13px; color:#8ea1b2;">Ringer On</figcaption>
+    </figure>
+
+  </div>
+
+
+    </section>
+  </main>
+    <script src="tester.js"></script>
+</body>
+</html>

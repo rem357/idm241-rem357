@@ -1,0 +1,257 @@
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --muted: #6c7a89;
+  --text: #1c1f2b;
+  --accent: #4da3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  background: #d9dfda;
+  color: var(--text);
+}
+
+header {
+  padding: 40px 20px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 0 0 8px;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+section {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 2.5vw, 26px);
+}
+
+/* layout organization */
+.subsection {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 6px 16px;
+}
+
+.subsection .sub,
+.subsection .sub-content {
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.subsection .sub {
+  color: var(--muted);
+}
+
+.subsection .sub-content {
+  color: var(--text);
+}
+
+
+ul,
+ol {
+  margin: 8px 0 0 20px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+figure {
+  margin: 12px 0;
+  background: #0e1327;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 12px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Microinteraction Button -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.ringer {
+  --on-bg: #5a695f;     
+  --off-bg: #ffffff;    
+  --bell-on: #ffffff;
+  --bell-off: #FF515F;
+  width: 112px;
+  height: 112px;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: var(--on-bg);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  transition:
+    background .25s ease,
+    transform .06s ease;
+}
+
+.ringer:active {
+  transform: scale(.985);
+}
+
+.ringer.off {
+  background: var(--off-bg);
+}
+
+/* Icon */
+.icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+
+/* Bell colors + transform setup */
+.bell {
+  fill: var(--bell-on);
+  transition: fill .2s ease;
+
+  /* critical for SVG rotation */
+  transform-box: fill-box;
+  transform-origin: 50% 8%;
+}
+
+.ringer.off .bell {
+  fill: var(--bell-off);
+}
+
+
+/* Shake animation (applied via .shake class only when clicked) */
+@keyframes bell-shake {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(-10deg); }
+  30%  { transform: rotate(8deg); }
+  45%  { transform: rotate(-6deg); }
+  60%  { transform: rotate(4deg); }
+  75%  { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bell.shake {
+  animation: bell-shake var(--shake-dur, .45s) ease-in-out;
+}
+
+
+/* slashes */
+/* .slash-back = white bordered background */
+/* .slash-front = red line */
+
+
+.slash-back,
+.slash-front {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+.slash-back {
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.slash-front {
+  stroke: var(--bell-off);
+  stroke-width: 1.1;
+}
+
+
+/* OFF: slash in */
+.ringer.off .slash-back,
+.ringer.off .slash-front {
+  animation: draw 260ms ease forwards;
+  opacity: 1;
+}
+
+
+/* ON: erase slash */
+.ringer:not(.off) .slash-back,
+.ringer:not(.off) .slash-front {
+  animation: erase 260ms ease forwards;
+  opacity: 1;
+}
+
+/* Center the ringer button in the page */
+.ringer {
+  margin: 0 auto 16px;   /* centers horizontally inside <main> */
+}
+
+@media (min-width: 700px) {
+  .ringer { margin-bottom: 24px; }  /* a little extra space on larger screens */
+}
+
+
+
+/* Slash keyframes */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes erase {
+  to { stroke-dashoffset: 100; }
+}
+
+
