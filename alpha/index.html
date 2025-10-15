@@ -11,72 +11,125 @@
 <body>
   <header>
     <h1>IDM241 • Alpha-Description </h1>
-    <h2>Microinteraction: Ringer Toggle in Control Center</h2>
+    <h2>Microinteraction: Ringer Toggle</h2>
     <p>Riley Mitchell •  IDM241</p>
   </header>
 
-  <main>
 
+  <main>
+    <!-- Interaction -->
     <section id="interaction">
       <h2>INTERACTION</h2>
       <div class="subsection">
-        <div class="sub">Platform</div><div class="sub-content">Mobile - iOS (iPhone)</div>
-        <div class="sub">Feature</div><div class="sub-content">Turning the ringer on/off in Control Center</div>
-        <div class="sub">Description</div><div class="sub-content">The ringer can be turned on or off from the Control Center by swiping down from the top-right corner of the screen. In the Control Center, tap the bell icon to control Silent Mode. When the bell has a line through it, Silent Mode is on and the device will not ring for calls or alerts. When the bell is not crossed out, the ringer is on and sounds will play for notifications and incoming calls.</div>
+        <div class="sub">Platform</div>
+        <div class="sub-content">Mobile – iOS (iPhone)</div>
+
+        <div class="sub">Feature</div>
+        <div class="sub-content">Turning the ringer on/off in Control Center</div>
+
+        <div class="sub">Description</div>
+        <div class="sub-content">
+          The ringer can be turned on or off from the Control Center by swiping down from the top-right corner of the screen. In the Control Center, tap the bell icon to control Silent Mode. When the bell has a line through it, Silent Mode is on and the device will not ring for calls or alerts. When the bell is not crossed out, the ringer is on and sounds will play for notifications and incoming calls.
+        </div>
       </div>
     </section>
 
+    <!-- triggers -->
     <section id="triggers">
       <h2>TRIGGERS</h2>
       <ul>
-        <li>The user swipes down from the top right of the screen to open the Control Center</li>
-        <li>The user taps on the Ringer/Silent bell icon that indicates the current state</li>
+        <li><strong>Ringer/silent button</strong>
+          <ul>
+            <li>First click — Ringer ON → Ringer OFF</li>
+            <li>Second click — Ringer OFF → Ringer ON</li>
+            <li>Hover ON/OFF button</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
+    <!-- rules -->
     <section id="rules">
       <h2>RULES</h2>
-      <ol>
-        <li>If state = Ring, tap → Silent; if state = Silent, tap → Ring.</li>
-        <li>Focus/Do Not Disturb can still mute notifications even if ringer is on.</li>
-        <li>Hardware switch or Action Button can override Control Center state.</li>
-        <li>State persists until changed again.</li>
-      </ol>
+      <ul>
+        <li><strong>Hover ON</strong>
+          <ul>
+            <li>Cursor changes to finger</li>
+          </ul>
+        </li>
+
+        <li><strong>Hover OFF</strong>
+          <ul>
+            <li>Finger changes to cursor</li>
+          </ul>
+        </li>
+
+        <li><strong>First click: Ringer ON → Ringer OFF</strong>
+          <ul>
+            <li>On click the entire button slightly grows in size and then shrinks</li>
+            <li>The background circle switches to white</li>
+            <li>The bell icon turns red</li>
+            <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+            <li>The bell icon wiggles/shakes briefly</li>
+          </ul>
+        </li>
+
+        <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+          <ul>
+            <li>On click the entire button slightly grows in size and then shrinks</li>
+            <li>The circle background switches to dark grey/green</li>
+            <li>The bell turns white</li>
+            <li>The diagonal slash retracts/erases</li>
+            <li>The bell icon wiggles/shakes briefly</li>
+          </ul>
+        </li>
+      </ul>
     </section>
 
+    <!-- feedback -->
     <section id="feedback">
       <h2>FEEDBACK</h2>
       <div class="grid two">
+        <ul>
+          <li><strong>Hover ON</strong>
+            <ul>
+              <li>Cursor changes to finger</li>
+            </ul>
+          </li>
 
-        <div>
-          <h3>Visual</h3>
-          <ul>
-            <li>Icon toggles between bell and bell-slash.</li>
-            <li>Color and label reflect mode.</li>
-            <li>Banner confirmation that indicates on/off state.</li>
-          </ul>
-        </div>
+          <li><strong>Hover OFF</strong>
+            <ul>
+              <li>Finger changes to cursor</li>
+            </ul>
+          </li>
 
-        <div>
-          <h3>Auditory & Haptic</h3>
-          <ul>
-            <li>Short tone when enabling Ring (if the volume is on).</li>
-            <li>Haptic tap confirming toggle.</li>
-          </ul>
-        </div>
+          <li><strong>First click: Ringer ON → Ringer OFF</strong>
+            <ul>
+              <li>On click the entire button slightly grows in size and then shrinks</li>
+              <li>The background circle switches to white</li>
+              <li>The bell icon turns red</li>
+              <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+              <li>The bell icon wiggles/shakes briefly</li>
+            </ul>
+          </li>
 
+          <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+            <ul>
+              <li>On click the entire button slightly grows in size and then shrinks</li>
+              <li>The circle background switches to dark grey/green</li>
+              <li>The bell turns white</li>
+              <li>The diagonal slash retracts/erases</li>
+              <li>The bell icon wiggles/shakes briefly</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </section>
 
+    <!-- loops and modes -->
     <section id="loops">
-
       <h2>LOOPS & MODES</h2>
-      <ul>
-        <li>Loop: Toggle is repeatable; the last state is remembered.</li>
-        <li>Modes: Focus or hardware switch create layered states; can conflict with Control Center display.</li>
-        <li>Error prevention: Shows clear message like “Silent due to Focus: Do Not Disturb.”</li>
-      </ul>
-
+      <ul>None</ul>
     </section>
 
     <section id="media">
@@ -111,12 +164,12 @@
         style="width:250px; border-radius:12px;">
       <figcaption style="font-size:13px; color:#8ea1b2;">Ringer On</figcaption>
     </figure>
-
   </div>
+  </section>
 
+</main>
 
-    </section>
-  </main>
     <script src="tester.js"></script>
+    
 </body>
 </html>
