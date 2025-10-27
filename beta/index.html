@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDM241 Beta Description</title>
+  <meta name="description" content="IDM241 assignment page" />
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+  <header>
+    <h1>IDM241 • Beta-Description </h1>
+    <h2>Microinteraction: Control Center Buttons</h2>
+    <p>Riley Mitchell •  IDM241</p>
+  </header>
+
+
+  <main>
+    <!-- Interaction -->
+    <section id="interaction">
+      <h2>INTERACTION</h2>
+      <div class="subsection">
+        <div class="sub">Platform</div>
+        <div class="sub-content">Mobile – iOS (iPhone)</div>
+
+        <div class="sub">Feature</div>
+        <div class="sub-content">Turning the ringer on/off in Control Center</div>
+
+        <div class="sub">Description</div>
+        <div class="sub-content">
+          The ringer can be turned on or off from the Control Center by swiping down from the top-right corner of the screen. In the Control Center, tap the bell icon to control Silent Mode. When the bell has a line through it, Silent Mode is on and the device will not ring for calls or alerts. When the bell is not crossed out, the ringer is on and sounds will play for notifications and incoming calls.
+        </div>
+      </div>
+    </section>
+
+    <!-- triggers -->
+    <section id="triggers">
+      <h2>TRIGGERS</h2>
+      <ul>
+        <li><strong>Ringer/silent button</strong>
+          <ul>
+            <li>First click — Ringer ON → Ringer OFF</li>
+            <li>Second click — Ringer OFF → Ringer ON</li>
+            <li>Hover ON/OFF button</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- rules -->
+    <section id="rules">
+      <h2>RULES</h2>
+      <ul>
+        <li><strong>Hover ON</strong>
+          <ul>
+            <li>Cursor changes to finger</li>
+          </ul>
+        </li>
+
+        <li><strong>Hover OFF</strong>
+          <ul>
+            <li>Finger changes to cursor</li>
+          </ul>
+        </li>
+
+        <li><strong>First click: Ringer ON → Ringer OFF</strong>
+          <ul>
+            <li>On click the entire button slightly grows in size and then shrinks</li>
+            <li>The background circle switches to white</li>
+            <li>The bell icon turns red</li>
+            <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+            <li>The bell icon wiggles/shakes briefly</li>
+          </ul>
+        </li>
+
+        <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+          <ul>
+            <li>On click the entire button slightly grows in size and then shrinks</li>
+            <li>The circle background switches to dark grey/green</li>
+            <li>The bell turns white</li>
+            <li>The diagonal slash retracts/erases</li>
+            <li>The bell icon wiggles/shakes briefly</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- feedback -->
+    <section id="feedback">
+      <h2>FEEDBACK</h2>
+      <div class="grid two">
+        <ul>
+          <li><strong>Hover ON</strong>
+            <ul>
+              <li>Cursor changes to finger</li>
+            </ul>
+          </li>
+
+          <li><strong>Hover OFF</strong>
+            <ul>
+              <li>Finger changes to cursor</li>
+            </ul>
+          </li>
+
+          <li><strong>First click: Ringer ON → Ringer OFF</strong>
+            <ul>
+              <li>On click the entire button slightly grows in size and then shrinks</li>
+              <li>The background circle switches to white</li>
+              <li>The bell icon turns red</li>
+              <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+              <li>The bell icon wiggles/shakes briefly</li>
+            </ul>
+          </li>
+
+          <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+            <ul>
+              <li>On click the entire button slightly grows in size and then shrinks</li>
+              <li>The circle background switches to dark grey/green</li>
+              <li>The bell turns white</li>
+              <li>The diagonal slash retracts/erases</li>
+              <li>The bell icon wiggles/shakes briefly</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- loops and modes -->
+    <section id="loops">
+      <h2>LOOPS & MODES</h2>
+      <ul>None</ul>
+    </section>
+
+    <section id="media">
+
+      <h2>Static Images of Microinteraction</h2>
+      <figure>
+        <img 
+          src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/microinteraction%20static%20images.png" 
+          alt="Microinteraction static images overview">
+        <figcaption>Microinteraction static images overview.</figcaption>
+        <br>
+      </figure>
+
+        <a href="https://www.figma.com/design/qbxaGHeyI5GFlzZEboLMN3/ringer-microinteraction?node-id=0-1&t=Hk7WvGJ2v96qsceH-1" target="_blank">
+          View microinteraction breakdown in Figma
+        </a>
+
+     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px;">
+
+    <figure style="text-align: center;">
+      <img 
+        src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20off/MOV%20to%20GIF%20(1).gif"   
+        alt="Animated microinteraction GIF demo" 
+        style="width:250px; border-radius:12px;">
+      <figcaption style="font-size:13px; color:#8ea1b2;">Ringer Off</figcaption>
+    </figure>
+
+    <figure style="text-align: center;">
+      <img 
+        src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20on/MOV%20to%20GIF.gif" 
+        alt="Alternate animated microinteraction GIF demo" 
+        style="width:250px; border-radius:12px;">
+      <figcaption style="font-size:13px; color:#8ea1b2;">Ringer On</figcaption>
+    </figure>
+  </div>
+  </section>
+
+      <br> <br>
+
+</main>
+
+    <script src="tester.js"></script>
+
+</body>
+</html>
