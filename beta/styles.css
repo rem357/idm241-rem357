@@ -1,5 +1,8 @@
-/* ALPHA DESCRIPTION */
+/* =========================================
+   IDM241 — Beta Description (Integrated)
+   ========================================= */
 
+/* Theme */
 :root {
   --bg: #f4f6fa;
   --card: #ffffff;
@@ -8,9 +11,7 @@
   --accent: #4da3ff;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -19,10 +20,13 @@ body {
   color: var(--text);
 }
 
+/* -----------------------------------------
+   Header
+------------------------------------------ */
 header {
   padding: 40px 20px 20px;
-  max-width: 1000px;
-  margin: 0 auto; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 header h1 {
@@ -35,14 +39,18 @@ header p {
   color: var(--muted);
 }
 
+/* -----------------------------------------
+   Main shell
+------------------------------------------ */
 main {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  display: grid;
+  display: block;     /* previously a grid; columns handled by .spec-grid */
   gap: 16px;
 }
 
+/* Card sections */
 section {
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -50,12 +58,62 @@ section {
   padding: 20px;
 }
 
+/* Headings */
 h2 {
   margin: 0 0 12px;
   font-size: clamp(20px, 2.5vw, 26px);
 }
 
-/* layout organization */
+h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  letter-spacing: .01em;
+}
+
+/* -----------------------------------------
+   Triptych columns for the three buttons
+------------------------------------------ */
+.spec-grid {
+  /* remove default card look for this container */
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spec-col__title h2 {
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  letter-spacing: .02em;
+}
+
+/* keep section cards inside each column tidy */
+.spec-col section {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* -----------------------------------------
+   Two-column lists used in Feedback, etc.
+------------------------------------------ */
+.grid { display: grid; gap: 12px; }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* -----------------------------------------
+   Subsection description rows
+------------------------------------------ */
 .subsection {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -65,26 +123,17 @@ h2 {
 .subsection .sub,
 .subsection .sub-content {
   padding: 8px 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
-.subsection .sub {
-  color: var(--muted);
-}
+.subsection .sub { color: var(--muted); }
+.subsection .sub-content { color: var(--text); }
 
-.subsection .sub-content {
-  color: var(--text);
-}
-
-
-ul,
-ol {
-  margin: 8px 0 0 20px;
-}
-
-li {
-  margin: 6px 0;
-}
+/* -----------------------------------------
+   Lists, figures, anchors
+------------------------------------------ */
+ul, ol { margin: 8px 0 0 20px; }
+li { margin: 6px 0; }
 
 figure {
   margin: 12px 0;
@@ -106,21 +155,17 @@ figcaption {
   padding: 8px 12px;
 }
 
-.grid {
-  display: grid;
-  gap: 12px;
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -----------------------------------------
+   Responsive
+------------------------------------------ */
+@media (max-width: 1000px) {
+  .spec-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
 }
 
-.grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+@media (max-width: 640px) {
+  .spec-grid { grid-template-columns: 1fr; }
+  .subsection { grid-template-columns: 130px 1fr; }
 }
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
