@@ -1,5 +1,5 @@
 /* =========================================
-   IDM241 — Beta Description (Integrated)
+          IDM241 — Beta Description 
    ========================================= */
 
 /* Theme */
@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: system-ui, Helvetica, Arial, sans-serif;
-  background: #ccd2e4;
+  background: #e4ccde;
   color: var(--text);
 }
 
