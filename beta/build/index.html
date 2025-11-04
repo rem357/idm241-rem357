@@ -16,47 +16,452 @@
   </header>
 
   <main>
-
-    <!-- ======= CONTROL CENTER BUTTONS ======= -->
-    <section class="control-center">
-      <!-- Ringer button (you already have JS for this) -->
-      <button id="ringer" class="cc-btn ringer" aria-pressed="false" aria-label="Toggle ringer">
-        <span class="ringer-shell">
-          <span class="bell">
-            <!-- you can swap this for your SVG bell, keeping class="bell" -->
-            🔔
-          </span>
-          <span class="slash"></span>
-        </span>
-      </button>
-
-      <!-- Appearance (light/dark) -->
-      <button id="appearance" class="cc-btn appearance" aria-pressed="false" aria-label="Toggle appearance">
-        <span class="appearance-shell">
-          <span class="sun-icon"></span>
-          <span class="moon-icon"></span>
-        </span>
-      </button>
-
-      <!-- Low Power Mode -->
-      <button id="low-power" class="cc-btn lp-btn" aria-pressed="false" aria-label="Toggle low power mode">
-        <span class="lp-inner">
-          <span class="lp-battery">
-            <span class="lp-body"></span>
-            <span class="lp-fill"></span>
-            <span class="lp-tip"></span>
-          </span>
-        </span>
-      </button>
-    </section>
-    <!-- ======= END CONTROL CENTER BUTTONS ======= -->
-
     <section class="spec-grid">
-      <!-- ... your existing three columns ... -->
+
+      <!-- =============================== -->
+      <!--  RINGER / SILENT -->
+      <!-- =============================== -->
+      <article class="spec-col" id="ringer-spec">
+        <header class="spec-col__title"><h2>RINGER / SILENT (from alpha)</h2></header>
+
+        <!-- Interaction -->
+        <section id="ringer-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Turning the ringer on/off </div>
+          </div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="ringer-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Ringer/silent button</strong>
+              <ul>
+                <li>First click — Ringer ON → Ringer OFF</li>
+                <li>Second click — Ringer OFF → Ringer ON</li>
+                <li>Hover ON/OFF button</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="ringer-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Hover ON</strong>
+              <ul>
+                <li>Cursor changes to finger</li>
+              </ul>
+            </li>
+
+            <li><strong>Hover OFF</strong>
+              <ul>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
+
+            <li><strong>First click: Ringer ON → Ringer OFF</strong>
+              <ul>
+                <li>On click the entire button slightly grows in size and then shrinks</li>
+                <li>The background circle switches to white</li>
+                <li>The bell icon turns red</li>
+                <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+                <li>The bell icon wiggles/shakes briefly</li>
+              </ul>
+            </li>
+
+            <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+              <ul>
+                <li>On click the entire button slightly grows in size and then shrinks</li>
+                <li>The circle background switches to dark grey/green</li>
+                <li>The bell turns white</li>
+                <li>The diagonal slash retracts/erases</li>
+                <li>The bell icon wiggles/shakes briefly</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="ringer-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Hover ON</strong>
+                <ul>
+                  <li>Cursor changes to finger</li>
+                </ul>
+              </li>
+
+              <li><strong>Hover OFF</strong>
+                <ul>
+                  <li>Finger changes to cursor</li>
+                </ul>
+              </li>
+
+              <li><strong>First click: Ringer ON → Ringer OFF</strong>
+                <ul>
+                  <li>On click the entire button slightly grows in size and then shrinks</li>
+                  <li>The background circle switches to white</li>
+                  <li>The bell icon turns red</li>
+                  <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+                  <li>The bell icon wiggles/shakes briefly</li>
+                </ul>
+              </li>
+
+              <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+                <ul>
+                  <li>On click the entire button slightly grows in size and then shrinks</li>
+                  <li>The circle background switches to dark grey/green</li>
+                  <li>The bell turns white</li>
+                  <li>The diagonal slash retracts/erases</li>
+                  <li>The bell icon wiggles/shakes briefly</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops -->
+        <section id="ringer-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer.png"
+                alt="Ringer / Silent microinteraction — button states">
+              <figcaption>Ringer / Silent — Button States</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="media-block">
+          <h3>RINGER ANIMATION</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20off/MOV%20to%20GIF%20(1).gif"
+                alt="Ringer / Silent microinteraction — Ringer Off">
+              <figcaption>Ringer — OFF</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20on/MOV%20to%20GIF.gif"
+                alt="Ringer / Silent microinteraction — Ringer On">
+              <figcaption>Ringer — ON</figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+
+      <!-- =============================== -->
+      <!-- LIGHT / DARK MODE -->
+      <!-- =============================== -->
+      <article class="spec-col" id="appearance-spec">  <!-- APPEARANCE: sun → crescent -->
+        <button id="appearance"
+                class="toggle-btn appearance"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">
+          <span class="icon-shell">
+            <span class="sun-icon"></span>
+            <span class="moon-icon"></span>
+          </span>
+        </button>
+        
+        <header class="spec-col__title"><h2>LIGHT / DARK MODE</h2></header>
+
+        <!-- Interaction -->
+        <section id="appearance-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Switching Light/Dark Mode </div>
+          </div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="appearance-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Appearance button</strong>
+              <ul>
+                <li>First click — Light Mode → Dark Mode</li>
+                <li>Second click — Dark Mode → Light Mode</li>
+                <li>Hover ON/OFF button</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="appearance-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Hover ON</strong>
+              <ul>
+                <li>Cursor changes to finger</li>
+              </ul>
+            </li>
+
+            <li><strong>Hover OFF</strong>
+              <ul>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
+
+            <li><strong>First click: Light Mode → Dark Mode</strong>
+              <ul>
+                <li>On click the entire icon slightly grows in size and then shrinks</li>
+                <li>The background turns white</li>
+                <li>The icon rotates</li>
+                <li>The center circle grows slightly and then shrinks back</li>
+                <li>All white parts turn black</li>
+                <li>All green/gray parts turn white</li>
+              </ul>
+            </li>
+
+            <li><strong>Second click: Dark Mode → Light Mode</strong>
+              <ul>
+                <li>On click the entire icon slightly grows in size and then shrinks</li>
+                <li>The background turns green/gray</li>
+                <li>The icon rotates back</li>
+                <li>The center circle grows slightly and then shrinks back</li>
+                <li>All black parts turn white</li>
+                <li>All white parts turn green/gray</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="appearance-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Hover ON</strong>
+                <ul>
+                  <li>Cursor changes to finger</li>
+                </ul>
+              </li>
+
+              <li><strong>Hover OFF</strong>
+                <ul>
+                  <li>Finger changes to cursor</li>
+                </ul>
+              </li>
+
+              <li><strong>First click: Light Mode → Dark Mode</strong>
+                <ul>
+                  <li>On click the entire icon slightly grows in size and then shrinks</li>
+                  <li>The background turns white</li>
+                  <li>The icon rotates</li>
+                  <li>The center circle grows slightly and then shrinks back</li>
+                  <li>All white parts turn black</li>
+                  <li>All green/gray parts turn white</li>
+                </ul>
+              </li>
+
+              <li><strong>Second click: Dark Mode → Light Mode</strong>
+                <ul>
+                  <li>On click the entire iconcss slightly grows in size and then shrinks</li>
+                  <li>The background turns green/gray</li>
+                  <li>The icon rotates back</li>
+                  <li>The center circle grows slightly and then shrinks back</li>
+                  <li>All black parts turn white</li>
+                  <li>All white parts turn green/gray</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops -->
+        <section id="appearance-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img 
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/light%3Adark-mode.png" 
+                alt="Appearance toggle microinteraction — Light/Dark mode button states">
+              <figcaption>Appearance Toggle (Light ↔ Dark)</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="media-block">
+          <h3>LIGHT/DARK MODE ANIMATION</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/dark-mode-on.gif"
+                alt="Appearance toggle microinteraction — Dark Mode on">
+              <figcaption>Dark Mode — ON</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/light-mode-on.gif"
+                alt="Appearance toggle microinteraction — Light Mode on">
+              <figcaption>Light Mode — ON</figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+
+      <!-- =============================== -->
+      <!-- COLUMN 3: LOW POWER MODE -->
+      <!-- =============================== -->
+      <article class="spec-col" id="lowpower-spec">
+        <header class="spec-col__title"><h2>LOW POWER MODE</h2></header>
+
+        <!-- Interaction -->
+        <section id="lowpower-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Turning Low Power Mode on/off</div>
+          </div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="lowpower-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Low Power button</strong>
+              <ul>
+                <li>First click — Low Power OFF → Low Power ON</li>
+                <li>Second click — Low Power ON → Low Power OFF</li>
+                <li>Hover ON/OFF button</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="lowpower-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Hover ON</strong>
+              <ul>
+                <li>Cursor changes to finger</li>
+              </ul>
+            </li>
+
+            <li><strong>Hover OFF</strong>
+              <ul>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
+
+            <li><strong>First click: Low Power OFF → Low Power ON</strong>
+              <ul>
+                <li>The background circle switches to dark grey/green</li>
+                <li>The battery icon turns yellow</li>
+                <li>The inner charge bar briefly fills and then shrinks down</li>
+              </ul>
+            </li>
+
+            <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+              <ul>
+                <li>The background fades from white to dark grey/green</li>
+                <li>The battery icon fades from yellow to white/grey</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="lowpower-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Hover ON</strong>
+                <ul>
+                  <li>Cursor changes to finger</li>
+                </ul>
+              </li>
+
+              <li><strong>Hover OFF</strong>
+                <ul>
+                  <li>Finger changes to cursor</li>
+                </ul>
+              </li>
+
+              <li><strong>First click: Low Power OFF → Low Power ON</strong>
+                <ul>
+                  <li>The background circle switches to dark grey/green</li>
+                  <li>The battery icon turns yellow</li>
+                <li>The inner charge bar briefly fills and then shrinks down</li>
+                </ul>
+              </li>
+
+              <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+                <ul>
+                <li>The background fades from white to dark grey/green</li>
+                <li>The battery icon fades from yellow to white/grey</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops -->
+        <section id="lowpower-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img 
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low-power-mode.png" 
+                alt="Low Power Mode toggle microinteraction — button states">
+              <figcaption>Low Power Mode Toggle</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="media-block">
+          <h3>LOW POWER MODE ANIMATION</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low%20power%20mode/low-power-on.gif"
+                alt="Low Power Mode toggle — ON">
+              <figcaption>Low Power — ON</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low%20power%20mode/low-power-off.gif"
+                alt="Low Power Mode toggle — OFF">
+              <figcaption>Low Power — OFF</figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+
     </section>
+
+    <br><br>
 
   </main>
 
-  <script src="./tester.js"></script>
 </body>
 </html>
