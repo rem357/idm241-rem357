@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: system-ui, Helvetica, Arial, sans-serif;
-  background: #c4e3e6;
+  background: #c2e5e8;
   color: var(--text);
 }
 
@@ -328,7 +328,7 @@ a:hover {
   margin: auto;
   width: 80px;   /* adjust if you want it bigger/smaller */
   height: 80px;
-  background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/Vector%20Background%20Removed.png");
+  background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/Vector%20Background%20Removed.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
