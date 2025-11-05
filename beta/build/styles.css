@@ -390,6 +390,7 @@ a:hover {
    Low Power Mode Button
 ----------------------------------------- */
 .lp-btn {
+  position: relative;         /* anchor confetti to the button */
   width: 220px;
   height: 220px;
   border: 0;
@@ -488,6 +489,54 @@ a:hover {
   0% { background: #ffffff; }
   40% { background: #c7cec6; }
   100% { background: #5b6c5f; }
+}
+
+/* fill burst on first (ON) click */
+.lp-btn.burst .lp-fill {
+  animation: lp-fill-burst 0.6s ease-out forwards;
+}
+
+/* sparks from the battery */
+.lp-btn.burst .lp-battery::before,
+.lp-btn.burst .lp-battery::after {
+  content: "";
+  position: relative;         
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #f6c949;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.lp-btn.burst .lp-battery::before {
+  animation: lp-spark-left 0.45s ease-out forwards;
+}
+
+.lp-btn.burst .lp-battery::after {
+  animation: lp-spark-right 0.45s ease-out forwards;
+}
+
+/* fill: grow → shrink back to normal ON width (54px) */
+@keyframes lp-fill-burst {
+  0%   { width: 40px; background: rgba(255,255,255,.35); }
+  25%  { width: 80px; background: #f6c949; }
+  55%  { width: 70px; }
+  100% { width: 54px; background: #f6c949; }
+}
+
+/* sparks going out */
+@keyframes lp-spark-left {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
+  100% { opacity: 0; transform: translate(-120%, -130%) scale(1); }
+}
+
+@keyframes lp-spark-right {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
+  100% { opacity: 0; transform: translate(40%, -140%) scale(1); }
 }
 
 /* =========================================

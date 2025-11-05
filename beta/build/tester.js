@@ -1,6 +1,6 @@
 /* ========== APPEARANCE (sun ↔ crescent) ========== */
 const appearanceBtn = document.getElementById('appearance');
-let isDark = false; // start on sun
+let isDark = false;
 
 function renderAppearance() {
   appearanceBtn.classList.toggle('dark', isDark);
@@ -27,7 +27,7 @@ if (appearanceBtn) {
 const lpBtn = document.getElementById('low-power');
 
 if (lpBtn) {
-  let lpOn = false; // start OFF (green)
+  let lpOn = false; 
 
   function renderLP() {
     lpBtn.classList.toggle('on', lpOn);
@@ -35,28 +35,28 @@ if (lpBtn) {
   }
 
   function toggleLP() {
-    // clear anim classes so we can re-trigger
-    lpBtn.classList.remove('anim-on', 'anim-off');
+    lpBtn.classList.remove('anim-on', 'anim-off', 'burst');
 
-    // flip state
     lpOn = !lpOn;
     renderLP();
 
     if (lpOn) {
-      // OFF -> ON
-      lpBtn.classList.add('anim-on');
+
+      lpBtn.classList.add('anim-on', 'burst');
+
+      setTimeout(() => {
+        lpBtn.classList.remove('burst');
+      }, 650);
     } else {
-      // ON -> OFF
+
       lpBtn.classList.add('anim-off');
     }
 
-    // after animation, we can drop the anim class
     setTimeout(() => {
       lpBtn.classList.remove('anim-on', 'anim-off');
     }, 420);
   }
 
-  // initial paint
   renderLP();
 
   lpBtn.addEventListener('click', toggleLP);
@@ -69,19 +69,20 @@ if (lpBtn) {
 }
 
 
+
 // RINGER BUTTON
 const ringerBtn = document.getElementById('ringer');
 
 if (ringerBtn) {
   const bell = ringerBtn.querySelector('.bell');
-  let isOff = false; // start ON
+  let isOff = false;
 
   // restart shake animation on SVG
   function shakeBell(delayMs = 0) {
     const run = () => {
       if (!bell) return;
       bell.classList.remove('shake');
-      bell.getBoundingClientRect(); // force reflow so animation restarts
+      bell.getBoundingClientRect();
       bell.classList.add('shake');
     };
     delayMs ? setTimeout(run, delayMs) : run();
