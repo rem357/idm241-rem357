@@ -1,8 +1,6 @@
 /* =========================================
-          IDM241 — Beta Description 
-   ========================================= */
-
-/* Theme */
+   IDM241 — Beta Description 
+========================================= */
 :root {
   --bg: #f4f6fa;
   --card: #ffffff;
@@ -11,7 +9,9 @@
   --accent: #4da3ff;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -22,7 +22,7 @@ body {
 
 /* -----------------------------------------
    Header
------------------------------------------- */
+----------------------------------------- */
 header {
   padding: 40px 20px 20px;
   max-width: 1200px;
@@ -40,17 +40,16 @@ header p {
 }
 
 /* -----------------------------------------
-   Main shell
------------------------------------------- */
+   Main content
+----------------------------------------- */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  display: block;     /* previously a grid; columns handled by .spec-grid */
+  display: block;
   gap: 16px;
 }
 
-/* Card sections */
 section {
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -58,7 +57,6 @@ section {
   padding: 20px;
 }
 
-/* Headings */
 h2 {
   margin: 0 0 12px;
   font-size: clamp(20px, 2.5vw, 26px);
@@ -71,24 +69,16 @@ h3 {
 }
 
 /* -----------------------------------------
-   Triptych columns for the three buttons
------------------------------------------- */
+   Columns
+----------------------------------------- */
 .spec-grid {
-  /* remove default card look for this container */
   background: transparent;
   border: 0;
   padding: 0;
-
   display: grid;
   grid-template-columns: repeat(3, minmax(280px, 1fr));
   gap: 16px;
   align-items: start;
-}
-
-.spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .spec-col__title h2 {
@@ -97,7 +87,6 @@ h3 {
   letter-spacing: .02em;
 }
 
-/* keep section cards inside each column tidy */
 .spec-col section {
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -106,14 +95,17 @@ h3 {
 }
 
 /* -----------------------------------------
-   Two-column lists used in Feedback, etc.
------------------------------------------- */
-.grid { display: grid; gap: 12px; }
-.grid.two { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+   Grids, subsections, content
+----------------------------------------- */
+.grid {
+  display: grid;
+  gap: 12px;
+}
 
-/* -----------------------------------------
-   Subsection description rows
------------------------------------------- */
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
 .subsection {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -126,14 +118,22 @@ h3 {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
-.subsection .sub { color: var(--muted); }
-.subsection .sub-content { color: var(--text); }
+.subsection .sub {
+  color: var(--muted);
+}
 
-/* -----------------------------------------
-   Lists, figures, anchors
------------------------------------------- */
-ul, ol { margin: 8px 0 0 20px; }
-li { margin: 6px 0; }
+.subsection .sub-content {
+  color: var(--text);
+}
+
+ul,
+ol {
+  margin: 8px 0 0 20px;
+}
+
+li {
+  margin: 6px 0;
+}
 
 figure {
   margin: 12px 0;
@@ -155,26 +155,138 @@ figcaption {
   padding: 8px 12px;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 /* -----------------------------------------
    Responsive
------------------------------------------- */
+----------------------------------------- */
 @media (max-width: 1000px) {
-  .spec-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+  .spec-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
-  .spec-grid { grid-template-columns: 1fr; }
-  .subsection { grid-template-columns: 130px 1fr; }
-}
-/* =========================================
-          IDM241 — Button Styles 
-   ========================================= */
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
 
-/* ========== APPEARANCE BUTTON ========== */
-/* outer round button */
+  .subsection {
+    grid-template-columns: 130px 1fr;
+  }
+}
+
+/* -----------------------------------------
+   Ringer Button
+----------------------------------------- */
+.ringer {
+  --on-bg: #5a695f;
+  --off-bg: #ffffff;
+  --bell-on: #ffffff;
+  --bell-off: #FF515F;
+  width: 220px;
+  height: 220px;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: var(--on-bg);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  transition: background .25s ease, transform .06s ease;
+}
+
+.ringer:active {
+  transform: scale(.985);
+}
+
+.ringer.off {
+  background: var(--off-bg);
+}
+
+.ringer .icon {
+  width: 90px;
+  height: 90px;
+  display: block;
+}
+
+.ringer .bell {
+  fill: var(--bell-on);
+  transition: fill .2s ease;
+  transform-box: fill-box;
+  transform-origin: 50% 8%;
+}
+
+.ringer.off .bell {
+  fill: var(--bell-off);
+}
+
+.ringer .slash-back,
+.ringer .slash-front {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+.ringer .slash-back {
+  stroke: #ffffff;
+  stroke-width: 3.5;
+}
+
+.ringer .slash-front {
+  stroke: var(--bell-off);
+  stroke-width: 2;
+}
+
+.ringer.off .slash-back,
+.ringer.off .slash-front {
+  animation: draw 260ms ease forwards;
+  opacity: 1;
+}
+
+.ringer:not(.off) .slash-back,
+.ringer:not(.off) .slash-front {
+  animation: erase 260ms ease forwards;
+  opacity: 1;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes erase {
+  to { stroke-dashoffset: 100; }
+}
+
+@keyframes bell-shake {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(-10deg); }
+  30%  { transform: rotate(8deg); }
+  45%  { transform: rotate(-6deg); }
+  60%  { transform: rotate(4deg); }
+  75%  { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.ringer .bell.shake {
+  animation: bell-shake .45s ease-in-out;
+}
+
+
+/* -----------------------------------------
+   Light / Dark (Appearance) Button
+----------------------------------------- */
 .toggle-btn {
   width: 220px;
   height: 220px;
@@ -184,8 +296,7 @@ a:hover { text-decoration: underline; }
   place-items: center;
   cursor: pointer;
   transition: background .25s ease, transform .06s ease;
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.3),
+  box-shadow: 0 12px 30px rgba(0,0,0,.3),
     inset 0 1px 0 rgba(255,255,255,.05);
 }
 
@@ -193,24 +304,22 @@ a:hover { text-decoration: underline; }
   transform: scale(.985);
 }
 
-/* start in LIGHT like your mock */
 .appearance {
-  --outer-sun:  #5b6c5f;  /* green outer */ 
-  --outer-moon: #ffffff;  /* white outer */
+  --outer-sun:  #5b6c5f;
+  --outer-moon: #ffffff;
   background: var(--outer-sun);
 }
 
-/* inner circle */
 .icon-shell {
   position: relative;
   width: 110px;
   height: 110px;
   border-radius: 999px;
   background: #ffffff;
-  transition: background .25s ease;
+  transition: background .25s ease, transform .45s ease;
+  transform-origin: center;
 }
 
-/* sun (no lines) */
 .sun-icon {
   position: absolute;
   inset: 0;
@@ -222,16 +331,15 @@ a:hover { text-decoration: underline; }
   transition: opacity .2s ease, transform .2s ease;
 }
 
-/* crescent */
 .moon-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 78px;
-  height: 78px;
+  width: 54px;
+  height: 54px;
   opacity: 0;
   transform: scale(.8);
-  transition: opacity .2s ease, transform .2s ease;
+  transition: opacity .1s ease .1s, transform .1s ease .1s;
 }
 
 .moon-icon::before {
@@ -239,8 +347,8 @@ a:hover { text-decoration: underline; }
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   background: #ffffff;
   border-radius: 999px;
 }
@@ -250,20 +358,20 @@ a:hover { text-decoration: underline; }
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   background: #000000;
   border-radius: 999px;
   transform: translateX(-11px);
 }
 
-/* dark state for appearance */
 .appearance.dark {
   background: var(--outer-moon);
 }
 
 .appearance.dark .icon-shell {
   background: #000000;
+  transform: rotate(180deg);
 }
 
 .appearance.dark .sun-icon {
@@ -276,8 +384,9 @@ a:hover { text-decoration: underline; }
   transform: scale(1);
 }
 
-/* ========== LOW POWER MODE ========== */
-/* outer circle */
+/* -----------------------------------------
+   Low Power Mode Button
+----------------------------------------- */
 .lp-btn {
   width: 220px;
   height: 220px;
@@ -286,9 +395,8 @@ a:hover { text-decoration: underline; }
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #5b6c5f; /* start: green/dark */
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.3),
+  background: #5b6c5f;
+  box-shadow: 0 12px 30px rgba(0,0,0,.3),
     inset 0 1px 0 rgba(255,255,255,.05);
   transition: transform .06s ease;
 }
@@ -305,7 +413,6 @@ a:hover { text-decoration: underline; }
   place-items: center;
 }
 
-/* battery */
 .lp-battery {
   position: relative;
   width: 98px;
@@ -343,9 +450,8 @@ a:hover { text-decoration: underline; }
   transition: width .25s ease, background .25s ease;
 }
 
-/* ON look: yellow battery AND stay white */
 .lp-btn.on {
-  background: #ffffff; /* this was the missing line */  /* :contentReference[oaicite:7]{index=7} */
+  background: #ffffff;
 }
 
 .lp-btn.on .lp-body {
@@ -362,7 +468,6 @@ a:hover { text-decoration: underline; }
   background: #f6c949;
 }
 
-/* animation classes */
 .lp-btn.anim-on {
   animation: lp-on 360ms ease-out forwards;
 }
@@ -372,115 +477,128 @@ a:hover { text-decoration: underline; }
 }
 
 @keyframes lp-on {
-  0%   { background: #5b6c5f; }
-  40%  { background: #c7cec6; }
+  0% { background: #5b6c5f; }
+  40% { background: #c7cec6; }
   100% { background: #ffffff; }
 }
 
 @keyframes lp-off {
-  0%   { background: #ffffff; }
-  40%  { background: #c7cec6; }
+  0% { background: #ffffff; }
+  40% { background: #c7cec6; }
   100% { background: #5b6c5f; }
+}
+
+/* =========================================
+   Layout refinements
+========================================= */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 320px));
+  gap: 16px;
+  justify-content: center;
 }
 
 .spec-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: center;   /* centers the button */
-  text-align: center;    /* centers the text too */
+  text-align: left;
 }
 
-
-/* RINGER BUTTON (same size as other two) */
-.ringer {
-  --on-bg: #5a695f;
-  --off-bg: #ffffff;
-  --bell-on: #ffffff;
-  --bell-off: #FF515F;
-  width: 220px;
-  height: 220px;
-  border: 0;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  background: var(--on-bg);
-  box-shadow:
-    0 10px 26px rgba(0, 0, 0, .25),
-    inset 0 1px 0 rgba(255, 255, 255, .08);
-  transition:
-    background .25s ease,
-    transform .06s ease;
+.spec-col .ringer,
+.spec-col .toggle-btn,
+.spec-col .lp-btn {
+  align-self: center;
 }
 
-.ringer:active {
-  transform: scale(.985);
+.spec-col ul,
+.spec-col ol,
+.spec-col ul ul,
+.spec-col ol ul,
+.spec-col ul ol,
+.spec-col ol ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
-.ringer.off {
-  background: var(--off-bg);
+.spec-col > ul > li,
+.spec-col section > ul > li {
+  margin-left: 0;
 }
 
-/* bigger svg to match 220 circle */
-.ringer .icon {
-  width: 90px;
-  height: 90px;
-  display: block;
+.spec-col ul ul > li,
+.spec-col ol ul > li,
+.spec-col ul ol > li,
+.spec-col section ul ul > li {
+  margin-left: 1.25rem;
 }
 
-/* bell path */
-.ringer .bell {
-  fill: var(--bell-on);
-  transition: fill .2s ease;
-  transform-box: fill-box;
-  transform-origin: 50% 8%;
+/* -----------------------------------------
+   Responsive grid
+----------------------------------------- */
+@media (max-width: 1100px) {
+  .spec-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    justify-content: center;
+  }
 }
 
-.ringer.off .bell {
-  fill: var(--bell-off);
+@media (max-width: 720px) {
+  .spec-grid {
+    grid-template-columns: 1fr;
+    justify-content: auto;
+  }
+
+  .spec-col .ringer,
+  .spec-col .toggle-btn,
+  .spec-col .lp-btn {
+    align-self: center;
+  }
 }
 
-/* THICKER slashes so they’re visible at bigger size */
-.ringer .slash-back,
-.ringer .slash-front {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  opacity: 0;
+/* -----------------------------------------
+   Fixed card sizes for desktop
+----------------------------------------- */
+@media (min-width: 1100px) {
+  #ringer-interaction,
+  #appearance-interaction,
+  #lowpower-interaction {
+    width: 320px;
+    height: 141.5px;
+  }
+
+  #ringer-triggers,
+  #appearance-triggers,
+  #lowpower-triggers {
+    width: 320px;
+    height: 207.5px;
+  }
+
+  #ringer-rules,
+  #appearance-rules,
+  #lowpower-rules {
+    width: 320px;
+    height: 589.5px;
+    overflow-y: auto;
+  }
+
+  #ringer-feedback,
+  #appearance-feedback,
+  #lowpower-feedback {
+    width: 320px;
+    height: 603.5px;
+    overflow-y: auto;
+  }
 }
 
-.ringer .slash-back {
-  stroke: #ffffff;
-  stroke-width: 4;      /* was 2.5 */
-}
-
-.ringer .slash-front {
-  stroke: var(--bell-off);
-  stroke-width: 2;      /* was 1.1 */
-}
-
-/* OFF: draw in */
-.ringer.off .slash-back,
-.ringer.off .slash-front {
-  animation: draw 260ms ease forwards;
-  opacity: 1;
-}
-
-/* ON: erase */
-.ringer:not(.off) .slash-back,
-.ringer:not(.off) .slash-front {
-  animation: erase 260ms ease forwards;
-  opacity: 1;
-}
-
-/* keyframes stay the same */
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes erase {
-  to { stroke-dashoffset: 100; }
+/* -----------------------------------------
+   Let them expand on smaller screens
+----------------------------------------- */
+@media (max-width: 1099px) {
+  .spec-col section {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
 }
