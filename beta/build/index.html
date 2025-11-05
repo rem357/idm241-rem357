@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IDM241 Beta Description</title>
+  <title>IDM241 Beta-Build</title>
   <meta name="description" content="IDM241 assignment page" />
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -22,7 +22,16 @@
       <!--  RINGER / SILENT -->
       <!-- =============================== -->
       <article class="spec-col" id="ringer-spec">
-        <header class="spec-col__title"><h2>RINGER / SILENT (from alpha)</h2></header>
+        <header class="spec-col__title"><h2>RINGER / SILENT</h2></header>
+
+<button id="ringer" class="ringer" aria-pressed="false" aria-label="Toggle ringer">
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path class="bell"
+      d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z" />
+    <path class="slash-back"  d="M1 4 L23 20" pathLength="100" />
+    <path class="slash-front" d="M1 4 L23 20" pathLength="100" />
+  </svg>
+</button>
 
         <!-- Interaction -->
         <section id="ringer-interaction">
@@ -132,35 +141,6 @@
           <ul>None</ul>
         </section>
 
-        <section class="media-block">
-          <h3>STATIC IMAGES</h3>
-          <div class="media-grid">
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer.png"
-                alt="Ringer / Silent microinteraction — button states">
-              <figcaption>Ringer / Silent — Button States</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="media-block">
-          <h3>RINGER ANIMATION</h3>
-          <div class="media-grid">
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20off/MOV%20to%20GIF%20(1).gif"
-                alt="Ringer / Silent microinteraction — Ringer Off">
-              <figcaption>Ringer — OFF</figcaption>
-            </figure>
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/ringer%20on/MOV%20to%20GIF.gif"
-                alt="Ringer / Silent microinteraction — Ringer On">
-              <figcaption>Ringer — ON</figcaption>
-            </figure>
-          </div>
-        </section>
       </article>
 
       <!-- =============================== -->
@@ -189,101 +169,98 @@
           </div>
         </section>
 
-        <!-- Triggers -->
-        <section id="appearance-triggers">
-          <h3>TRIGGERS</h3>
-          <ul>
-            <li><strong>Appearance button</strong>
-              <ul>
-                <li>First click — Light Mode → Dark Mode</li>
-                <li>Second click — Dark Mode → Light Mode</li>
-                <li>Hover ON/OFF button</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
+       <!-- Triggers -->
+<section id="appearance-triggers">
+  <h3>TRIGGERS</h3>
+  <ul>
+    <li><strong>Appearance button</strong>
+      <ul>
+        <li>First click — Light Mode → Dark Mode (sun hides, moon shows)</li>
+        <li>Second click — Dark Mode → Light Mode (moon hides, sun shows)</li>
+        <li>Hover ON/OFF button</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-        <!-- Rules -->
-        <section id="appearance-rules">
-          <h3>RULES</h3>
-          <ul>
-            <li><strong>Hover ON</strong>
-              <ul>
-                <li>Cursor changes to finger</li>
-              </ul>
-            </li>
+<!-- Rules -->
+<section id="appearance-rules">
+  <h3>RULES</h3>
+  <ul>
+    <li><strong>Hover ON</strong>
+      <ul>
+        <li>Cursor changes to finger</li>
+      </ul>
+    </li>
 
-            <li><strong>Hover OFF</strong>
-              <ul>
-                <li>Finger changes to cursor</li>
-              </ul>
-            </li>
+    <li><strong>Hover OFF</strong>
+      <ul>
+        <li>Finger changes to cursor</li>
+      </ul>
+    </li>
 
-            <li><strong>First click: Light Mode → Dark Mode</strong>
-              <ul>
-                <li>On click the entire icon slightly grows in size and then shrinks</li>
-                <li>The background turns white</li>
-                <li>The icon rotates</li>
-                <li>The center circle grows slightly and then shrinks back</li>
-                <li>All white parts turn black</li>
-                <li>All green/gray parts turn white</li>
-              </ul>
-            </li>
+    <li><strong>First click: Light Mode → Dark Mode</strong>
+      <ul>
+        <li>On click the entire icon slightly grows in size and then shrinks</li>
+        <li>The outer circle turns white</li>
+        <li>The center circle turns black</li>
+        <li>The sun icon fades out</li>
+        <li>The moon icon fades in and scales up</li>
+      </ul>
+    </li>
 
-            <li><strong>Second click: Dark Mode → Light Mode</strong>
-              <ul>
-                <li>On click the entire icon slightly grows in size and then shrinks</li>
-                <li>The background turns green/gray</li>
-                <li>The icon rotates back</li>
-                <li>The center circle grows slightly and then shrinks back</li>
-                <li>All black parts turn white</li>
-                <li>All white parts turn green/gray</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
+    <li><strong>Second click: Dark Mode → Light Mode</strong>
+      <ul>
+        <li>On click the entire icon slightly grows in size and then shrinks</li>
+        <li>The outer circle turns green/gray</li>
+        <li>The center circle turns white</li>
+        <li>The moon icon fades out</li>
+        <li>The sun icon fades in and scales back</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-        <!-- Feedback -->
-        <section id="appearance-feedback">
-          <h3>FEEDBACK</h3>
-          <div class="grid two">
-            <ul>
-              <li><strong>Hover ON</strong>
-                <ul>
-                  <li>Cursor changes to finger</li>
-                </ul>
-              </li>
+<!-- Feedback -->
+<section id="appearance-feedback">
+  <h3>FEEDBACK</h3>
+  <div class="grid two">
+    <ul>
+      <li><strong>Hover ON</strong>
+        <ul>
+          <li>Cursor changes to finger</li>
+        </ul>
+      </li>
 
-              <li><strong>Hover OFF</strong>
-                <ul>
-                  <li>Finger changes to cursor</li>
-                </ul>
-              </li>
+      <li><strong>Hover OFF</strong>
+        <ul>
+          <li>Finger changes to cursor</li>
+        </ul>
+      </li>
 
-              <li><strong>First click: Light Mode → Dark Mode</strong>
-                <ul>
-                  <li>On click the entire icon slightly grows in size and then shrinks</li>
-                  <li>The background turns white</li>
-                  <li>The icon rotates</li>
-                  <li>The center circle grows slightly and then shrinks back</li>
-                  <li>All white parts turn black</li>
-                  <li>All green/gray parts turn white</li>
-                </ul>
-              </li>
+      <li><strong>First click: Light Mode → Dark Mode</strong>
+        <ul>
+          <li>On click the entire icon slightly grows in size and then shrinks</li>
+          <li>The outer circle turns white</li>
+          <li>The center circle turns black</li>
+          <li>The sun icon fades out</li>
+          <li>The moon icon fades in and scales up</li>
+        </ul>
+      </li>
 
-              <li><strong>Second click: Dark Mode → Light Mode</strong>
-                <ul>
-                  <li>On click the entire iconcss slightly grows in size and then shrinks</li>
-                  <li>The background turns green/gray</li>
-                  <li>The icon rotates back</li>
-                  <li>The center circle grows slightly and then shrinks back</li>
-                  <li>All black parts turn white</li>
-                  <li>All white parts turn green/gray</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </section>
+      <li><strong>Second click: Dark Mode → Light Mode</strong>
+        <ul>
+          <li>On click the entire icon slightly grows in size and then shrinks</li>
+          <li>The outer circle turns green/gray</li>
+          <li>The center circle turns white</li>
+          <li>The moon icon fades out</li>
+          <li>The sun icon fades in and scales back</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
         <!-- Loops -->
         <section id="appearance-loops">
@@ -291,35 +268,6 @@
           <ul>None</ul>
         </section>
 
-        <section class="media-block">
-          <h3>STATIC IMAGES</h3>
-          <div class="media-grid">
-            <figure>
-              <img 
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/light%3Adark-mode.png" 
-                alt="Appearance toggle microinteraction — Light/Dark mode button states">
-              <figcaption>Appearance Toggle (Light ↔ Dark)</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="media-block">
-          <h3>LIGHT/DARK MODE ANIMATION</h3>
-          <div class="media-grid">
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/dark-mode-on.gif"
-                alt="Appearance toggle microinteraction — Dark Mode on">
-              <figcaption>Dark Mode — ON</figcaption>
-            </figure>
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/light-mode-on.gif"
-                alt="Appearance toggle microinteraction — Light Mode on">
-              <figcaption>Light Mode — ON</figcaption>
-            </figure>
-          </div>
-        </section>
       </article>
 
       <!-- =============================== -->
@@ -352,87 +300,93 @@
           </div>
         </section>
 
-        <!-- Triggers -->
-        <section id="lowpower-triggers">
-          <h3>TRIGGERS</h3>
-          <ul>
-            <li><strong>Low Power button</strong>
-              <ul>
-                <li>First click — Low Power OFF → Low Power ON</li>
-                <li>Second click — Low Power ON → Low Power OFF</li>
-                <li>Hover ON/OFF button</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
+<!-- Triggers -->
+<section id="lowpower-triggers">
+  <h3>TRIGGERS</h3>
+  <ul>
+    <li><strong>Low Power button</strong>
+      <ul>
+        <li>First click — Low Power OFF → Low Power ON</li>
+        <li>Second click — Low Power ON → Low Power OFF</li>
+        <li>Hover ON/OFF button</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-        <!-- Rules -->
-        <section id="lowpower-rules">
-          <h3>RULES</h3>
-          <ul>
-            <li><strong>Hover ON</strong>
-              <ul>
-                <li>Cursor changes to finger</li>
-              </ul>
-            </li>
+<!-- Rules -->
+<section id="lowpower-rules">
+  <h3>RULES</h3>
+  <ul>
+    <li><strong>Hover ON</strong>
+      <ul>
+        <li>Cursor changes to finger</li>
+      </ul>
+    </li>
 
-            <li><strong>Hover OFF</strong>
-              <ul>
-                <li>Finger changes to cursor</li>
-              </ul>
-            </li>
+    <li><strong>Hover OFF</strong>
+      <ul>
+        <li>Finger changes to cursor</li>
+      </ul>
+    </li>
 
-            <li><strong>First click: Low Power OFF → Low Power ON</strong>
-              <ul>
-                <li>The background circle switches to dark grey/green</li>
-                <li>The battery icon turns yellow</li>
-                <li>The inner charge bar briefly fills and then shrinks down</li>
-              </ul>
-            </li>
+    <li><strong>First click: Low Power OFF → Low Power ON</strong>
+      <ul>
+        <li>The outer circle changes from dark grey/green to white</li>
+        <li>The battery outline and tip change to yellow</li>
+        <li>The inner charge bar expands to a longer yellow bar</li>
+        <li>The low power animation plays briefly</li>
+      </ul>
+    </li>
 
-            <li><strong>Second click: Low Power ON → Low Power OFF</strong>
-              <ul>
-                <li>The background fades from white to dark grey/green</li>
-                <li>The battery icon fades from yellow to white/grey</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
+    <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+      <ul>
+        <li>The outer circle changes from white back to dark grey/green</li>
+        <li>The battery outline and tip change back to white/grey</li>
+        <li>The inner charge bar shrinks back to the smaller white bar</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-        <!-- Feedback -->
-        <section id="lowpower-feedback">
-          <h3>FEEDBACK</h3>
-          <div class="grid two">
-            <ul>
-              <li><strong>Hover ON</strong>
-                <ul>
-                  <li>Cursor changes to finger</li>
-                </ul>
-              </li>
+<!-- Feedback -->
+<section id="lowpower-feedback">
+  <h3>FEEDBACK</h3>
+  <div class="grid two">
+    <ul>
+      <li><strong>Hover ON</strong>
+        <ul>
+          <li>Cursor changes to finger</li>
+        </ul>
+      </li>
 
-              <li><strong>Hover OFF</strong>
-                <ul>
-                  <li>Finger changes to cursor</li>
-                </ul>
-              </li>
+      <li><strong>Hover OFF</strong>
+        <ul>
+          <li>Finger changes to cursor</li>
+        </ul>
+      </li>
 
-              <li><strong>First click: Low Power OFF → Low Power ON</strong>
-                <ul>
-                  <li>The background circle switches to dark grey/green</li>
-                  <li>The battery icon turns yellow</li>
-                <li>The inner charge bar briefly fills and then shrinks down</li>
-                </ul>
-              </li>
+      <li><strong>First click: Low Power OFF → Low Power ON</strong>
+        <ul>
+          <li>The outer circle flashes to white</li>
+          <li>The battery turns yellow</li>
+          <li>The charge bar grows to show more power</li>
+          <li>Button shows the “on” visual state</li>
+        </ul>
+      </li>
 
-              <li><strong>Second click: Low Power ON → Low Power OFF</strong>
-                <ul>
-                <li>The background fades from white to dark grey/green</li>
-                <li>The battery icon fades from yellow to white/grey</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </section>
+      <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+        <ul>
+          <li>The outer circle fades back to dark grey/green</li>
+          <li>The battery returns to the white/grey style</li>
+          <li>The charge bar shrinks back to the shorter bar</li>
+          <li>Button shows the “off” visual state</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
         <!-- Loops -->
         <section id="lowpower-loops">
@@ -440,35 +394,6 @@
           <ul>None</ul>
         </section>
 
-        <section class="media-block">
-          <h3>STATIC IMAGES</h3>
-          <div class="media-grid">
-            <figure>
-              <img 
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low-power-mode.png" 
-                alt="Low Power Mode toggle microinteraction — button states">
-              <figcaption>Low Power Mode Toggle</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="media-block">
-          <h3>LOW POWER MODE ANIMATION</h3>
-          <div class="media-grid">
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low%20power%20mode/low-power-on.gif"
-                alt="Low Power Mode toggle — ON">
-              <figcaption>Low Power — ON</figcaption>
-            </figure>
-            <figure>
-              <img
-                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/low%20power%20mode/low-power-off.gif"
-                alt="Low Power Mode toggle — OFF">
-              <figcaption>Low Power — OFF</figcaption>
-            </figure>
-          </div>
-        </section>
       </article>
 
     </section>
@@ -476,6 +401,6 @@
     <br><br>
 
   </main>
-
+  <script src="tester.js"></script>
 </body>
 </html>

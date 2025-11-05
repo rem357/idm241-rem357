@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: system-ui, Helvetica, Arial, sans-serif;
-  background: #e2caa6;
+  background: #e9cdb8;
   color: var(--text);
 }
 
@@ -168,4 +168,319 @@ a:hover { text-decoration: underline; }
 @media (max-width: 640px) {
   .spec-grid { grid-template-columns: 1fr; }
   .subsection { grid-template-columns: 130px 1fr; }
+}
+/* =========================================
+          IDM241 — Button Styles 
+   ========================================= */
+
+/* ========== APPEARANCE BUTTON ========== */
+/* outer round button */
+.toggle-btn {
+  width: 220px;
+  height: 220px;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .25s ease, transform .06s ease;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.toggle-btn:active {
+  transform: scale(.985);
+}
+
+/* start in LIGHT like your mock */
+.appearance {
+  --outer-sun:  #5b6c5f;  /* green outer */ 
+  --outer-moon: #ffffff;  /* white outer */
+  background: var(--outer-sun);
+}
+
+/* inner circle */
+.icon-shell {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  background: #ffffff;
+  transition: background .25s ease;
+}
+
+/* sun (no lines) */
+.sun-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 54px;
+  height: 54px;
+  background: #f5b933;
+  border-radius: 999px;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* crescent */
+.moon-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 78px;
+  height: 78px;
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.moon-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58px;
+  height: 58px;
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+.moon-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58px;
+  height: 58px;
+  background: #000000;
+  border-radius: 999px;
+  transform: translateX(-11px);
+}
+
+/* dark state for appearance */
+.appearance.dark {
+  background: var(--outer-moon);
+}
+
+.appearance.dark .icon-shell {
+  background: #000000;
+}
+
+.appearance.dark .sun-icon {
+  opacity: 0;
+  transform: scale(.7);
+}
+
+.appearance.dark .moon-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== LOW POWER MODE ========== */
+/* outer circle */
+.lp-btn {
+  width: 220px;
+  height: 220px;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #5b6c5f; /* start: green/dark */
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  transition: transform .06s ease;
+}
+
+.lp-btn:active {
+  transform: scale(.985);
+}
+
+.lp-inner {
+  width: 115px;
+  height: 115px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+/* battery */
+.lp-battery {
+  position: relative;
+  width: 98px;
+  height: 44px;
+}
+
+.lp-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  border: 3.5px solid rgba(255,255,255,.85);
+  background: rgba(255,255,255,.02);
+  transition: border-color .25s ease, background .25s ease;
+}
+
+.lp-tip {
+  position: absolute;
+  right: -9px;
+  top: 10px;
+  width: 10px;
+  height: 22px;
+  border-radius: 5px;
+  background: rgba(255,255,255,.85);
+  transition: background .25s ease;
+}
+
+.lp-fill {
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  height: 26px;
+  width: 40px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.35);
+  transition: width .25s ease, background .25s ease;
+}
+
+/* ON look: yellow battery AND stay white */
+.lp-btn.on {
+  background: #ffffff; /* this was the missing line */  /* :contentReference[oaicite:7]{index=7} */
+}
+
+.lp-btn.on .lp-body {
+  border-color: #f6c949;
+  background: rgba(246,201,73,.12);
+}
+
+.lp-btn.on .lp-tip {
+  background: #f6c949;
+}
+
+.lp-btn.on .lp-fill {
+  width: 54px;
+  background: #f6c949;
+}
+
+/* animation classes */
+.lp-btn.anim-on {
+  animation: lp-on 360ms ease-out forwards;
+}
+
+.lp-btn.anim-off {
+  animation: lp-off 360ms ease-out forwards;
+}
+
+@keyframes lp-on {
+  0%   { background: #5b6c5f; }
+  40%  { background: #c7cec6; }
+  100% { background: #ffffff; }
+}
+
+@keyframes lp-off {
+  0%   { background: #ffffff; }
+  40%  { background: #c7cec6; }
+  100% { background: #5b6c5f; }
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;   /* centers the button */
+  text-align: center;    /* centers the text too */
+}
+
+
+/* RINGER BUTTON (same size as other two) */
+.ringer {
+  --on-bg: #5a695f;
+  --off-bg: #ffffff;
+  --bell-on: #ffffff;
+  --bell-off: #FF515F;
+  width: 220px;
+  height: 220px;
+  border: 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: var(--on-bg);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  transition:
+    background .25s ease,
+    transform .06s ease;
+}
+
+.ringer:active {
+  transform: scale(.985);
+}
+
+.ringer.off {
+  background: var(--off-bg);
+}
+
+/* bigger svg to match 220 circle */
+.ringer .icon {
+  width: 90px;
+  height: 90px;
+  display: block;
+}
+
+/* bell path */
+.ringer .bell {
+  fill: var(--bell-on);
+  transition: fill .2s ease;
+  transform-box: fill-box;
+  transform-origin: 50% 8%;
+}
+
+.ringer.off .bell {
+  fill: var(--bell-off);
+}
+
+/* THICKER slashes so they’re visible at bigger size */
+.ringer .slash-back,
+.ringer .slash-front {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+.ringer .slash-back {
+  stroke: #ffffff;
+  stroke-width: 4;      /* was 2.5 */
+}
+
+.ringer .slash-front {
+  stroke: var(--bell-off);
+  stroke-width: 2;      /* was 1.1 */
+}
+
+/* OFF: draw in */
+.ringer.off .slash-back,
+.ringer.off .slash-front {
+  animation: draw 260ms ease forwards;
+  opacity: 1;
+}
+
+/* ON: erase */
+.ringer:not(.off) .slash-back,
+.ringer:not(.off) .slash-front {
+  animation: erase 260ms ease forwards;
+  opacity: 1;
+}
+
+/* keyframes stay the same */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes erase {
+  to { stroke-dashoffset: 100; }
 }
