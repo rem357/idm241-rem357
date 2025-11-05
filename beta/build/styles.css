@@ -16,7 +16,7 @@
 body {
   margin: 0;
   font-family: system-ui, Helvetica, Arial, sans-serif;
-  background: #e9cdb8;
+  background: #c4e3e6;
   color: var(--text);
 }
 
@@ -310,6 +310,7 @@ a:hover {
   background: var(--outer-sun);
 }
 
+/* inner circle stays the same */
 .icon-shell {
   position: relative;
   width: 110px;
@@ -320,69 +321,70 @@ a:hover {
   transform-origin: center;
 }
 
+/* use your PNG for the sun */
 .sun-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 54px;
-  height: 54px;
-  background: #f5b933;
-  border-radius: 999px;
+  width: 80px;   /* adjust if you want it bigger/smaller */
+  height: 80px;
+  background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/Vector%20Background%20Removed.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   transition: opacity .2s ease, transform .2s ease;
 }
 
+/* keep your moon as-is */
 .moon-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 54px;
-  height: 54px;
+  width: 78px;
+  height: 78px;
   opacity: 0;
   transform: scale(.8);
-  transition: opacity .1s ease .1s, transform .1s ease .1s;
+  transition: opacity .2s ease .1s, transform .2s ease .1s;
 }
-
 .moon-icon::before {
   content: "";
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
   background: #ffffff;
   border-radius: 999px;
 }
-
 .moon-icon::after {
   content: "";
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
   background: #000000;
   border-radius: 999px;
   transform: translateX(-11px);
 }
 
+/* dark state (same as before) */
 .appearance.dark {
   background: var(--outer-moon);
 }
-
 .appearance.dark .icon-shell {
   background: #000000;
   transform: rotate(180deg);
 }
-
 .appearance.dark .sun-icon {
   opacity: 0;
   transform: scale(.7);
 }
-
 .appearance.dark .moon-icon {
   opacity: 1;
   transform: scale(1);
 }
+
 
 /* -----------------------------------------
    Low Power Mode Button
