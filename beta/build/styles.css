@@ -643,9 +643,6 @@ a:hover {
   }
 }
 
-/* -----------------------------------------
-   Let them expand on smaller screens
------------------------------------------ */
 @media (max-width: 1099px) {
   .spec-col section {
     width: 100%;
