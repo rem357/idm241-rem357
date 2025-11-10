@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDM241 Beta-Build</title>
+  <meta name="description" content="IDM241 assignment page" />
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>IDM241 • Beta-Build </h1>
+    <h2>Microinteraction: Control Center Buttons</h2>
+    <p>Riley Mitchell •  IDM241</p>
+  </header>
+
+  <main>
+    <section class="spec-grid">
+
+      <!-- =============================== -->
+      <!--  RINGER / SILENT -->
+      <!-- =============================== -->
+      <article class="spec-col" id="ringer-spec">
+        <header class="spec-col__title"><h2>RINGER / SILENT</h2></header>
+
+<button id="ringer" class="ringer" aria-pressed="false" aria-label="Toggle ringer">
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path class="bell"
+      d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z" />
+    <path class="slash-back"  d="M1 4 L23 20" pathLength="100" />
+    <path class="slash-front" d="M1 4 L23 20" pathLength="100" />
+  </svg>
+</button>
+
+        <!-- Interaction -->
+        <section id="ringer-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Turning the ringer on/off </div>
+          </div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="ringer-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Ringer/silent button</strong>
+              <ul>
+                <li>First click — Ringer ON → Ringer OFF</li>
+                <li>Second click — Ringer OFF → Ringer ON</li>
+                <li>Hover ON/OFF button</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="ringer-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Hover ON</strong>
+              <ul>
+                <li>Cursor changes to finger</li>
+              </ul>
+            </li>
+
+            <li><strong>Hover OFF</strong>
+              <ul>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
+
+            <li><strong>First click: Ringer ON → Ringer OFF</strong>
+              <ul>
+                <li>On click the entire button slightly grows in size and then shrinks</li>
+                <li>The background circle switches to white</li>
+                <li>The bell icon turns red</li>
+                <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+                <li>The bell icon wiggles/shakes briefly</li>
+              </ul>
+            </li>
+
+            <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+              <ul>
+                <li>On click the entire button slightly grows in size and then shrinks</li>
+                <li>The circle background switches to dark grey/green</li>
+                <li>The bell turns white</li>
+                <li>The diagonal slash retracts/erases</li>
+                <li>The bell icon wiggles/shakes briefly</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="ringer-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Hover ON</strong>
+                <ul>
+                  <li>Cursor changes to finger</li>
+                </ul>
+              </li>
+
+              <li><strong>Hover OFF</strong>
+                <ul>
+                  <li>Finger changes to cursor</li>
+                </ul>
+              </li>
+
+              <li><strong>First click: Ringer ON → Ringer OFF</strong>
+                <ul>
+                  <li>On click the entire button slightly grows in size and then shrinks</li>
+                  <li>The background circle switches to white</li>
+                  <li>The bell icon turns red</li>
+                  <li>A diagonal slash draws in from the upper-left toward the lower-right</li>
+                  <li>The bell icon wiggles/shakes briefly</li>
+                </ul>
+              </li>
+
+              <li><strong>Second click: Ringer OFF → Ringer ON</strong>
+                <ul>
+                  <li>On click the entire button slightly grows in size and then shrinks</li>
+                  <li>The circle background switches to dark grey/green</li>
+                  <li>The bell turns white</li>
+                  <li>The diagonal slash retracts/erases</li>
+                  <li>The bell icon wiggles/shakes briefly</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops -->
+        <section id="ringer-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+      </article>
+
+      <!-- =============================== -->
+      <!-- LIGHT / DARK MODE -->
+      <!-- =============================== -->
+      <article class="spec-col" id="appearance-spec">  <!-- APPEARANCE: sun → crescent -->
+        <header class="spec-col__title"><h2>LIGHT / DARK MODE</h2></header>
+
+        <button id="appearance"
+                class="toggle-btn appearance"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">
+          <span class="icon-shell">
+            <span class="sun-icon"></span>
+            <span class="moon-icon"></span>
+          </span>
+        </button>
+
+        <!-- Interaction -->
+        <section id="appearance-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Switching Light/Dark Mode </div>
+          </div>
+        </section>
+
+       <!-- Triggers -->
+<section id="appearance-triggers">
+  <h3>TRIGGERS</h3>
+  <ul>
+    <li><strong>Appearance button</strong>
+      <ul>
+        <li>First click — Light Mode → Dark Mode (sun hides, moon shows)</li>
+        <li>Second click — Dark Mode → Light Mode (moon hides, sun shows)</li>
+        <li>Hover ON/OFF button</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Rules -->
+<section id="appearance-rules">
+  <h3>RULES</h3>
+  <ul>
+    <li><strong>Hover ON</strong>
+      <ul>
+        <li>Cursor changes to finger</li>
+      </ul>
+    </li>
+
+    <li><strong>Hover OFF</strong>
+      <ul>
+        <li>Finger changes to cursor</li>
+      </ul>
+    </li>
+
+    <li><strong>First click: Light Mode → Dark Mode</strong>
+      <ul>
+        <li>On click the entire icon slightly grows in size and then shrinks</li>
+        <li>The outer circle turns white</li>
+        <li>The center circle turns black</li>
+        <li>The sun icon spins out</li>
+        <li>The moon icon spins in and scales up</li>
+      </ul>
+    </li>
+
+    <li><strong>Second click: Dark Mode → Light Mode</strong>
+      <ul>
+        <li>On click the entire icon slightly grows in size and then shrinks</li>
+        <li>The outer circle turns green/gray</li>
+        <li>The center circle turns white</li>
+        <li>The moon icon spins out</li>
+        <li>The sun icon spins in and scales back</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Feedback -->
+<section id="appearance-feedback">
+  <h3>FEEDBACK</h3>
+  <div class="grid two">
+    <ul>
+      <li><strong>Hover ON</strong>
+        <ul>
+          <li>Cursor changes to finger</li>
+        </ul>
+      </li>
+
+      <li><strong>Hover OFF</strong>
+        <ul>
+          <li>Finger changes to cursor</li>
+        </ul>
+      </li>
+
+      <li><strong>First click: Light Mode → Dark Mode</strong>
+        <ul>
+          <li>On click the entire icon slightly grows in size and then shrinks</li>
+          <li>The outer circle turns white</li>
+          <li>The center circle turns black</li>
+          <li>The sun icon spins out</li>
+          <li>The moon icon spins in and scales up</li>
+        </ul>
+      </li>
+
+      <li><strong>Second click: Dark Mode → Light Mode</strong>
+        <ul>
+          <li>On click the entire icon slightly grows in size and then shrinks</li>
+          <li>The outer circle turns green/gray</li>
+          <li>The center circle turns white</li>
+          <li>The moon icon spins out</li>
+          <li>The sun icon spins in and scales back</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+        <!-- Loops -->
+        <section id="appearance-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+      </article>
+
+      <!-- =============================== -->
+      <!-- COLUMN 3: LOW POWER MODE -->
+      <!-- =============================== -->
+      <article class="spec-col" id="lowpower-spec">
+        <header class="spec-col__title"><h2>LOW POWER MODE</h2></header>
+
+      <!-- LOW POWER MODE -->
+        <button id="low-power"
+                class="lp-btn"
+                aria-pressed="false"
+                aria-label="Toggle Low Power Mode">
+          <span class="lp-inner">
+            <span class="lp-battery">
+              <span class="lp-body"></span>
+              <span class="lp-fill"></span>
+              <span class="lp-tip"></span>
+            </span>
+          </span>
+        </button>
+
+        <!-- Interaction -->
+        <section id="lowpower-interaction">
+          <h3>INTERACTION</h3>
+          <div class="subsection">
+
+            <div class="sub">Feature</div>
+            <div class="sub-content">Turning Low Power Mode on/off</div>
+          </div>
+        </section>
+
+<!-- Triggers -->
+<section id="lowpower-triggers">
+  <h3>TRIGGERS</h3>
+  <ul>
+    <li><strong>Low Power button</strong>
+      <ul>
+        <li>First click — Low Power OFF → Low Power ON</li>
+        <li>Second click — Low Power ON → Low Power OFF</li>
+        <li>Hover ON/OFF button</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Rules -->
+<section id="lowpower-rules">
+  <h3>RULES</h3>
+  <ul>
+    <li><strong>Hover ON</strong>
+      <ul>
+        <li>Cursor changes to finger</li>
+      </ul>
+    </li>
+
+    <li><strong>Hover OFF</strong>
+      <ul>
+        <li>Finger changes to cursor</li>
+      </ul>
+    </li>
+
+    <li><strong>First click: Low Power OFF → Low Power ON</strong>
+      <ul>
+        <li>The outer circle changes from dark grey/green to white</li>
+        <li>The battery outline and tip change to yellow</li>
+        <li>The inner charge bar expands to a longer yellow bar and then shrinks down slightly</li>
+      </ul>
+    </li>
+
+    <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+      <ul>
+        <li>The outer circle changes from white back to dark grey/green</li>
+        <li>The battery outline and tip change back to white/grey</li>
+        <li>The inner charge bar shrinks back to the smaller white bar</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Feedback -->
+<section id="lowpower-feedback">
+  <h3>FEEDBACK</h3>
+  <div class="grid two">
+    <ul>
+      <li><strong>Hover ON</strong>
+        <ul>
+          <li>Cursor changes to finger</li>
+        </ul>
+      </li>
+
+      <li><strong>Hover OFF</strong>
+        <ul>
+          <li>Finger changes to cursor</li>
+        </ul>
+      </li>
+
+      <li><strong>First click: Low Power OFF → Low Power ON</strong>
+        <ul>
+          <li>The outer circle flashes to white</li>
+          <li>The battery turns yellow</li>
+         <li>The inner charge bar expands to a longer yellow bar and then shrinks down slightly</li>
+        </ul>
+      </li>
+
+      <li><strong>Second click: Low Power ON → Low Power OFF</strong>
+        <ul>
+          <li>The outer circle fades back to dark grey/green</li>
+          <li>The battery returns to the white/grey style</li>
+          <li>The charge bar shrinks back to the shorter bar</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+        <!-- Loops -->
+        <section id="lowpower-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>None</ul>
+        </section>
+
+      </article>
+
+    </section>
+
+    <br><br>
+
+  </main>
+  <script src="tester.js"></script>
+</body>
+</html>
