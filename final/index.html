@@ -28,7 +28,7 @@
         <!-- Interaction -->
         <section id="cc-interaction">
           <h3>INTERACTION</h3>
-            <div class="sub-content">Expand the Control Center to reveal a vertical stack of four controls </div>
+            <div class="sub-content">Expand the Control Center to reveal a vertical stack of four buttons </div>
         </section>
 
         <!-- Triggers -->
@@ -145,7 +145,7 @@
         <!-- Interaction -->
         <section id="cc-interaction">
           <h3>INTERACTION</h3>
-            <div class="sub-content"> Locking or unlocking screen orientation from Control Center.</div>
+            <div class="sub-content"> Locking or unlocking screen orientation.</div>
         </section>
 
         <!-- Triggers -->
@@ -179,17 +179,19 @@
 
     <li><strong>First click — Orientation UNLOCKED → LOCKED</strong>
       <ul>
-        <li>Set state to LOCKED (device rotation is prevented)</li>
-        <li>Button switches to solid/active green-grey circle</li>
-        <li>Icon straightens to upright phone with closed lock</li>
+        <li>Set state to UNLOCKED (device rotation is allowed)</li>
+        <li>Button background fades to white</li>
+        <li>Phone and lock icon switch to red/light red</li>
+        <li>Icon slightly tilts to rotated phone and then bounces back with the lock icon closed</li>
       </ul>
     </li>
 
     <li><strong>Second click — Orientation LOCKED → UNLOCKED</strong>
       <ul>
-        <li>Set state to UNLOCKED (device rotation is allowed)</li>
-        <li>Button switches to lighter/inactive circle</li>
-        <li>Icon tilts to rotated phone with open/outlined lock style</li>
+        <li>Phone and lock icon rotate in button</li>
+        <li>lock icon becomes unlocked</li>
+        <li>background fades to green-grey, and icons fade to white</li>
+        <li>Icon straightens to upright phone with closed lock</li>
       </ul>
     </li>
   </ul>
@@ -212,22 +214,25 @@
         </ul>
       </li>
 
-      <li><strong>First click — Orientation UNLOCKED → LOCKED</strong>
-        <ul>
-          <li>Button fills with dark green-grey background (locked row)</li>
-          <li>Icon is upright phone with white lock</li>
-          <li>Overall control appears active/selected</li>
-        </ul>
-      </li>
+     
+    <li><strong>First click — Orientation UNLOCKED → LOCKED</strong>
+      <ul>
+        <li>Set state to UNLOCKED (device rotation is allowed)</li>
+        <li>Button background fades to white</li>
+        <li>Phone and lock icon switch to red/light red</li>
+        <li>Icon slightly tilts to rotated phone and then bounces back with the lock icon closed</li>
+      </ul>
+    </li>
 
-      <li><strong>Second click — Orientation LOCKED → UNLOCKED</strong>
-        <ul>
-          <li>Button returns to light/white circle (unlocked row)</li>
-          <li>Icon tilts diagonally with pink/red stroke</li>
-          <li>Control returns to inactive/default appearance</li>
-        </ul>
-      </li>
-    </ul>
+    <li><strong>Second click — Orientation LOCKED → UNLOCKED</strong>
+      <ul>
+        <li>Phone and lock icon rotate in button</li>
+        <li>lock icon becomes unlocked</li>
+        <li>background fades to green-grey, and icons fade to white</li>
+        <li>Icon straightens to upright phone with closed lock</li>
+      </ul>
+    </li>
+  </ul>
   </div>
 </section>
 
