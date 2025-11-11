@@ -18,29 +18,196 @@
   <main>
     <section class="spec-grid">
 
+
+      <!-- =============================== -->
+      <!--         CONTROL CENTER          -->
+      <!-- =============================== -->
+      <article class="spec-col" id="cc-spec">
+        <header class="spec-col__title"><h2>CONTROL CENTER BUTTON </h2></header>
+
+        <!-- Interaction -->
+        <section id="cc-interaction">
+          <h3>INTERACTION</h3>
+            <div class="sub-content">Expand the Control Center to reveal a vertical stack of four controls </div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="cc-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Tap Control Center group button</strong>
+              <ul>
+                <li>Collapsed → Expanded: shows 4 stacked buttons.</li>
+                <li>Expanded → Collapsed: hides stack, returns to single tile.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="cc-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Expand</strong>
+              <ul>
+                <li>Tile grows vertically and rounds into a capsule.</li>
+                <li>Four child buttons slide/fade in, evenly spaced.</li>
+                <li>Each child button keeps its own independent state (ringer, mode, etc.).</li>
+              </ul>
+            </li>
+            <li><strong>Collapse</strong>
+              <ul>
+                <li>Child buttons slide/fade out.</li>
+                <li>Parent shrinks back to compact circle/tile.</li>
+                <li>Child button states are preserved for the next expand.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="cc-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Visual</strong>
+                <ul>
+                  <li>Smooth size transition between single tile and tall capsule.</li>
+                  <li>Subtle shadow/depth increase while expanded to show focus.</li>
+                  <li>Each child icon uses its existing color system to signal current state.</li>
+                </ul>
+              </li>
+              <li><strong>Haptic</strong>
+                <ul>
+                  <li>Quick tap when expanding and collapsing (conceptual).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops & Modes -->
+        <section id="cc-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>
+            <li>Expandable group can be opened/closed repeatedly.</li>
+            <li>Acts as a modeful container: while expanded, user focus is on these 4 controls.</li>
+            <li>Closing the group does not reset individual control states.</li>
+          </ul>
+        </section>
+
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="TEXT"
+                alt="Control Center Microinteraction — button states">
+              <figcaption>Control Center Microinteraction</figcaption>
+            </figure>
+          </div>
+        </section>
+
+      </article>
+
+      <!-- =============================== -->
+      <!-- SCREEN ORIENTATION LOCK -->
+      <!-- =============================== -->
+      <article class="spec-col" id="orientation-spec">
+        <header class="spec-col__title"><h2>SCREEN ORIENTATION LOCK</h2></header>
+
+        <!-- Interaction -->
+        <section id="cc-interaction">
+          <h3>INTERACTION</h3>
+            <div class="sub-content"> Locking or unlocking screen orientation from Control Center.</div>
+        </section>
+
+        <!-- Triggers -->
+        <section id="orientation-triggers">
+          <h3>TRIGGERS</h3>
+          <ul>
+            <li><strong>Tap Orientation Lock button</strong>
+              <ul>
+                <li>First tap — Orientation UNLOCKED → LOCKED.</li>
+                <li>Second tap — Orientation LOCKED → UNLOCKED.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Rules -->
+        <section id="orientation-rules">
+          <h3>RULES</h3>
+          <ul>
+            <li><strong>Tap: UNLOCKED → LOCKED</strong>
+              <ul>
+                <li>Change state to locked: device rotation is prevented.</li>
+                <li>Set button to solid/active style with lock icon upright.</li>
+              </ul>
+            </li>
+            <li><strong>Tap: LOCKED → UNLOCKED</strong>
+              <ul>
+                <li>Allow device to rotate again.</li>
+                <li>Set button to inactive style with tilted/unlocked icon.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feedback -->
+        <section id="orientation-feedback">
+          <h3>FEEDBACK</h3>
+          <div class="grid two">
+            <ul>
+              <li><strong>Visual</strong>
+                <ul>
+                  <li>Active (LOCKED): filled green/grey pill; upright phone + lock icon.</li>
+                  <li>Inactive (UNLOCKED): lighter pill; tilted phone icon without lock.</li>
+                </ul>
+              </li>
+              <li><strong>Haptic</strong>
+                <ul>
+                  <li>Subtle tap on each state change (simulated here conceptually).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Loops & Modes -->
+        <section id="orientation-loops">
+          <h3>LOOPS &amp; MODES</h3>
+          <ul>
+            <li>State persists until changed again by the user.</li>
+            <li>Acts as a global mode that affects all apps’ rotation behavior.</li>
+          </ul>
+        </section>
+
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="TEXT"
+                alt="Screen Orientation Lock Microinteraction — button states">
+              <figcaption>Screen Orientation Lock Microinteraction</figcaption>
+            </figure>
+          </div>
+        </section>
+
+      </article>
+
+
       <!-- =============================== -->
       <!--  RINGER / SILENT -->
       <!-- =============================== -->
       <article class="spec-col" id="ringer-spec">
         <header class="spec-col__title"><h2>RINGER / SILENT</h2></header>
 
-<button id="ringer" class="ringer" aria-pressed="false" aria-label="Toggle ringer">
-  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path class="bell"
-      d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z" />
-    <path class="slash-back"  d="M1 4 L23 20" pathLength="100" />
-    <path class="slash-front" d="M1 4 L23 20" pathLength="100" />
-  </svg>
-</button>
-
         <!-- Interaction -->
         <section id="ringer-interaction">
           <h3>INTERACTION</h3>
-          <div class="subsection">
-
-            <div class="sub">Feature</div>
             <div class="sub-content">Turning the ringer on/off </div>
-          </div>
         </section>
 
         <!-- Triggers -->
@@ -141,6 +308,18 @@
           <ul>None</ul>
         </section>
 
+        <section class="media-block">
+          <h3>STATIC IMAGES</h3>
+          <div class="media-grid">
+            <figure>
+              <img
+                src="TEXT"
+                alt="Ringer Button Microinteraction — button states">
+              <figcaption>Ringer Button Microinteraction</figcaption>
+            </figure>
+          </div>
+        </section>
+
       </article>
 
       <!-- =============================== -->
@@ -149,24 +328,12 @@
       <article class="spec-col" id="appearance-spec">  <!-- APPEARANCE: sun → crescent -->
         <header class="spec-col__title"><h2>LIGHT / DARK MODE</h2></header>
 
-        <button id="appearance"
-                class="toggle-btn appearance"
-                aria-pressed="false"
-                aria-label="Toggle dark mode">
-          <span class="icon-shell">
-            <span class="sun-icon"></span>
-            <span class="moon-icon"></span>
-          </span>
-        </button>
+
 
         <!-- Interaction -->
         <section id="appearance-interaction">
           <h3>INTERACTION</h3>
-          <div class="subsection">
-
-            <div class="sub">Feature</div>
-            <div class="sub-content">Switching Light/Dark Mode </div>
-          </div>
+            <div class="sub-content"> Switching Light/Dark Mode </div>
         </section>
 
        <!-- Triggers -->
@@ -268,6 +435,18 @@
           <ul>None</ul>
         </section>
 
+  <section class="media-block">
+    <h3>STATIC IMAGES</h3>
+    <div class="media-grid">
+      <figure>
+        <img
+          src="TEXT"
+          alt="Light/Dark Mode Microinteraction — button states">
+        <figcaption>Light/Dark Mode Microinteraction</figcaption>
+      </figure>
+    </div>
+  </section>
+
       </article>
 
       <!-- =============================== -->
@@ -276,28 +455,10 @@
       <article class="spec-col" id="lowpower-spec">
         <header class="spec-col__title"><h2>LOW POWER MODE</h2></header>
 
-      <!-- LOW POWER MODE -->
-        <button id="low-power"
-                class="lp-btn"
-                aria-pressed="false"
-                aria-label="Toggle Low Power Mode">
-          <span class="lp-inner">
-            <span class="lp-battery">
-              <span class="lp-body"></span>
-              <span class="lp-fill"></span>
-              <span class="lp-tip"></span>
-            </span>
-          </span>
-        </button>
-
         <!-- Interaction -->
         <section id="lowpower-interaction">
           <h3>INTERACTION</h3>
-          <div class="subsection">
-
-            <div class="sub">Feature</div>
             <div class="sub-content">Turning Low Power Mode on/off</div>
-          </div>
         </section>
 
 <!-- Triggers -->
@@ -390,6 +551,18 @@
           <h3>LOOPS &amp; MODES</h3>
           <ul>None</ul>
         </section>
+
+  <section class="media-block">
+    <h3>STATIC IMAGES</h3>
+    <div class="media-grid">
+      <figure>
+        <img
+          src="TEXT"
+          alt="Low Power Mode Microinteraction — button states">
+        <figcaption>Low Power Mode Microinteraction</figcaption>
+      </figure>
+    </div>
+  </section>
 
       </article>
 

@@ -1,6 +1,7 @@
 /* =========================================
-   IDM241 — Beta Description 
+   IDM241 — Final Description
 ========================================= */
+
 :root {
   --bg: #f4f6fa;
   --card: #ffffff;
@@ -9,29 +10,38 @@
   --accent: #4da3ff;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, Helvetica, Arial, sans-serif;
-  background: #e1e8c2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  background: #c4e8c2;
   color: var(--text);
 }
 
 /* -----------------------------------------
    Header
 ----------------------------------------- */
+
 header {
   padding: 40px 20px 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 header h1 {
   font-size: clamp(28px, 4vw, 42px);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
+}
+
+header h2 {
+  margin: 0 0 6px;
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight: 500;
 }
 
 header p {
@@ -40,105 +50,166 @@ header p {
 }
 
 /* -----------------------------------------
-   Main content
+   Main layout
 ----------------------------------------- */
+
 main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  display: block;
-  gap: 16px;
-}
-
-section {
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 20px;
-}
-
-h2 {
-  margin: 0 0 12px;
-  font-size: clamp(20px, 2.5vw, 26px);
-}
-
-h3 {
-  margin: 0 0 12px;
-  font-size: 18px;
-  letter-spacing: .01em;
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  padding: 0 20px 20px;
 }
 
 /* -----------------------------------------
-   Columns
+   Spec grid + columns
 ----------------------------------------- */
+
 .spec-grid {
-  background: transparent;
-  border: 0;
-  padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
-  gap: 16px;
-  align-items: start;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+  background: transparent;
+}
+
+.spec-grid {
+  /* tweak these numbers until it looks right */
+  --h-interaction: 110px;
+  --h-triggers: 155px;
+  --h-rules: 280px;
+  --h-feedback: 210px;
+  --h-loops: 120px;
+}
+
+.spec-col {
+  display: block;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  max-width: 360px;
 }
 
 .spec-col__title h2 {
   margin: 0;
-  font-size: clamp(18px, 2.2vw, 22px);
+  font-size: clamp(16px, 2vw, 20px);
   letter-spacing: .02em;
 }
 
+
 .spec-col section {
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 10px 10px 8px;
+}
+
+/* 1) INTERACTION sections */
+.spec-col [id$="interaction"] {
+  min-height: var(--h-interaction);
+}
+
+/* 2) TRIGGERS sections */
+.spec-col [id$="triggers"] {
+  min-height: var(--h-triggers);
+}
+
+/* 3) RULES sections */
+.spec-col [id$="rules"] {
+  min-height: var(--h-rules);
+}
+
+/* 4) FEEDBACK sections */
+.spec-col [id$="feedback"] {
+  min-height: var(--h-feedback);
+}
+
+/* 5) LOOPS & MODES sections */
+.spec-col [id$="loops"] {
+  min-height: var(--h-loops);
+}
+
+/* headings */
+
+h2 {
+  margin: 0 0 10px;
+}
+
+h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: #222;
 }
 
 /* -----------------------------------------
-   Grids, subsections, content
+   Subsection (label + content rows)
 ----------------------------------------- */
-.grid {
-  display: grid;
-  gap: 12px;
-}
-
-.grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
 
 .subsection {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 6px 16px;
+  grid-template-columns: 1fr; /* stacked on small screens */
+  gap: 4px 10px;
 }
 
 .subsection .sub,
 .subsection .sub-content {
-  padding: 8px 0;
+  padding: 6px 0;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
 .subsection .sub {
   color: var(--muted);
+  font-weight: 600;
 }
 
 .subsection .sub-content {
   color: var(--text);
 }
 
-ul,
-ol {
-  margin: 8px 0 0 20px;
+/* two-column layout for labels on wider screens */
+@media (min-width: 520px) {
+  .subsection {
+    grid-template-columns: 120px 1fr;
+  }
 }
 
-li {
-  margin: 6px 0;
+/* -----------------------------------------
+   Lists
+----------------------------------------- */
+
+.spec-col ul,
+.spec-col ol {
+  margin: 4px 0 0;
+  padding-left: 1.1rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.spec-col ul ul,
+.spec-col ol ul,
+.spec-col ul ol,
+.spec-col ol ol {
+  margin-top: 2px;
+}
+
+/* -----------------------------------------
+   Links, figures (if used)
+----------------------------------------- */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 figure {
-  margin: 12px 0;
+  margin: 10px 0;
   background: #0e1327;
-  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -150,42 +221,108 @@ figure img {
 }
 
 figcaption {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
-  padding: 8px 12px;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  padding: 6px 10px;
 }
 
 /* -----------------------------------------
-   Responsive
+   Responsive grid breakpoints
 ----------------------------------------- */
-@media (max-width: 1000px) {
+
+/* 1 column: mobile */
+.spec-grid {
+  grid-template-columns: 1fr;
+}
+
+/* ≥ 640px → 2 columns */
+@media (min-width: 640px) {
   .spec-grid {
     grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+/* ≥ 900px → 3 columns */
+@media (min-width: 900px) {
   .spec-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .subsection {
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
   }
 }
 
+/* ≥ 1200px → 5 columns (your full set) */
+@media (min-width: 1200px) {
+  .spec-grid {
+    grid-template-columns: repeat(5, minmax(240px, 1fr));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* -----------------------------------------
-   Ringer Button
------------------------------------------ */
+   Microinteraction Button Styles
+   (Ringer, Appearance, Low Power)
+
 .ringer {
   --on-bg: #5a695f;
   --off-bg: #ffffff;
@@ -200,17 +337,12 @@ a:hover {
   cursor: pointer;
   background: var(--on-bg);
   box-shadow: 0 10px 26px rgba(0, 0, 0, .25),
-    inset 0 1px 0 rgba(255, 255, 255, .08);
+              inset 0 1px 0 rgba(255, 255, 255, .08);
   transition: background .25s ease, transform .06s ease;
 }
 
-.ringer:active {
-  transform: scale(.985);
-}
-
-.ringer.off {
-  background: var(--off-bg);
-}
+.ringer:active { transform: scale(.985); }
+.ringer.off { background: var(--off-bg); }
 
 .ringer .icon {
   width: 90px;
@@ -224,10 +356,7 @@ a:hover {
   transform-box: fill-box;
   transform-origin: 50% 8%;
 }
-
-.ringer.off .bell {
-  fill: var(--bell-off);
-}
+.ringer.off .bell { fill: var(--bell-off); }
 
 .ringer .slash-back,
 .ringer .slash-front {
@@ -261,32 +390,25 @@ a:hover {
   opacity: 1;
 }
 
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes erase {
-  to { stroke-dashoffset: 100; }
-}
+@keyframes draw   { to { stroke-dashoffset: 0; } }
+@keyframes erase  { to { stroke-dashoffset: 100; } }
 
 @keyframes bell-shake {
-  0%   { transform: rotate(0deg); }
-  15%  { transform: rotate(-10deg); }
-  30%  { transform: rotate(8deg); }
-  45%  { transform: rotate(-6deg); }
-  60%  { transform: rotate(4deg); }
-  75%  { transform: rotate(-2deg); }
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(-10deg); }
+  30% { transform: rotate(8deg); }
+  45% { transform: rotate(-6deg); }
+  60% { transform: rotate(4deg); }
+  75% { transform: rotate(-2deg); }
   100% { transform: rotate(0deg); }
 }
 
 .ringer .bell.shake {
   animation: bell-shake .45s ease-in-out;
 }
-
-
-/* -----------------------------------------
-   Light / Dark (Appearance) Button
 ----------------------------------------- */
+/* Appearance (Light/Dark) 
+
 .toggle-btn {
   width: 220px;
   height: 220px;
@@ -297,12 +419,10 @@ a:hover {
   cursor: pointer;
   transition: background .25s ease, transform .06s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
 }
 
-.toggle-btn:active {
-  transform: scale(.985);
-}
+.toggle-btn:active { transform: scale(.985); }
 
 .appearance {
   --outer-sun:  #5b6c5f;
@@ -310,7 +430,6 @@ a:hover {
   background: var(--outer-sun);
 }
 
-/* inner circle stays the same */
 .icon-shell {
   position: relative;
   width: 110px;
@@ -321,12 +440,11 @@ a:hover {
   transform-origin: center;
 }
 
-/* use your PNG for the sun */
 .sun-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 80px;   /* adjust if you want it bigger/smaller */
+  width: 80px;
   height: 80px;
   background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/Vector%20Background%20Removed.png");
   background-size: contain;
@@ -335,7 +453,6 @@ a:hover {
   transition: opacity .2s ease, transform .2s ease;
 }
 
-/* keep your moon as-is */
 .moon-icon {
   position: absolute;
   inset: 0;
@@ -346,51 +463,53 @@ a:hover {
   transform: scale(.8);
   transition: opacity .2s ease .1s, transform .2s ease .1s;
 }
-.moon-icon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 58px;
-  height: 58px;
-  background: #ffffff;
-  border-radius: 999px;
-}
+
+.moon-icon::before,
 .moon-icon::after {
   content: "";
   position: absolute;
   inset: 0;
   margin: auto;
+  border-radius: 999px;
+}
+
+.moon-icon::before {
+  width: 58px;
+  height: 58px;
+  background: #ffffff;
+}
+
+.moon-icon::after {
   width: 58px;
   height: 58px;
   background: #000000;
-  border-radius: 999px;
   transform: translateX(-11px);
 }
 
-/* dark state (same as before) */
 .appearance.dark {
   background: var(--outer-moon);
 }
+
 .appearance.dark .icon-shell {
   background: #000000;
   transform: rotate(180deg);
 }
+
 .appearance.dark .sun-icon {
   opacity: 0;
   transform: scale(.7);
 }
+
 .appearance.dark .moon-icon {
   opacity: 1;
   transform: scale(1);
 }
+*/
 
+/* Low Power Mode 
 
-/* -----------------------------------------
-   Low Power Mode Button
------------------------------------------ */
 .lp-btn {
-  position: relative;         /* anchor confetti to the button */
+  position: relative;
   width: 220px;
   height: 220px;
   border: 0;
@@ -400,13 +519,11 @@ a:hover {
   cursor: pointer;
   background: #5b6c5f;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
   transition: transform .06s ease;
 }
 
-.lp-btn:active {
-  transform: scale(.985);
-}
+.lp-btn:active { transform: scale(.985); }
 
 .lp-inner {
   width: 115px;
@@ -471,6 +588,7 @@ a:hover {
   background: #f6c949;
 }
 
+
 .lp-btn.anim-on {
   animation: lp-on 360ms ease-out forwards;
 }
@@ -491,16 +609,15 @@ a:hover {
   100% { background: #5b6c5f; }
 }
 
-/* fill burst on first (ON) click */
+
 .lp-btn.burst .lp-fill {
   animation: lp-fill-burst 0.6s ease-out forwards;
 }
 
-/* sparks from the battery */
 .lp-btn.burst .lp-battery::before,
 .lp-btn.burst .lp-battery::after {
   content: "";
-  position: relative;         
+  position: relative;
   top: 50%;
   left: 50%;
   width: 10px;
@@ -520,7 +637,6 @@ a:hover {
   animation: lp-spark-right 0.45s ease-out forwards;
 }
 
-/* fill: grow → shrink back to normal ON width (54px) */
 @keyframes lp-fill-burst {
   0%   { width: 40px; background: rgba(255,255,255,.35); }
   25%  { width: 80px; background: #f6c949; }
@@ -528,7 +644,6 @@ a:hover {
   100% { width: 54px; background: #f6c949; }
 }
 
-/* sparks going out */
 @keyframes lp-spark-left {
   0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
   100% { opacity: 0; transform: translate(-120%, -130%) scale(1); }
@@ -538,112 +653,4 @@ a:hover {
   0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
   100% { opacity: 0; transform: translate(40%, -140%) scale(1); }
 }
-
-/* =========================================
-   Layout refinements
-========================================= */
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 320px));
-  gap: 16px;
-  justify-content: center;
-}
-
-.spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: left;
-}
-
-.spec-col .ringer,
-.spec-col .toggle-btn,
-.spec-col .lp-btn {
-  align-self: center;
-}
-
-.spec-col ul,
-.spec-col ol,
-.spec-col ul ul,
-.spec-col ol ul,
-.spec-col ul ol,
-.spec-col ol ol {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.spec-col > ul > li,
-.spec-col section > ul > li {
-  margin-left: 0;
-}
-
-.spec-col ul ul > li,
-.spec-col ol ul > li,
-.spec-col ul ol > li,
-.spec-col section ul ul > li {
-  margin-left: 1.25rem;
-}
-
-/* -----------------------------------------
-   Responsive grid
------------------------------------------ */
-@media (max-width: 1100px) {
-  .spec-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-    justify-content: center;
-  }
-}
-
-@media (max-width: 720px) {
-  .spec-grid {
-    grid-template-columns: 1fr;
-    justify-content: auto;
-  }
-
-  .spec-col .ringer,
-  .spec-col .toggle-btn,
-  .spec-col .lp-btn {
-    align-self: center;
-  }
-}
-
-@media (min-width: 1100px) {
-  #ringer-interaction,
-  #appearance-interaction,
-  #lowpower-interaction {
-    width: 320px;
-    height: 141.5px;
-  }
-
-  #ringer-triggers,
-  #appearance-triggers,
-  #lowpower-triggers {
-    width: 320px;
-    height: 207.5px;
-  }
-
-  #ringer-rules,
-  #appearance-rules,
-  #lowpower-rules {
-    width: 320px;
-    height: 589.5px;
-    overflow-y: auto;
-  }
-
-  #ringer-feedback,
-  #appearance-feedback,
-  #lowpower-feedback {
-    width: 320px;
-    height: 603.5px;
-    overflow-y: auto;
-  }
-}
-
-@media (max-width: 1099px) {
-  .spec-col section {
-    width: 100%;
-    height: auto;
-    max-height: none;
-  }
-}
+*/
