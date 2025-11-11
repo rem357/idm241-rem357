@@ -38,7 +38,7 @@
             <li><strong>Control Center group button</strong>
               <ul>
                 <li>First tap — Collapsed → Expanded (shows 4 stacked buttons)</li>
-                <li>Second tap — Expanded → Collapsed (returns to single tile)</li>
+                <li>Second tap — Expanded → Collapsed (returns to single button)</li>
                 <li>Hover ON/OFF button</li>
               </ul>
             </li>
@@ -71,9 +71,8 @@
 
             <li><strong>Second tap: Expanded → Collapsed</strong>
               <ul>
-                <li>Control button shrinks vertically back to compact circle/tile</li>
-                <li>Child buttons get covered up </li>
-                <li>Child button states are preserved for the next expand</li>
+                <li>Control button shrinks vertically back to compact circle/button</li>
+                <li>Child buttons get covered up when the control button collapses</li>
               </ul>
             </li>
           </ul>
@@ -83,34 +82,34 @@
         <section id="cc-feedback" class="section-feedback">
           <h3>FEEDBACK</h3>
           <div class="grid two">
-            <ul>
-              <li><strong>Hover ON</strong>
-                <ul>
-                  <li>Cursor changes to finger</li>
-                </ul>
-              </li>
+          <ul>
+            <li><strong>Hover ON</strong>
+              <ul>
+                <li>Cursor changes to finger</li>
+              </ul>
+            </li>
 
-              <li><strong>Hover OFF</strong>
-                <ul>
-                  <li>Finger changes to cursor</li>
-                </ul>
-              </li>
+            <li><strong>Hover OFF</strong>
+              <ul>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
 
-              <li><strong>First tap: Collapsed → Expanded</strong>
-                <ul>
-                  <li>Smooth size transition from single tile to tall capsule</li>
-                  <li>Subtle shadow/depth increase to show focus</li>
-                  <li>Each child icon uses its existing color system to signal current state</li>
-                </ul>
-              </li>
+            <li><strong>First tap: Collapsed → Expanded</strong>
+              <ul>
+                <li>Control button expands horizontally, and then grows vertically </li>
+                <li>Four child buttons are revealed as button expands</li>
+                <li>Each child button keeps its own independent state from the previous interaction</li>
+              </ul>
+            </li>
 
-              <li><strong>Second tap: Expanded → Collapsed</strong>
-                <ul>
-                  <li>Tile animates back to the compact size</li>
-                  <li>Shadow/depth returns to default</li>
-                </ul>
-              </li>
-            </ul>
+            <li><strong>Second tap: Expanded → Collapsed</strong>
+              <ul>
+                <li>Control button shrinks vertically back to compact circle/button</li>
+                <li>Child buttons get covered up when the control button collapses</li>
+              </ul>
+            </li>
+          </ul>
           </div>
         </section>
 
@@ -162,44 +161,76 @@
           </ul>
         </section>
 
-        <!-- Rules -->
-        <section id="orientation-rules">
-          <h3>RULES</h3>
-          <ul>
-            <li><strong>Tap: UNLOCKED → LOCKED</strong>
-              <ul>
-                <li>Change state to locked: device rotation is prevented.</li>
-                <li>Set button to solid/active style with lock icon upright.</li>
-              </ul>
-            </li>
-            <li><strong>Tap: LOCKED → UNLOCKED</strong>
-              <ul>
-                <li>Allow device to rotate again.</li>
-                <li>Set button to inactive style with tilted/unlocked icon.</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
+ <!-- Rules -->
+<section id="orientation-rules">
+  <h3>RULES</h3>
+  <ul>
+    <li><strong>Hover ON</strong>
+      <ul>
+        <li>Cursor changes to finger</li>
+      </ul>
+    </li>
 
-        <!-- Feedback -->
-        <section id="orientation-feedback">
-          <h3>FEEDBACK</h3>
-          <div class="grid two">
-            <ul>
-              <li><strong>Visual</strong>
-                <ul>
-                  <li>Active (LOCKED): filled green/grey pill; upright phone + lock icon.</li>
-                  <li>Inactive (UNLOCKED): lighter pill; tilted phone icon without lock.</li>
-                </ul>
-              </li>
-              <li><strong>Haptic</strong>
-                <ul>
-                  <li>Subtle tap on each state change (simulated here conceptually).</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </section>
+    <li><strong>Hover OFF</strong>
+      <ul>
+        <li>Finger changes to cursor</li>
+      </ul>
+    </li>
+
+    <li><strong>First click — Orientation UNLOCKED → LOCKED</strong>
+      <ul>
+        <li>Set state to LOCKED (device rotation is prevented)</li>
+        <li>Button switches to solid/active green-grey circle</li>
+        <li>Icon straightens to upright phone with closed lock</li>
+      </ul>
+    </li>
+
+    <li><strong>Second click — Orientation LOCKED → UNLOCKED</strong>
+      <ul>
+        <li>Set state to UNLOCKED (device rotation is allowed)</li>
+        <li>Button switches to lighter/inactive circle</li>
+        <li>Icon tilts to rotated phone with open/outlined lock style</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Feedback -->
+<section id="orientation-feedback">
+  <h3>FEEDBACK</h3>
+  <div class="grid two">
+    <ul>
+      <li><strong>Hover ON</strong>
+        <ul>
+          <li>Cursor changes to finger</li>
+        </ul>
+      </li>
+
+      <li><strong>Hover OFF</strong>
+        <ul>
+          <li>Finger changes to cursor</li>
+        </ul>
+      </li>
+
+      <li><strong>First click — Orientation UNLOCKED → LOCKED</strong>
+        <ul>
+          <li>Button fills with dark green-grey background (locked row)</li>
+          <li>Icon is upright phone with white lock</li>
+          <li>Overall control appears active/selected</li>
+        </ul>
+      </li>
+
+      <li><strong>Second click — Orientation LOCKED → UNLOCKED</strong>
+        <ul>
+          <li>Button returns to light/white circle (unlocked row)</li>
+          <li>Icon tilts diagonally with pink/red stroke</li>
+          <li>Control returns to inactive/default appearance</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
         <!-- Loops & Modes -->
         <section id="orientation-loops">
