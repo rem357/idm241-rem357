@@ -64,15 +64,13 @@ main {
 ----------------------------------------- */
 
 .spec-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  padding: 20px 0;
-  background: transparent;
 }
 
 .spec-grid {
-  /* tweak these numbers until it looks right */
   --h-interaction: 110px;
   --h-triggers: 155px;
   --h-rules: 280px;
@@ -89,7 +87,11 @@ main {
   background: var(--card);
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  max-width: 360px;
+  max-width: 420px;
+}
+
+.spec-col {
+  flex: 1 1 calc(33.333% - 20px);
 }
 
 .spec-col__title h2 {
@@ -98,10 +100,14 @@ main {
   letter-spacing: .02em;
 }
 
+.spec-grid .spec-col:nth-last-child(-n+2) {
+  flex: 1 1 calc(50% - 20px);
+}
 
 .spec-col section {
   border-radius: 12px;
   padding: 10px 10px 8px;
+  background-color: #ffffff;
 }
 
 /* 1) INTERACTION sections */
@@ -141,6 +147,13 @@ h3 {
   letter-spacing: .01em;
   text-transform: uppercase;
   color: #222;
+}
+
+@media (max-width: 900px) {
+  .spec-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 
 /* -----------------------------------------
@@ -226,6 +239,8 @@ figcaption {
   padding: 6px 10px;
 }
 
+
+
 /* -----------------------------------------
    Responsive grid breakpoints
 ----------------------------------------- */
@@ -252,7 +267,7 @@ figcaption {
 /* ≥ 1200px → 5 columns (your full set) */
 @media (min-width: 1200px) {
   .spec-grid {
-    grid-template-columns: repeat(5, minmax(240px, 1fr));
+    grid-template-columns: repeat(5, minmax(300px, 1fr));
   }
 }
 

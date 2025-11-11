@@ -1,7 +1,7 @@
 const btn  = document.getElementById('ringer');
 const bell = btn.querySelector('.bell');
 
-let isOff = false; // start ON (no slash, white bell)
+let isOff = false; 
 
 // reliably restart the shake animation on the SVG path
 function shakeBell(delayMs = 0){

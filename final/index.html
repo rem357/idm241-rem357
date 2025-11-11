@@ -32,67 +32,94 @@
         </section>
 
         <!-- Triggers -->
-        <section id="cc-triggers">
+        <section id="cc-triggers" class="section-triggers">
           <h3>TRIGGERS</h3>
           <ul>
-            <li><strong>Tap Control Center group button</strong>
+            <li><strong>Control Center group button</strong>
               <ul>
-                <li>Collapsed → Expanded: shows 4 stacked buttons.</li>
-                <li>Expanded → Collapsed: hides stack, returns to single tile.</li>
+                <li>First tap — Collapsed → Expanded (shows 4 stacked buttons)</li>
+                <li>Second tap — Expanded → Collapsed (returns to single tile)</li>
+                <li>Hover ON/OFF button</li>
               </ul>
             </li>
           </ul>
         </section>
 
         <!-- Rules -->
-        <section id="cc-rules">
+        <section id="cc-rules" class="section-rules">
           <h3>RULES</h3>
           <ul>
-            <li><strong>Expand</strong>
+            <li><strong>Hover ON</strong>
               <ul>
-                <li>Tile grows vertically and rounds into a capsule.</li>
-                <li>Four child buttons slide/fade in, evenly spaced.</li>
-                <li>Each child button keeps its own independent state (ringer, mode, etc.).</li>
+                <li>Cursor changes to finger</li>
               </ul>
             </li>
-            <li><strong>Collapse</strong>
+
+            <li><strong>Hover OFF</strong>
               <ul>
-                <li>Child buttons slide/fade out.</li>
-                <li>Parent shrinks back to compact circle/tile.</li>
-                <li>Child button states are preserved for the next expand.</li>
+                <li>Finger changes to cursor</li>
+              </ul>
+            </li>
+
+            <li><strong>First tap: Collapsed → Expanded</strong>
+              <ul>
+                <li>Control button expands horizontally, and then grows vertically </li>
+                <li>Four child buttons are revealed as button expands</li>
+                <li>Each child button keeps its own independent state from the previous interaction</li>
+              </ul>
+            </li>
+
+            <li><strong>Second tap: Expanded → Collapsed</strong>
+              <ul>
+                <li>Control button shrinks vertically back to compact circle/tile</li>
+                <li>Child buttons get covered up </li>
+                <li>Child button states are preserved for the next expand</li>
               </ul>
             </li>
           </ul>
         </section>
 
         <!-- Feedback -->
-        <section id="cc-feedback">
+        <section id="cc-feedback" class="section-feedback">
           <h3>FEEDBACK</h3>
           <div class="grid two">
             <ul>
-              <li><strong>Visual</strong>
+              <li><strong>Hover ON</strong>
                 <ul>
-                  <li>Smooth size transition between single tile and tall capsule.</li>
-                  <li>Subtle shadow/depth increase while expanded to show focus.</li>
-                  <li>Each child icon uses its existing color system to signal current state.</li>
+                  <li>Cursor changes to finger</li>
                 </ul>
               </li>
-              <li><strong>Haptic</strong>
+
+              <li><strong>Hover OFF</strong>
                 <ul>
-                  <li>Quick tap when expanding and collapsing (conceptual).</li>
+                  <li>Finger changes to cursor</li>
+                </ul>
+              </li>
+
+              <li><strong>First tap: Collapsed → Expanded</strong>
+                <ul>
+                  <li>Smooth size transition from single tile to tall capsule</li>
+                  <li>Subtle shadow/depth increase to show focus</li>
+                  <li>Each child icon uses its existing color system to signal current state</li>
+                </ul>
+              </li>
+
+              <li><strong>Second tap: Expanded → Collapsed</strong>
+                <ul>
+                  <li>Tile animates back to the compact size</li>
+                  <li>Shadow/depth returns to default</li>
                 </ul>
               </li>
             </ul>
           </div>
         </section>
 
+
         <!-- Loops & Modes -->
         <section id="cc-loops">
           <h3>LOOPS &amp; MODES</h3>
           <ul>
-            <li>Expandable group can be opened/closed repeatedly.</li>
-            <li>Acts as a modeful container: while expanded, user focus is on these 4 controls.</li>
-            <li>Closing the group does not reset individual control states.</li>
+            None  
           </ul>
         </section>
 
@@ -101,7 +128,7 @@
           <div class="media-grid">
             <figure>
               <img
-                src="TEXT"
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/final/control%20center.png"
                 alt="Control Center Microinteraction — button states">
               <figcaption>Control Center Microinteraction</figcaption>
             </figure>
@@ -177,9 +204,8 @@
         <!-- Loops & Modes -->
         <section id="orientation-loops">
           <h3>LOOPS &amp; MODES</h3>
-          <ul>
-            <li>State persists until changed again by the user.</li>
-            <li>Acts as a global mode that affects all apps’ rotation behavior.</li>
+           <ul>
+            None  
           </ul>
         </section>
 
@@ -188,7 +214,7 @@
           <div class="media-grid">
             <figure>
               <img
-                src="TEXT"
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/final/screen%20orientation.png"
                 alt="Screen Orientation Lock Microinteraction — button states">
               <figcaption>Screen Orientation Lock Microinteraction</figcaption>
             </figure>
@@ -313,7 +339,7 @@
           <div class="media-grid">
             <figure>
               <img
-                src="TEXT"
+                src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/final/ringer.png"
                 alt="Ringer Button Microinteraction — button states">
               <figcaption>Ringer Button Microinteraction</figcaption>
             </figure>
@@ -440,7 +466,7 @@
     <div class="media-grid">
       <figure>
         <img
-          src="TEXT"
+          src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/final/dark%3Alight%20mode.png"
           alt="Light/Dark Mode Microinteraction — button states">
         <figcaption>Light/Dark Mode Microinteraction</figcaption>
       </figure>
@@ -557,7 +583,7 @@
     <div class="media-grid">
       <figure>
         <img
-          src="TEXT"
+          src="https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/final/low%20power%20mode.png"
           alt="Low Power Mode Microinteraction — button states">
         <figcaption>Low Power Mode Microinteraction</figcaption>
       </figure>
@@ -574,3 +600,4 @@
   <script src="tester.js"></script>
 </body>
 </html>
+
