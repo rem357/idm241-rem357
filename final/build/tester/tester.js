@@ -1,15 +1,62 @@
-/* ========== SIMPLE CONTROL CENTER (circle → pill + dropdown panel) ========== */
+
+
+
+
+
+
+
+
+/* ========== SIMPLE CONTROL CENTER (panel closes first, then trigger shrinks) ========== */
 const ccContainer = document.querySelector('.cc-simple');
 const ccTrigger   = document.getElementById('cc-trigger');
 
 if (ccContainer && ccTrigger) {
   const ccPanel = ccContainer.querySelector('.cc-panel');
 
+  // match the .30s in your CSS panel transition (300ms)
+  const PANEL_DURATION = 480;
+
+  let isOpen = false;
+
+  function openControlCenter() {
+    isOpen = true;
+
+    // 1) grow trigger into pill
+    ccContainer.classList.add('trigger-open');
+    ccTrigger.setAttribute('aria-expanded', 'true');
+
+    // 2) slightly after trigger starts morphing, open panel
+    setTimeout(() => {
+      if (!isOpen) return; // guard if user spam-clicks
+      ccContainer.classList.add('is-open');
+      if (ccPanel) ccPanel.setAttribute('aria-hidden', 'false');
+    }, 120); // you can tweak this offset
+  }
+
+function closeControlCenter() {
+  ccContainer.classList.remove('is-open');
+  if (ccPanel) ccPanel.setAttribute('aria-hidden', 'true');
+
+  // Wait for panel to finish closing via transitionend
+  const onTransitionEnd = () => {
+    ccPanel.removeEventListener('transitionend', onTransitionEnd);
+    if (!isOpen) {
+      ccContainer.classList.remove('trigger-open');
+      ccTrigger.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  ccPanel.addEventListener('transitionend', onTransitionEnd);
+
+  isOpen = false;
+}
+
+
   function toggleControlCenter() {
-    const isOpen = ccContainer.classList.toggle('is-open');
-    ccTrigger.setAttribute('aria-expanded', String(isOpen));
-    if (ccPanel) {
-      ccPanel.setAttribute('aria-hidden', String(!isOpen));
+    if (!isOpen) {
+      openControlCenter();
+    } else {
+      closeControlCenter();
     }
   }
 

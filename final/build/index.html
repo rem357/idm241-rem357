@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IDM241 Final-Build</title>
   <meta name="description" content="IDM241 assignment page" />
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -16,8 +16,33 @@
   </header>
 
   <main>
-   
+    
+  <!-- =============================== -->
+  <!--  CONTROL CENTER -->
+  <!-- =============================== -->
 
+  <article class="spec-col" id="controlcenter-spec">
+
+    <div class="cc-simple">
+      <!-- small circle → pill trigger -->
+      <button id="cc-trigger"
+              class="cc-trigger"
+              aria-expanded="false"
+              aria-label="Open control center">
+        <img src="images/control center icon.svg"
+            alt=""
+            class="cc-trigger__icon">
+      </button>
+
+      <!-- panel that drops down and holds the 4 buttons -->
+      <div class="cc-panel" aria-hidden="true">
+        <div class="cc-slot cc-slot--ringer"></div>
+        <div class="cc-slot cc-slot--appearance"></div>
+        <div class="cc-slot cc-slot--lowpower"></div>
+        <div class="cc-slot cc-slot--orientation"></div>
+      </div>
+    </div>
+  </article>  
 
 
 

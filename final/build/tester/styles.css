@@ -1,6 +1,7 @@
 /* =========================================
-   IDM241 — Beta Description 
+   BASE LAYOUT & TYPOGRAPHY
 ========================================= */
+
 :root {
   --bg: #f4f6fa;
   --card: #ffffff;
@@ -20,9 +21,6 @@ body {
   color: var(--text);
 }
 
-/* -----------------------------------------
-   Header
------------------------------------------ */
 header {
   padding: 40px 20px 20px;
   max-width: 1200px;
@@ -39,9 +37,6 @@ header p {
   color: var(--muted);
 }
 
-/* -----------------------------------------
-   Main content
------------------------------------------ */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -68,17 +63,22 @@ h3 {
   letter-spacing: .01em;
 }
 
-/* -----------------------------------------
-   Columns
------------------------------------------ */
 .spec-grid {
   background: transparent;
   border: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, minmax(280px, 320px));
   gap: 16px;
   align-items: start;
+  justify-content: center;
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
 }
 
 .spec-col__title h2 {
@@ -94,9 +94,6 @@ h3 {
   padding: 16px;
 }
 
-/* -----------------------------------------
-   Grids, subsections, content
------------------------------------------ */
 .grid {
   display: grid;
   gap: 12px;
@@ -164,28 +161,42 @@ a:hover {
   text-decoration: underline;
 }
 
-/* -----------------------------------------
-   Responsive
------------------------------------------ */
-@media (max-width: 1000px) {
-  .spec-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-  }
+.spec-col .ringer,
+.spec-col .toggle-btn,
+.spec-col .lp-btn,
+.spec-col .orientation-btn,
+.spec-col .cc-wrapper {
+  align-self: center;
 }
 
-@media (max-width: 640px) {
-  .spec-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .subsection {
-    grid-template-columns: 130px 1fr;
-  }
+.spec-col ul,
+.spec-col ol,
+.spec-col ul ul,
+.spec-col ol ul,
+.spec-col ul ol,
+.spec-col ol ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
-/* -----------------------------------------
-   Ringer Button
------------------------------------------ */
+.spec-col > ul > li,
+.spec-col section > ul > li {
+  margin-left: 0;
+}
+
+.spec-col ul ul > li,
+.spec-col ol ul > li,
+.spec-col ul ol > li,
+.spec-col section ul ul > li {
+  margin-left: 1.25rem;
+}
+
+
+/* =========================================
+   RINGER
+========================================= */
+
 .ringer {
   --on-bg: #5a695f;
   --off-bg: #ffffff;
@@ -200,7 +211,7 @@ a:hover {
   cursor: pointer;
   background: var(--on-bg);
   box-shadow: 0 10px 26px rgba(0, 0, 0, .25),
-    inset 0 1px 0 rgba(255, 255, 255, .08);
+              inset 0 1px 0 rgba(255, 255, 255, .08);
   transition: background .25s ease, transform .06s ease;
 }
 
@@ -283,10 +294,22 @@ a:hover {
   animation: bell-shake .45s ease-in-out;
 }
 
+.cc-panel .ringer {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+}
 
-/* -----------------------------------------
-   Light / Dark (Appearance) Button
------------------------------------------ */
+.cc-panel .ringer .icon {
+  width: 40px;
+  height: 40px;
+}
+
+
+/* =========================================
+   LIGHT / DARK MODE (APPEARANCE)
+========================================= */
+
 .toggle-btn {
   width: 220px;
   height: 220px;
@@ -297,7 +320,7 @@ a:hover {
   cursor: pointer;
   transition: background .25s ease, transform .06s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .toggle-btn:active {
@@ -310,7 +333,6 @@ a:hover {
   background: var(--outer-sun);
 }
 
-/* inner circle stays the same */
 .icon-shell {
   position: relative;
   width: 110px;
@@ -321,12 +343,11 @@ a:hover {
   transform-origin: center;
 }
 
-/* use your PNG for the sun */
 .sun-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 80px;   /* adjust if you want it bigger/smaller */
+  width: 80px;
   height: 80px;
   background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/Vector%20Background%20Removed.png");
   background-size: contain;
@@ -335,7 +356,6 @@ a:hover {
   transition: opacity .2s ease, transform .2s ease;
 }
 
-/* keep your moon as-is */
 .moon-icon {
   position: absolute;
   inset: 0;
@@ -346,6 +366,7 @@ a:hover {
   transform: scale(.8);
   transition: opacity .2s ease .1s, transform .2s ease .1s;
 }
+
 .moon-icon::before {
   content: "";
   position: absolute;
@@ -356,6 +377,7 @@ a:hover {
   background: #ffffff;
   border-radius: 999px;
 }
+
 .moon-icon::after {
   content: "";
   position: absolute;
@@ -368,29 +390,63 @@ a:hover {
   transform: translateX(-11px);
 }
 
-/* dark state (same as before) */
 .appearance.dark {
   background: var(--outer-moon);
 }
+
 .appearance.dark .icon-shell {
   background: #000000;
   transform: rotate(180deg);
 }
+
 .appearance.dark .sun-icon {
   opacity: 0;
   transform: scale(.7);
 }
+
 .appearance.dark .moon-icon {
   opacity: 1;
   transform: scale(1);
 }
 
+.cc-panel .toggle-btn {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+}
 
-/* -----------------------------------------
-   Low Power Mode Button
------------------------------------------ */
+.cc-panel .toggle-btn .icon-shell {
+  width: 48px;
+  height: 48px;
+}
+
+.cc-panel .toggle-btn .sun-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.cc-panel .toggle-btn .moon-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.cc-panel .toggle-btn .moon-icon::before,
+.cc-panel .toggle-btn .moon-icon::after {
+  width: 24px;
+  height: 24px;
+}
+
+.cc-panel .toggle-btn .moon-icon::after {
+  transform: translateX(-6px);
+}
+
+
+/* =========================================
+   LOW POWER MODE
+========================================= */
+
 .lp-btn {
-  position: relative;         /* anchor confetti to the button */
+  position: relative;
   width: 220px;
   height: 220px;
   border: 0;
@@ -400,7 +456,7 @@ a:hover {
   cursor: pointer;
   background: #5b6c5f;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
   transition: transform .06s ease;
 }
 
@@ -438,7 +494,7 @@ a:hover {
   width: 10px;
   height: 22px;
   border-radius: 5px;
-  background: rgba(255,255,255,.85);
+  background: rgb(255, 255, 255);
   transition: background .25s ease;
 }
 
@@ -480,27 +536,25 @@ a:hover {
 }
 
 @keyframes lp-on {
-  0% { background: #5b6c5f; }
-  40% { background: #c7cec6; }
+  0%   { background: #5b6c5f; }
+  40%  { background: #c7cec6; }
   100% { background: #ffffff; }
 }
 
 @keyframes lp-off {
-  0% { background: #ffffff; }
-  40% { background: #c7cec6; }
+  0%   { background: #ffffff; }
+  40%  { background: #c7cec6; }
   100% { background: #5b6c5f; }
 }
 
-/* fill burst on first (ON) click */
 .lp-btn.burst .lp-fill {
   animation: lp-fill-burst 0.6s ease-out forwards;
 }
 
-/* sparks from the battery */
 .lp-btn.burst .lp-battery::before,
 .lp-btn.burst .lp-battery::after {
   content: "";
-  position: relative;         
+  position: relative;
   top: 50%;
   left: 50%;
   width: 10px;
@@ -512,15 +566,6 @@ a:hover {
   transform: translate(-50%, -50%);
 }
 
-.lp-btn.burst .lp-battery::before {
-  animation: lp-spark-left 0.45s ease-out forwards;
-}
-
-.lp-btn.burst .lp-battery::after {
-  animation: lp-spark-right 0.45s ease-out forwards;
-}
-
-/* fill: grow → shrink back to normal ON width (54px) */
 @keyframes lp-fill-burst {
   0%   { width: 40px; background: rgba(255,255,255,.35); }
   25%  { width: 80px; background: #f6c949; }
@@ -538,70 +583,48 @@ a:hover {
   100% { opacity: 0; transform: translate(40%, -140%) scale(1); }
 }
 
+.cc-slot.lp-btn::before {
+  content: none;
+}
 
-/* =========================================
-   Layout refinements
-========================================= */
-.spec-grid {
+.cc-panel .lp-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+  position: relative;
+  display: block;
+}
+
+.cc-panel .lp-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 115px;
+  height: 115px;
+  border-radius: 999px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 320px));
-  gap: 16px;
-  justify-content: center;
+  place-items: center;
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0.45);
 }
 
-.spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: left;
-}
-
-.spec-col .ringer,
-.spec-col .toggle-btn,
-.spec-col .lp-btn,
-.spec-col .orientation-btn,
-.spec-col .cc-wrapper {
-  align-self: center;
-}
-
-.spec-col ul,
-.spec-col ol,
-.spec-col ul ul,
-.spec-col ol ul,
-.spec-col ul ol,
-.spec-col ol ol {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.spec-col > ul > li,
-.spec-col section > ul > li {
-  margin-left: 0;
-}
-
-.spec-col ul ul > li,
-.spec-col ol ul > li,
-.spec-col ul ol > li,
-.spec-col section ul ul > li {
-  margin-left: 1.25rem;
-}
 
 /* =========================================
-   SCREEN ORIENTATION LOCK BUTTON
+   ORIENTATION LOCK 
 ========================================= */
 
 .orientation-btn {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 72px;
+  height: 72px;
   border-radius: 999px;
   border: 0;
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #5b6c5f; 
-  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  background: #5b6c5f;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
   transition: background .30s ease, transform .08s ease;
 }
 
@@ -615,8 +638,8 @@ a:hover {
 
 .orientation-inner {
   position: relative;
-  width: 120px;
-  height: 160px;
+  width: 42px;
+  height: 58px;
   transform-origin: center;
 }
 
@@ -624,10 +647,10 @@ a:hover {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 72px;
-  height: 120px;
-  border-radius: 18px;
-  border: 5px solid #f6f7f0;   
+  width: 26px;
+  height: 44px;
+  border-radius: 8px;
+  border: 3px solid #f6f7f0;
   background: transparent;
   box-sizing: border-box;
   transition:
@@ -637,28 +660,28 @@ a:hover {
 
 .phone-screen {
   position: absolute;
-  inset: 10px 8px;
-  border-radius: 12px;
+  inset: 5px 4px;
+  border-radius: 5px;
   background: transparent;
 }
 
 .lock-icon {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
   pointer-events: none;
-  transform: translateY(-2px);
 }
 
 .lock-svg {
   position: absolute;
-  width: 34px;
+  top: 50%;
+  left: 50%;
+  width: 14px;
   height: auto;
   opacity: 0;
   transform-origin: center;
-  transition:
-    opacity   .22s ease,
+  transform: translate(-50%, -50%);
+  transition: opacity .22s ease;
+  display: block;
 }
 
 .orientation-btn.locked {
@@ -666,7 +689,7 @@ a:hover {
 }
 
 .orientation-btn.locked .phone {
-  border-color: #ff8fa0;                
+  border-color: #ff8fa0;
   background: rgba(255,208,213,.26);
 }
 
@@ -683,8 +706,8 @@ a:hover {
 }
 
 .orientation-btn:not(.locked) .phone {
-  border-color: #ffffff;                
-  background: transparent;               
+  border-color: #ffffff;
+  background: transparent;
 }
 
 .orientation-btn:not(.locked) .lock-svg--unlocked {
@@ -702,13 +725,13 @@ a:hover {
   100% { transform: rotate(0deg); }
 }
 
-.orientation-btn.anim-lock .orientation-inner {
-  animation: orient-tilt-bounce .45s ease-out;
-}
-
 @keyframes orient-spin {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.orientation-btn.anim-lock .orientation-inner {
+  animation: orient-tilt-bounce .45s ease-out;
 }
 
 .orientation-btn.anim-unlock .orientation-inner {
@@ -716,47 +739,12 @@ a:hover {
 }
 
 .orientation-btn.anim-unlock .lock-svg--unlocked {
-  transform: rotate(360deg);
+  transform: translate(-50%, -50%) rotate(360deg);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================
-   CONTROL CENTER
-   small circle → pill + dropdown panel
+   CONTROL CENTER 
 ========================================= */
 
 .cc-simple {
@@ -766,7 +754,6 @@ a:hover {
   position: relative;
 }
 
-/* trigger: small circle with icon */
 .cc-trigger {
   --cc-bg: #5b6c5f;
   border: 0;
@@ -776,20 +763,16 @@ a:hover {
   height: 72px;
   border-radius: 999px;
   background: var(--cc-bg);
-  box-shadow: 0 12px 28px rgba(0,0,0,.35);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  position: relative;
-  z-index: 2;
-
   transition:
     width .18s ease,
     height .18s ease,
     border-radius .18s ease,
     transform .06s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .cc-trigger:active {
@@ -802,47 +785,37 @@ a:hover {
   display: block;
 }
 
-/* open: circle → pill */
-.cc-simple.is-open .cc-trigger {
+.cc-simple.trigger-open .cc-trigger {
   width: 120px;
   height: 56px;
+  border-radius: 999px;
 }
 
-/* dropdown panel behind the trigger */
 .cc-panel {
-  width: 120px;
-  max-height: 0;
-  padding: 0;
+  width: 116px;
+  height: 400px;
+  transform-origin: top;
+  transform: scaleY(0) translateY(-8px);
+  background: #8E9C8D;
   border-radius: 20px;
-  background: #5b6c5f;
-  box-shadow: 0 14px 32px rgba(0,0,0,.35);
   overflow: hidden;
-
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-
-  opacity: 0;
-  position: relative;
+  padding: 40px 0 18px;
+  margin-top: -25px;
   z-index: 1;
-
   transition:
-    max-height .30s ease .18s,
-    padding .30s ease .18s,
-    margin-top .30s ease .18s,
-    opacity .22s ease .18s;
+    transform .38s cubic-bezier(.25, .9, .25, 1.05) .10s;
 }
 
-/* open: pull panel up so trigger overlaps it */
 .cc-simple.is-open .cc-panel {
-  max-height: 420px;
-  padding: 52px 0 18px;  /* extra top padding so first slot isn't clipped */
-  margin-top: -44px;     /* move panel up behind trigger */
-  opacity: 1;
+  transform: scaleY(1) translateY(0);
 }
 
-/* circular slots inside the panel */
 .cc-slot {
   width: 72px;
   height: 72px;
@@ -853,51 +826,27 @@ a:hover {
 }
 
 .cc-slot::before {
-  content: "";
+  content: none;
   position: absolute;
   inset: 12px;
   border-radius: 999px;
-  background: #6f8274;
 }
 
 
+/* =========================================
+   RESPONSIVE
+========================================= */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* -----------------------------------------
-   Responsive grid
------------------------------------------ */
 @media (max-width: 1100px) {
   .spec-grid {
     grid-template-columns: repeat(2, minmax(260px, 1fr));
     justify-content: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .spec-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
 }
 
@@ -913,6 +862,16 @@ a:hover {
   .spec-col .orientation-btn,
   .spec-col .cc-wrapper {
     align-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subsection {
+    grid-template-columns: 130px 1fr;
   }
 }
 

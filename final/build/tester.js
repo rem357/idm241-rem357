@@ -1,3 +1,77 @@
+
+
+
+
+
+
+
+
+/* ========== SIMPLE CONTROL CENTER (panel closes first, then trigger shrinks) ========== */
+const ccContainer = document.querySelector('.cc-simple');
+const ccTrigger   = document.getElementById('cc-trigger');
+
+if (ccContainer && ccTrigger) {
+  const ccPanel = ccContainer.querySelector('.cc-panel');
+
+  // match the .30s in your CSS panel transition (300ms)
+  const PANEL_DURATION = 480;
+
+  let isOpen = false;
+
+  function openControlCenter() {
+    isOpen = true;
+
+    // 1) grow trigger into pill
+    ccContainer.classList.add('trigger-open');
+    ccTrigger.setAttribute('aria-expanded', 'true');
+
+    // 2) slightly after trigger starts morphing, open panel
+    setTimeout(() => {
+      if (!isOpen) return; // guard if user spam-clicks
+      ccContainer.classList.add('is-open');
+      if (ccPanel) ccPanel.setAttribute('aria-hidden', 'false');
+    }, 120); // you can tweak this offset
+  }
+
+function closeControlCenter() {
+  ccContainer.classList.remove('is-open');
+  if (ccPanel) ccPanel.setAttribute('aria-hidden', 'true');
+
+  // Wait for panel to finish closing via transitionend
+  const onTransitionEnd = () => {
+    ccPanel.removeEventListener('transitionend', onTransitionEnd);
+    if (!isOpen) {
+      ccContainer.classList.remove('trigger-open');
+      ccTrigger.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  ccPanel.addEventListener('transitionend', onTransitionEnd);
+
+  isOpen = false;
+}
+
+
+  function toggleControlCenter() {
+    if (!isOpen) {
+      openControlCenter();
+    } else {
+      closeControlCenter();
+    }
+  }
+
+  ccTrigger.addEventListener('click', toggleControlCenter);
+
+  ccTrigger.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      toggleControlCenter();
+    }
+  });
+}
+
+
+
 /* ========== APPEARANCE (sun ↔ crescent) ========== */
 const appearanceBtn = document.getElementById('appearance');
 let isDark = false;
@@ -107,6 +181,52 @@ if (ringerBtn) {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       toggleRinger();
+    }
+  });
+}
+
+/* ========== SCREEN ORIENTATION LOCK ========== */
+const orientationBtn = document.getElementById('orientation');
+
+if (orientationBtn) {
+  // false = UNLOCKED (green/grey + white icons)
+  // true  = LOCKED   (white + red icons)
+  let locked = false; // start UNLOCKED if you want; change to true to start LOCKED
+
+  function renderOrientation() {
+    orientationBtn.classList.toggle('locked', locked);
+    orientationBtn.setAttribute('aria-pressed', String(locked));
+  }
+
+  function toggleOrientation() {
+    orientationBtn.classList.remove('anim-lock', 'anim-unlock');
+
+    locked = !locked;
+    const justLocked = locked; // true if we *ended* in locked state
+    renderOrientation();
+
+    void orientationBtn.offsetWidth; // restart animations
+
+    if (justLocked) {
+      // UNLOCKED → LOCKED (tilt + bounce)
+      orientationBtn.classList.add('anim-lock');
+    } else {
+      // LOCKED → UNLOCKED (full spin)
+      orientationBtn.classList.add('anim-unlock');
+    }
+
+    setTimeout(() => {
+      orientationBtn.classList.remove('anim-lock', 'anim-unlock');
+    }, 650);
+  }
+
+  renderOrientation();
+
+  orientationBtn.addEventListener('click', toggleOrientation);
+  orientationBtn.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      toggleOrientation();
     }
   });
 }

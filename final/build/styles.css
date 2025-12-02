@@ -528,7 +528,6 @@ a:hover {
   100% { width: 54px; background: #f6c949; }
 }
 
-/* sparks going out */
 @keyframes lp-spark-left {
   0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
   100% { opacity: 0; transform: translate(-120%, -130%) scale(1); }
@@ -538,6 +537,7 @@ a:hover {
   0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
   100% { opacity: 0; transform: translate(40%, -140%) scale(1); }
 }
+
 
 /* =========================================
    Layout refinements
@@ -558,7 +558,9 @@ a:hover {
 
 .spec-col .ringer,
 .spec-col .toggle-btn,
-.spec-col .lp-btn {
+.spec-col .lp-btn,
+.spec-col .orientation-btn,
+.spec-col .cc-wrapper {
   align-self: center;
 }
 
@@ -585,6 +587,298 @@ a:hover {
   margin-left: 1.25rem;
 }
 
+/* =========================================
+   SCREEN ORIENTATION LOCK BUTTON
+========================================= */
+
+.orientation-btn {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #5b6c5f; 
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  transition: background .30s ease, transform .08s ease;
+}
+
+.orientation-btn:hover {
+  transform: translateY(-1px);
+}
+
+.orientation-btn:active {
+  transform: scale(.985);
+}
+
+.orientation-inner {
+  position: relative;
+  width: 120px;
+  height: 160px;
+  transform-origin: center;
+}
+
+.phone {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 72px;
+  height: 120px;
+  border-radius: 18px;
+  border: 5px solid #f6f7f0;   
+  background: transparent;
+  box-sizing: border-box;
+  transition:
+    border-color .30s ease,
+    background   .30s ease;
+}
+
+.phone-screen {
+  position: absolute;
+  inset: 10px 8px;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.lock-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  transform: translateY(-2px);
+}
+
+.lock-svg {
+  position: absolute;
+  width: 34px;
+  height: auto;
+  opacity: 0;
+  transform-origin: center;
+  transition:
+    opacity   .22s ease,
+}
+
+.orientation-btn.locked {
+  background: #ffffff;
+}
+
+.orientation-btn.locked .phone {
+  border-color: #ff8fa0;                
+  background: rgba(255,208,213,.26);
+}
+
+.orientation-btn.locked .lock-svg--locked {
+  opacity: 1;
+}
+
+.orientation-btn.locked .lock-svg--unlocked {
+  opacity: 0;
+}
+
+.orientation-btn:not(.locked) {
+  background: #5b6c5f;
+}
+
+.orientation-btn:not(.locked) .phone {
+  border-color: #ffffff;                
+  background: transparent;               
+}
+
+.orientation-btn:not(.locked) .lock-svg--unlocked {
+  opacity: 1;
+}
+
+.orientation-btn:not(.locked) .lock-svg--locked {
+  opacity: 0;
+}
+
+@keyframes orient-tilt-bounce {
+  0%   { transform: rotate(0deg); }
+  30%  { transform: rotate(18deg); }
+  60%  { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.orientation-btn.anim-lock .orientation-inner {
+  animation: orient-tilt-bounce .45s ease-out;
+}
+
+@keyframes orient-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.orientation-btn.anim-unlock .orientation-inner {
+  animation: orient-spin .55s ease-out;
+}
+
+.orientation-btn.anim-unlock .lock-svg--unlocked {
+  transform: rotate(360deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+              CONTROL CENTER
+========================================= */
+
+.cc-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.cc-trigger {
+  --cc-bg: #5b6c5f;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  width: 72px;            
+  height: 72px;
+  border-radius: 999px;     
+  background: var(--cc-bg);
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    width .18s ease,
+    height .18s ease,
+    border-radius .18s ease,
+    transform .06s ease;
+  position: relative;  
+  z-index: 2; 
+}
+
+.cc-trigger:active {
+  transform: scale(.97);
+}
+
+.cc-trigger__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.cc-simple.trigger-open .cc-trigger {
+  width: 120px;            
+  height: 56px;          
+  border-radius: 999px;    
+}
+
+.cc-panel {
+  width: 118px;
+  height: 400px;
+  transform-origin: top;
+  transform: scaleY(0) translateY(-8px);   
+  background: #8E9C8D;
+  border-radius: 20px;
+  overflow: hidden;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 0 18px;
+  margin-top: -25px;
+
+  z-index: 1;
+  transition:
+    transform .38s cubic-bezier(.25, .9, .25, 1.05) .10s; 
+}
+
+.cc-simple.is-open .cc-panel {
+  transform: scaleY(1) translateY(0);
+}
+
+
+.cc-slot {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: #5b6c5f;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+  position: relative;
+}
+
+.cc-slot::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 999px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* -----------------------------------------
    Responsive grid
 ----------------------------------------- */
@@ -603,7 +897,9 @@ a:hover {
 
   .spec-col .ringer,
   .spec-col .toggle-btn,
-  .spec-col .lp-btn {
+  .spec-col .lp-btn,
+  .spec-col .orientation-btn,
+  .spec-col .cc-wrapper {
     align-self: center;
   }
 }
@@ -611,21 +907,27 @@ a:hover {
 @media (min-width: 1100px) {
   #ringer-interaction,
   #appearance-interaction,
-  #lowpower-interaction {
+  #lowpower-interaction,
+  #orientation-interaction,
+  #controlcenter-interaction {
     width: 320px;
     height: 141.5px;
   }
 
   #ringer-triggers,
   #appearance-triggers,
-  #lowpower-triggers {
+  #lowpower-triggers,
+  #orientation-triggers,
+  #controlcenter-triggers {
     width: 320px;
     height: 207.5px;
   }
 
   #ringer-rules,
   #appearance-rules,
-  #lowpower-rules {
+  #lowpower-rules,
+  #orientation-rules,
+  #controlcenter-rules {
     width: 320px;
     height: 589.5px;
     overflow-y: auto;
@@ -633,7 +935,9 @@ a:hover {
 
   #ringer-feedback,
   #appearance-feedback,
-  #lowpower-feedback {
+  #lowpower-feedback,
+  #orientation-feedback,
+  #controlcenter-feedback {
     width: 320px;
     height: 603.5px;
     overflow-y: auto;
