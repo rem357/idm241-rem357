@@ -17,34 +17,34 @@
 
   <main>
 
-      <!-- =============================== -->
-      <!-- CONTROL CENTER GROUP BUTTON -->
-      <!-- =============================== -->
-      <article class="spec-col" id="controlcenter-spec">
 
-        <header class="spec-col__title"><h2>CONTROL CENTER</h2></header>
+<article class="spec-col" id="controlcenter-spec">
+  <header class="spec-col__title">
+    <h2>CONTROL CENTER</h2>
+  </header>
 
-        <div class="cc-wrapper">
-          <button id="cc-main"
-                  class="cc-btn"
-                  aria-expanded="false"
-                  aria-label="Open control center">
-            <span class="cc-dot"></span>
-            <span class="cc-dot"></span>
-            <span class="cc-dot"></span>
-          </button>
+  <div class="cc-simple">
+    <!-- small circle → pill trigger -->
+    <button id="cc-trigger"
+            class="cc-trigger"
+            aria-expanded="false"
+            aria-label="Open control center">
+      <img src="images/control center icon.svg"
+           alt=""
+           class="cc-trigger__icon">
+    </button>
 
-          <div class="cc-panel" aria-hidden="true">
-            <button class="mini-btn mini-ringer" aria-hidden="true"></button>
-            <button class="mini-btn mini-appearance" aria-hidden="true"></button>
-            <button class="mini-btn mini-lowpower" aria-hidden="true"></button>
-            <button class="mini-btn mini-orientation" aria-hidden="true"></button>
-          </div>
-        </div>
+    <!-- panel that drops down and holds the 4 buttons -->
+    <div class="cc-panel" aria-hidden="true">
+      <div class="cc-slot cc-slot--ringer"></div>
+      <div class="cc-slot cc-slot--appearance"></div>
+      <div class="cc-slot cc-slot--lowpower"></div>
+      <div class="cc-slot cc-slot--orientation"></div>
+    </div>
+  </div>
+</article>
 
-      </article>
 
-    <section class="spec-grid">
 
       <!-- =============================== -->
       <!--  RINGER / SILENT -->
@@ -103,35 +103,40 @@
 
       </article>
 
-      <!-- =============================== -->
-      <!-- SCREEN ORIENTATION LOCK -->
-      <!-- =============================== -->
-      <article class="spec-col" id="orientation-spec">
 
-        <header class="spec-col__title"><h2>SCREEN ORIENTATION LOCK</h2></header>
 
-        <button id="orientation"
-                class="orientation-btn"
-                aria-pressed="false"
-                aria-label="Toggle Orientation Lock">
-          <div class="orientation-inner">
-            <div class="phone">
-              <div class="phone-screen"></div>
-            </div>
+<!-- =============================== -->
+<!-- SCREEN ORIENTATION LOCK -->
+<!-- =============================== -->
+<article class="spec-col" id="orientation-spec">
 
-            <!-- NEW: SVG lock icons -->
-            <div class="lock-icon">
-              <img src="locked.svg"
-                  alt=""
-                  class="lock-svg lock-svg--locked">
-              <img src="unlocked.svg"
-                  alt=""
-                  class="lock-svg lock-svg--unlocked">
-            </div>
-          </div>
-        </button>
+  <header class="spec-col__title">
+    <h2>SCREEN ORIENTATION LOCK</h2>
+  </header>
 
-      </article>
+  <button id="orientation"
+          class="orientation-btn"
+          aria-pressed="false"
+          aria-label="Toggle Orientation Lock">
+    <div class="orientation-inner">
+      <div class="phone">
+        <div class="phone-screen"></div>
+
+        <!-- lock icons now live INSIDE the phone -->
+        <div class="lock-icon">
+          <img src="images/locked.svg"
+               alt=""
+               class="lock-svg lock-svg--locked">
+          <img src="images/unlocked.svg"
+               alt=""
+               class="lock-svg lock-svg--unlocked">
+        </div>
+      </div>
+    </div>
+  </button>
+
+</article>
+
 
 
     </section>

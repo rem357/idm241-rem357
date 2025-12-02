@@ -528,7 +528,6 @@ a:hover {
   100% { width: 54px; background: #f6c949; }
 }
 
-/* sparks going out */
 @keyframes lp-spark-left {
   0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
   100% { opacity: 0; transform: translate(-120%, -130%) scale(1); }
@@ -591,7 +590,7 @@ a:hover {
 /* =========================================
    SCREEN ORIENTATION LOCK BUTTON
 ========================================= */
-/* ORIENTATION BUTTON LAYOUT (keep whatever you already had for the phone) */
+
 .orientation-btn {
   position: relative;
   width: 220px;
@@ -601,19 +600,26 @@ a:hover {
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #5b6c5f;
-  box-shadow: 0 12px 30px rgba(0,0,0,.3),
-              inset 0 1px 0 rgba(255,255,255,.05);
-  transition: transform .08s ease, background .25s ease;
+  background: #5b6c5f; 
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  transition: background .30s ease, transform .08s ease;
+}
+
+.orientation-btn:hover {
+  transform: translateY(-1px);
+}
+
+.orientation-btn:active {
+  transform: scale(.985);
 }
 
 .orientation-inner {
   position: relative;
   width: 120px;
   height: 160px;
+  transform-origin: center;
 }
 
-/* Phone body – you already had something similar */
 .phone {
   position: absolute;
   inset: 0;
@@ -621,19 +627,20 @@ a:hover {
   width: 72px;
   height: 120px;
   border-radius: 18px;
-  border: 3px solid rgba(255,255,255,.9);
-  background: rgba(0,0,0,.08);
+  border: 5px solid #f6f7f0;   
+  background: transparent;
   box-sizing: border-box;
+  transition:
+    border-color .30s ease,
+    background   .30s ease;
 }
 
 .phone-screen {
   position: absolute;
   inset: 10px 8px;
   border-radius: 12px;
-  background: rgba(0,0,0,.15);
+  background: transparent;
 }
-
-/* NEW: lock SVGs */
 
 .lock-icon {
   position: absolute;
@@ -641,29 +648,28 @@ a:hover {
   display: grid;
   place-items: center;
   pointer-events: none;
+  transform: translateY(-2px);
 }
 
 .lock-svg {
   position: absolute;
-  width: 40px;      /* adjust size as needed */
+  width: 34px;
   height: auto;
   opacity: 0;
   transform-origin: center;
   transition:
-    opacity .22s ease,
-    transform .3s ease;
+    opacity   .22s ease,
 }
 
-/* UNLOCKED = show unlocked.svg, hide locked.svg */
-.orientation-btn:not(.locked) .lock-svg--unlocked {
-  opacity: 1;
+.orientation-btn.locked {
+  background: #ffffff;
 }
 
-.orientation-btn:not(.locked) .lock-svg--locked {
-  opacity: 0;
+.orientation-btn.locked .phone {
+  border-color: #ff8fa0;                
+  background: rgba(255,208,213,.26);
 }
 
-/* LOCKED = show locked.svg, hide unlocked.svg */
 .orientation-btn.locked .lock-svg--locked {
   opacity: 1;
 }
@@ -672,25 +678,32 @@ a:hover {
   opacity: 0;
 }
 
-/* hook into your existing JS animation classes */
-.orientation-btn.anim-lock .lock-svg--locked {
-  transform: translateY(-2px) rotate(-5deg);
+.orientation-btn:not(.locked) {
+  background: #5b6c5f;
 }
 
-.orientation-btn.anim-unlock .lock-svg--unlocked {
-  transform: rotate(360deg);
+.orientation-btn:not(.locked) .phone {
+  border-color: #ffffff;                
+  background: transparent;               
 }
 
+.orientation-btn:not(.locked) .lock-svg--unlocked {
+  opacity: 1;
+}
 
-/* ------------- ANIMATIONS -------------
-   lock click 1: tilt to the right & bounce back
-   lock click 2: full spin
-*/
+.orientation-btn:not(.locked) .lock-svg--locked {
+  opacity: 0;
+}
+
 @keyframes orient-tilt-bounce {
   0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(12deg); }
-  60%  { transform: rotate(-6deg); }
+  30%  { transform: rotate(18deg); }
+  60%  { transform: rotate(-10deg); }
   100% { transform: rotate(0deg); }
+}
+
+.orientation-btn.anim-lock .orientation-inner {
+  animation: orient-tilt-bounce .45s ease-out;
 }
 
 @keyframes orient-spin {
@@ -698,100 +711,168 @@ a:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* apply animations to the whole icon so phone + lock
-   move together */
-.orientation-btn.anim-lock .orientation-inner {
-  animation: orient-tilt-bounce 0.45s ease-out;
-}
 .orientation-btn.anim-unlock .orientation-inner {
-  animation: orient-spin 0.55s ease-out;
+  animation: orient-spin .55s ease-out;
 }
+
+.orientation-btn.anim-unlock .lock-svg--unlocked {
+  transform: rotate(360deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* =========================================
-   CONTROL CENTER GROUP BUTTON
+   CONTROL CENTER
+   small circle → pill + dropdown panel
 ========================================= */
-.cc-wrapper {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 220px;
-  height: 220px;
-}
 
-.cc-btn {
-  position: relative;
-  width: 140px;
-  height: 70px;
-  border-radius: 999px;
-  border: 0;
-  background: #5b6c5f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
-  transition: width .25s ease, height .25s ease,
-             transform .06s ease, border-radius .25s ease;
-}
-.cc-btn:active { transform: scale(.97); }
-
-.cc-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-  background: #ffffff;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-/* panel of icons */
-.cc-panel {
-  position: absolute;
-  inset: 0;
+.cc-simple {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px);
-  transition: opacity .28s ease, transform .28s ease;
+  position: relative;
 }
 
-/* mini inner buttons */
-.mini-btn {
-  width: 70px;
-  height: 70px;
+/* trigger: small circle with icon */
+.cc-trigger {
+  --cc-bg: #5b6c5f;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  width: 72px;
+  height: 72px;
   border-radius: 999px;
-  border: none;
+  background: var(--cc-bg);
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  z-index: 2;
+
+  transition:
+    width .18s ease,
+    height .18s ease,
+    border-radius .18s ease,
+    transform .06s ease;
+}
+
+.cc-trigger:active {
+  transform: scale(.97);
+}
+
+.cc-trigger__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* open: circle → pill */
+.cc-simple.is-open .cc-trigger {
+  width: 120px;
+  height: 56px;
+}
+
+/* dropdown panel behind the trigger */
+.cc-panel {
+  width: 120px;
+  max-height: 0;
+  padding: 0;
+  border-radius: 20px;
   background: #5b6c5f;
-  box-shadow: 0 8px 20px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+  box-shadow: 0 14px 32px rgba(0,0,0,.35);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+
+  transition:
+    max-height .30s ease .18s,
+    padding .30s ease .18s,
+    margin-top .30s ease .18s,
+    opacity .22s ease .18s;
 }
 
-/* subtle different fills to echo main buttons */
-.mini-ringer      { background: #5a695f; }
-.mini-appearance  { background: #ffffff; }
-.mini-lowpower    { background: #ffffff; }
-.mini-orientation { background: #5b6c5f; }
-
-/* OPEN STATE */
-.cc-wrapper.open .cc-btn {
-  width: 110px;
-  height: 180px;
-  border-radius: 60px;
-}
-.cc-wrapper.open .cc-panel {
+/* open: pull panel up so trigger overlaps it */
+.cc-simple.is-open .cc-panel {
+  max-height: 420px;
+  padding: 52px 0 18px;  /* extra top padding so first slot isn't clipped */
+  margin-top: -44px;     /* move panel up behind trigger */
   opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
 }
-.cc-wrapper.open .cc-dot {
-  transform: scale(.6);
-  opacity: .5;
+
+/* circular slots inside the panel */
+.cc-slot {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: #5b6c5f;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+  position: relative;
 }
+
+.cc-slot::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 999px;
+  background: #6f8274;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

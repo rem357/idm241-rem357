@@ -1,24 +1,30 @@
+/* ========== SIMPLE CONTROL CENTER (circle → pill + dropdown panel) ========== */
+const ccContainer = document.querySelector('.cc-simple');
+const ccTrigger   = document.getElementById('cc-trigger');
 
-/* ========== CONTROL CENTER GROUP BUTTON ========== */
-const ccMain = document.getElementById('cc-main');
-const ccWrapper = document.querySelector('.cc-wrapper');
+if (ccContainer && ccTrigger) {
+  const ccPanel = ccContainer.querySelector('.cc-panel');
 
-if (ccMain && ccWrapper) {
-  ccMain.addEventListener('click', () => {
-    ccWrapper.classList.toggle('open');
-    const expanded = ccWrapper.classList.contains('open');
-    ccMain.setAttribute('aria-expanded', String(expanded));
-  });
+  function toggleControlCenter() {
+    const isOpen = ccContainer.classList.toggle('is-open');
+    ccTrigger.setAttribute('aria-expanded', String(isOpen));
+    if (ccPanel) {
+      ccPanel.setAttribute('aria-hidden', String(!isOpen));
+    }
+  }
 
-  ccMain.addEventListener('keydown', (e) => {
+  ccTrigger.addEventListener('click', toggleControlCenter);
+
+  ccTrigger.addEventListener('keydown', (e) => {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
-      ccWrapper.classList.toggle('open');
-      const expanded = ccWrapper.classList.contains('open');
-      ccMain.setAttribute('aria-expanded', String(expanded));
+      toggleControlCenter();
     }
   });
 }
+
+
+
 /* ========== APPEARANCE (sun ↔ crescent) ========== */
 const appearanceBtn = document.getElementById('appearance');
 let isDark = false;
@@ -133,13 +139,12 @@ if (ringerBtn) {
 }
 
 /* ========== SCREEN ORIENTATION LOCK ========== */
-/* ========== SCREEN ORIENTATION LOCK ========== */
 const orientationBtn = document.getElementById('orientation');
 
 if (orientationBtn) {
   // false = UNLOCKED (green/grey + white icons)
   // true  = LOCKED   (white + red icons)
-  let locked = false;
+  let locked = false; // start UNLOCKED if you want; change to true to start LOCKED
 
   function renderOrientation() {
     orientationBtn.classList.toggle('locked', locked);
@@ -147,33 +152,27 @@ if (orientationBtn) {
   }
 
   function toggleOrientation() {
-    // clear previous animation classes
     orientationBtn.classList.remove('anim-lock', 'anim-unlock');
 
-    // flip state
     locked = !locked;
-    const justLocked = locked;
+    const justLocked = locked; // true if we *ended* in locked state
     renderOrientation();
 
-    // force reflow so animation restarts cleanly
-    void orientationBtn.offsetWidth;
+    void orientationBtn.offsetWidth; // restart animations
 
-    // apply the right animation:
-    // first click (→ locked) = tilt/bounce
-    // second click (→ unlocked) = full spin
     if (justLocked) {
+      // UNLOCKED → LOCKED (tilt + bounce)
       orientationBtn.classList.add('anim-lock');
     } else {
+      // LOCKED → UNLOCKED (full spin)
       orientationBtn.classList.add('anim-unlock');
     }
 
-    // remove classes after animation finishes
     setTimeout(() => {
       orientationBtn.classList.remove('anim-lock', 'anim-unlock');
-    }, 600);
+    }, 650);
   }
 
-  // initial visual state = UNLOCKED (green/grey + white)
   renderOrientation();
 
   orientationBtn.addEventListener('click', toggleOrientation);
