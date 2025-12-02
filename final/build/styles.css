@@ -22,7 +22,7 @@ body {
 }
 
 header {
-  padding: 40px 20px 20px;
+  padding: 40px 20px 0;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -60,6 +60,13 @@ section {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+/* Make the CC column content center nicely */
+#controlcenter-spec {
+  align-items: center;
+  background: transparent;
+  border: none;
 }
 
 .spec-col__title {
@@ -140,10 +147,9 @@ a:hover {
 
 .top-row {
   margin-bottom: 32px;
-  display: grid;
   grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
   gap: 32px;
-  align-items: flex-start;
+justify-content: center;
 }
 
 .top-row .spec-col {
@@ -206,7 +212,7 @@ a:hover {
   background: var(--on-bg);
   box-shadow: 0 10px 26px rgba(0, 0, 0, .25),
               inset 0 1px 0 rgba(255, 255, 255, .08);
-  transition: background .25s ease, transform .06s ease;
+  transition: background 400ms ease, transform .5s ease;
 }
 
 .ringer:active {
@@ -311,7 +317,7 @@ a:hover {
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background .25s ease, transform .06s ease;
+  transition: background 400ms ease, transform .5s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
               inset 0 1px 0 rgba(255,255,255,.05);
 }
@@ -332,7 +338,7 @@ a:hover {
   height: 110px;
   border-radius: 999px;
   background: #ffffff;
-  transition: background .25s ease, transform .45s ease;
+  transition: background 400ms ease, transform .5s ease;
   transform-origin: center;
 }
 
@@ -449,7 +455,7 @@ a:hover {
   background: #5b6c5f;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
               inset 0 1px 0 rgba(255,255,255,.05);
-  transition: transform .06s ease;
+  transition: background 400ms ease, transform .5s ease;
 }
 
 .lp-btn:active {
@@ -580,12 +586,9 @@ a:hover {
   cursor: pointer;
   background: #5b6c5f;
   box-shadow: 0 10px 26px rgba(0,0,0,.30);
-  transition: background .30s ease, transform .08s ease;
+  transition: background 400ms ease, transform .5s ease;
 }
 
-.orientation-btn:hover {
-  transform: translateY(-1px);
-}
 
 .orientation-btn:active {
   transform: scale(.985);
