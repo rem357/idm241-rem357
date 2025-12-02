@@ -5,55 +5,562 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IDM241 Final-Build</title>
   <meta name="description" content="IDM241 assignment page" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
   <header>
-    <h1>IDM241 • Final-Build </h1>
+    <h1>IDM241 • Final-Build</h1>
     <h2>Microinteraction: Control Center Buttons</h2>
-    <p>Riley Mitchell •  IDM241</p>
+    <p>Riley Mitchell • IDM241</p>
   </header>
 
   <main>
-    
-  <!-- =============================== -->
-  <!--  CONTROL CENTER -->
-  <!-- =============================== -->
 
-  <article class="spec-col" id="controlcenter-spec">
+    <!-- =============================== -->
+    <!-- TOP ROW: INTERACTIONS + CC     -->
+    <!-- =============================== -->
+    <section class="top-row">
 
-    <div class="cc-simple">
-      <!-- small circle → pill trigger -->
-      <button id="cc-trigger"
-              class="cc-trigger"
-              aria-expanded="false"
-              aria-label="Open control center">
-        <img src="images/control center icon.svg"
-            alt=""
-            class="cc-trigger__icon">
-      </button>
+      <!-- INTERACTIONS (left) -->
+      <article class="spec-col" id="interactions-spec">
+        <header class="spec-col__title">
+          <h2>INTERACTIONS</h2>
+        </header>
 
-      <!-- panel that drops down and holds the 4 buttons -->
-      <div class="cc-panel" aria-hidden="true">
-        <div class="cc-slot cc-slot--ringer"></div>
-        <div class="cc-slot cc-slot--appearance"></div>
-        <div class="cc-slot cc-slot--lowpower"></div>
-        <div class="cc-slot cc-slot--orientation"></div>
-      </div>
-    </div>
-  </article>  
+        <section>
+          <h3>Control Center</h3>
+          <p>Expands and collapses a vertical stack of four control buttons inside the Control Center panel.</p>
+        </section>
+
+        <section>
+          <h3>Ringer</h3>
+          <p>Toggles the device’s ringer state between ringer on and silent mode.</p>
+        </section>
+
+        <section>
+          <h3>Light / Dark</h3>
+          <p>Switches the device appearance between light mode (sun) and dark mode (moon).</p>
+        </section>
+
+        <section>
+          <h3>Low Power Mode</h3>
+          <p>Turns Low Power Mode on or off using a circular battery button.</p>
+        </section>
+
+        <section>
+          <h3>Screen Orientation Lock</h3>
+          <p>Locks or unlocks screen rotation with a rotating phone + lock icon.</p>
+        </section>
+      </article>
+
+      <!-- CONTROL CENTER BUTTON (right) -->
+      <article class="spec-col" id="controlcenter-spec">
+        <header class="spec-col__title">
+          <h2>CONTROL CENTER</h2>
+        </header>
+
+        <div class="cc-simple">
+          <button
+            id="cc-trigger"
+            class="cc-trigger"
+            aria-expanded="false"
+            aria-label="Open control center">
+            <img
+              src="images/control center icon.svg"
+              alt=""
+              class="cc-trigger__icon">
+          </button>
+
+          <div class="cc-panel" aria-hidden="true">
+            <button
+              id="ringer"
+              class="cc-slot ringer"
+              aria-pressed="false"
+              aria-label="Toggle ringer">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  class="bell"
+                  d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z" />
+                <path class="slash-back"  d="M1 4 L23 20" pathLength="100" />
+                <path class="slash-front" d="M1 4 L23 20" pathLength="100" />
+              </svg>
+            </button>
+
+            <button
+              id="appearance"
+              class="cc-slot toggle-btn appearance"
+              aria-pressed="false"
+              aria-label="Toggle dark mode">
+              <span class="icon-shell">
+                <span class="sun-icon"></span>
+                <span class="moon-icon"></span>
+              </span>
+            </button>
+
+            <button
+              id="low-power"
+              class="cc-slot lp-btn"
+              aria-pressed="false"
+              aria-label="Toggle Low Power Mode">
+              <span class="lp-inner">
+                <span class="lp-battery">
+                  <span class="lp-body"></span>
+                  <span class="lp-fill"></span>
+                  <span class="lp-tip"></span>
+                </span>
+              </span>
+            </button>
+
+            <button
+              id="orientation"
+              class="cc-slot orientation-btn"
+              aria-pressed="false"
+              aria-label="Toggle Orientation Lock">
+              <div class="orientation-inner">
+                <div class="phone">
+                  <div class="phone-screen"></div>
+                  <div class="lock-icon">
+                    <img
+                      src="images/locked.svg"
+                      alt=""
+                      class="lock-svg lock-svg--locked">
+                    <img
+                      src="images/unlocked.svg"
+                      alt=""
+                      class="lock-svg lock-svg--unlocked">
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
 
 
+    <!-- =============================== -->
+    <!-- BOTTOM ROW: 4 COLUMNS           -->
+    <!-- =============================== -->
+    <section class="spec-grid">
+
+      <!-- TRIGGERS -->
+      <article class="spec-col" id="triggers-spec">
+        <header class="spec-col__title">
+          <h2>TRIGGERS</h2>
+        </header>
+
+        <section>
+          <h3>Control Center</h3>
+          <ul>
+              <ul>
+                <li>Hover on/off the Control Center trigger.</li>                
+                <li>Click (collapsed) — Collapsed → Expanded.</li>
+                <li>Click (expanded) — Expanded → Collapsed.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ringer</h3>
+          <ul>
+              <ul>
+                <li>Hover on/off the button.</li>                
+                <li>First click — Ringer ON → Ringer OFF.</li>
+                <li>Second click — Ringer OFF → Ringer ON.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Light / Dark</h3>
+          <ul>
+              <ul>
+                <li>Hover on/off the button.</li>                
+                <li>First click — Light Mode → Dark Mode (sun hides, moon shows).</li>
+                <li>Second click — Dark Mode → Light Mode (moon hides, sun shows).</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Low Power Mode</h3>
+          <ul>
+              <ul>
+                <li>Hover on/off the button.</li>                
+                <li>First click — Low Power OFF → Low Power ON.</li>
+                <li>Second click — Low Power ON → Low Power OFF.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Screen Orientation Lock</h3>
+          <ul>
+              <ul>
+                <li>Hover on/off the button.</li>
+                <li>First click — Orientation UNLOCKED → LOCKED.</li>
+                <li>Second click — Orientation LOCKED → UNLOCKED.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </article>
 
 
+      <!-- RULES -->
+      <article class="spec-col" id="rules-spec">
+        <header class="spec-col__title">
+          <h2>RULES</h2>
+        </header>
+
+        <section>
+          <h3>Control Center</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor indicates clickable trigger.</li>
+              </ul>
+            </li>
+            <li>Click (collapsed → expanded):
+              <ul>
+                <li>Set Control Center state to expanded.</li>
+                <li>Trigger widens horizontally, then stretches vertically.</li>
+                <li>Child buttons become visible in a vertical stack.</li>
+                <li>Each child button keeps its own previous toggle state.</li>
+              </ul>
+            </li>
+            <li>Click (expanded → collapsed):
+              <ul>
+                <li>Set Control Center state to collapsed.</li>
+                <li>Panel scales closed; trigger returns to compact circle.</li>
+                <li>Child buttons are hidden but states are preserved.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ringer</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor appears over the ringer button.</li>
+              </ul>
+            </li>
+            <li>Click (ON → OFF):
+              <ul>
+                <li>Set ringer state to OFF.</li>
+                <li>Background changes from dark green/grey to white.</li>
+                <li>Bell icon switches from white to red.</li>
+                <li>Diagonal slash animates in across the bell.</li>
+              </ul>
+            </li>
+            <li>Click (OFF → ON):
+              <ul>
+                <li>Set ringer state to ON.</li>
+                <li>Background changes back to dark green/grey.</li>
+                <li>Bell icon switches from red back to white.</li>
+                <li>Diagonal slash retracts/erases.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Light / Dark</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor appears over the appearance button.</li>
+              </ul>
+            </li>
+            <li>Click (Light → Dark):
+              <ul>
+                <li>Set appearance state to Dark.</li>
+                <li>Outer circle changes from green/grey to white.</li>
+                <li>Inner circle changes from white to black.</li>
+                <li>Sun icon rotates/scales out; moon icon rotates/scales in.</li>
+              </ul>
+            </li>
+            <li>Click (Dark → Light):
+              <ul>
+                <li>Set appearance state to Light.</li>
+                <li>Outer circle changes back to green/grey.</li>
+                <li>Inner circle changes back to white.</li>
+                <li>Moon icon rotates/scales out; sun icon rotates/scales in.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Low Power Mode</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor appears over the Low Power button.</li>
+              </ul>
+            </li>
+            <li>Click (OFF → ON):
+              <ul>
+                <li>Set Low Power state to <strong>ON</strong>.</li>
+                <li>Outer circle changes from dark green/grey to white.</li>
+                <li>Battery outline and tip change to yellow.</li>
+                <li>Fill bar animates wider, then settles to a slightly shorter yellow bar.</li>
+              </ul>
+            </li>
+            <li>Click (ON → OFF):
+              <ul>
+                <li>Set Low Power state to <strong>OFF</strong>.</li>
+                <li>Outer circle returns to dark green/grey.</li>
+                <li>Battery outline and tip change back to light/white.</li>
+                <li>Fill bar shrinks back to the shorter, neutral bar.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Screen Orientation Lock</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor appears over the orientation button.</li>
+              </ul>
+            </li>
+            <li>Click (UNLOCKED → LOCKED):
+              <ul>
+                <li>Set orientation state to <strong>LOCKED</strong>.</li>
+                <li>Button background transitions from green/grey to white.</li>
+                <li>Phone border and lock switch to red/light red.</li>
+                <li>Phone briefly tilts/rotates, then bounces back upright with a closed lock.</li>
+              </ul>
+            </li>
+            <li>Click (LOCKED → UNLOCKED):
+              <ul>
+                <li>Set orientation state to <strong>UNLOCKED</strong>.</li>
+                <li>Phone and lock icon rotate fully inside the circle.</li>
+                <li>Lock switches to unlocked icon.</li>
+                <li>Background fades back to green/grey; phone/lock revert to white.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </article>
 
 
+      <!-- FEEDBACK -->
+      <article class="spec-col" id="feedback-spec">
+        <header class="spec-col__title">
+          <h2>FEEDBACK</h2>
+        </header>
+
+        <section>
+          <h3>Control Center</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor indicates the trigger is clickable.</li>
+              </ul>
+            </li>
+            <li>Expand:
+              <ul>
+                <li>Trigger morphs from a circle to a pill and then reveals the vertical panel.</li>
+                <li>Four child buttons slide into view inside the panel.</li>
+              </ul>
+            </li>
+            <li>Collapse:
+              <ul>
+                <li>Panel scales closed; child buttons disappear behind the top trigger.</li>
+                <li>Trigger returns to circular control.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ringer</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor on hover.</li>
+              </ul>
+            </li>
+            <li>Ringer ON → OFF:
+              <ul>
+                <li>Button slightly grows then eases back to normal size.</li>
+                <li>Background switches from dark green/grey to white.</li>
+                <li>Bell icon turns red.</li>
+                <li>Diagonal slash animates across the bell.</li>
+                <li>Bell shakes briefly.</li>
+              </ul>
+            </li>
+            <li>Ringer OFF → ON:
+              <ul>
+                <li>Button slightly grows then eases back to normal size.</li>
+                <li>Background returns to dark green/grey.</li>
+                <li>Bell icon turns white again.</li>
+                <li>Diagonal slash erases out.</li>
+                <li>Bell shakes briefly.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Light / Dark</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor on hover.</li>
+              </ul>
+            </li>
+            <li>Light → Dark:
+              <ul>
+                <li>Outer circle flashes to white; inner circle turns black.</li>
+                <li>Sun image spins/scales out of view.</li>
+                <li>Moon icon spins/scales into the center.</li>
+              </ul>
+            </li>
+            <li>Dark → Light:
+              <ul>
+                <li>Outer circle fades to green/grey; inner circle returns to white.</li>
+                <li>Moon spins/scales out of view.</li>
+                <li>Sun spins/scales back into view.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Low Power Mode</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor on hover.</li>
+              </ul>
+            </li>
+            <li>OFF → ON:
+              <ul>
+                <li>Outer circle brightens to white.</li>
+                <li>Battery outline and tip turn yellow.</li>
+                <li>Fill bar quickly expands, then eases back to a shorter yellow bar.</li>
+                <li>Small “spark” animations appear around the battery edges.</li>
+              </ul>
+            </li>
+            <li>ON → OFF:
+              <ul>
+                <li>Outer circle darkens back to green/grey.</li>
+                <li>Battery colors return to neutral white/grey.</li>
+                <li>Fill bar shrinks back to the smaller bar length.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Screen Orientation Lock</h3>
+          <ul>
+            <li>Hover:
+              <ul>
+                <li>Pointer cursor on hover.</li>
+              </ul>
+            </li>
+            <li>UNLOCKED → LOCKED:
+              <ul>
+                <li>Button background brightens to white.</li>
+                <li>Phone border and lock icon shift to red tones.</li>
+                <li>Phone tilts and bounces back with a closed lock icon centered.</li>
+              </ul>
+            </li>
+            <li>LOCKED → UNLOCKED:
+              <ul>
+                <li>Phone + lock spin around inside the circle.</li>
+                <li>Lock switches to the unlocked icon.</li>
+                <li>Button fades back to green/grey with white phone/lock.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </article>
 
 
+      <!-- LOOPS & MODES -->
+      <article class="spec-col" id="loops-spec">
+        <header class="spec-col__title">
+          <h2>LOOPS &amp; MODES</h2>
+        </header>
 
-    
+        <section>
+          <h3>Control Center</h3>
+          <ul>
+            <li>None</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ringer</h3>
+          <ul>
+            <li>None</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Light / Dark</h3>
+          <ul>
+            <li>None</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Low Power Mode</h3>
+          <ul>
+            <li>None</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Screen Orientation Lock</h3>
+          <ul>
+            <li>None</li>
+          </ul>
+        </section>
+      </article>
+
+    </section>
+
+    <br><br>
+
   </main>
+
   <script src="tester.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

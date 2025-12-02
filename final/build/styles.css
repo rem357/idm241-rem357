@@ -1,6 +1,7 @@
 /* =========================================
-   IDM241 — Beta Description 
+   BASE LAYOUT & TYPOGRAPHY
 ========================================= */
+
 :root {
   --bg: #f4f6fa;
   --card: #ffffff;
@@ -20,9 +21,6 @@ body {
   color: var(--text);
 }
 
-/* -----------------------------------------
-   Header
------------------------------------------ */
 header {
   padding: 40px 20px 20px;
   max-width: 1200px;
@@ -34,51 +32,38 @@ header h1 {
   margin: 0 0 8px;
 }
 
+header h2 {
+  margin: 0 0 6px;
+}
+
 header p {
   margin: 0;
   color: var(--muted);
 }
 
-/* -----------------------------------------
-   Main content
------------------------------------------ */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  display: block;
-  gap: 16px;
 }
 
 section {
+  margin-bottom: 24px;
+}
+
+/* Card columns */
+.spec-col {
   background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
-h2 {
-  margin: 0 0 12px;
-  font-size: clamp(20px, 2.5vw, 26px);
-}
-
-h3 {
-  margin: 0 0 12px;
-  font-size: 18px;
-  letter-spacing: .01em;
-}
-
-/* -----------------------------------------
-   Columns
------------------------------------------ */
-.spec-grid {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
-  gap: 16px;
-  align-items: start;
+.spec-col__title {
+  padding: 10px;
 }
 
 .spec-col__title h2 {
@@ -88,73 +73,55 @@ h3 {
 }
 
 .spec-col section {
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 16px;
+  margin-bottom: 0;
+  padding: 0;
 }
 
-/* -----------------------------------------
-   Grids, subsections, content
------------------------------------------ */
-.grid {
-  display: grid;
-  gap: 12px;
+h2 {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 2.5vw, 26px);
 }
 
-.grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+h3 {
+  margin: 8px 0 4px;
+  font-size: 18px;
+  letter-spacing: .01em;
 }
 
-.subsection {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 6px 16px;
+p {
+  margin: 0 0 6px;
+  line-height: 1.4;
 }
 
-.subsection .sub,
-.subsection .sub-content {
-  padding: 8px 0;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
-}
-
-.subsection .sub {
-  color: var(--muted);
-}
-
-.subsection .sub-content {
-  color: var(--text);
-}
-
+/* Lists */
 ul,
 ol {
-  margin: 8px 0 0 20px;
+  margin: 8px 0 0;
+  padding-left: 0;
+  list-style: disc;
 }
 
 li {
-  margin: 6px 0;
+  margin: 8px 0;
+  line-height: 1.6;
 }
 
-figure {
-  margin: 12px 0;
-  background: #0e1327;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  overflow: hidden;
+.spec-col ul {
+  padding-left: 1.5rem;
 }
 
-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
+.spec-col ul ul {
+  margin-top: 2px;
+  margin-left: 1.25rem;
+  list-style: circle;
 }
 
-figcaption {
-  font-size: 13px;
-  color: var(--muted);
-  padding: 8px 12px;
+/* Bold first list items (Hover) */
+.spec-col section > ul > li:first-child {
+  font-weight: bold;
 }
 
+/* Links */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -164,28 +131,71 @@ a:hover {
   text-decoration: underline;
 }
 
-/* -----------------------------------------
-   Responsive
------------------------------------------ */
-@media (max-width: 1000px) {
-  .spec-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-  }
+/* Center buttons inside cards */
+.spec-col .ringer,
+.spec-col .toggle-btn,
+.spec-col .lp-btn,
+.spec-col .orientation-btn {
+  align-self: center;
 }
 
-@media (max-width: 640px) {
-  .spec-grid {
-    grid-template-columns: 1fr;
-  }
+/* =========================================
+   TOP ROW LAYOUT (INTERACTIONS + CC)
+========================================= */
 
-  .subsection {
-    grid-template-columns: 130px 1fr;
-  }
+.top-row {
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
+  gap: 32px;
+  align-items: flex-start;
 }
 
-/* -----------------------------------------
-   Ringer Button
------------------------------------------ */
+.top-row .spec-col {
+  height: 519px;
+}
+
+#controlcenter-spec {
+  align-items: center;
+}
+
+/* =========================================
+   BOTTOM STACK (TRIGGERS / RULES / FEEDBACK / LOOPS)
+========================================= */
+
+.spec-grid {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: 24px;
+}
+
+#triggers-spec {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#loops-spec {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#rules-spec {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+#feedback-spec {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+/* =========================================
+   RINGER
+========================================= */
+
 .ringer {
   --on-bg: #5a695f;
   --off-bg: #ffffff;
@@ -200,7 +210,7 @@ a:hover {
   cursor: pointer;
   background: var(--on-bg);
   box-shadow: 0 10px 26px rgba(0, 0, 0, .25),
-    inset 0 1px 0 rgba(255, 255, 255, .08);
+              inset 0 1px 0 rgba(255, 255, 255, .08);
   transition: background .25s ease, transform .06s ease;
 }
 
@@ -283,10 +293,21 @@ a:hover {
   animation: bell-shake .45s ease-in-out;
 }
 
+.cc-panel .ringer {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+}
 
-/* -----------------------------------------
-   Light / Dark (Appearance) Button
------------------------------------------ */
+.cc-panel .ringer .icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* =========================================
+   LIGHT / DARK MODE (APPEARANCE)
+========================================= */
+
 .toggle-btn {
   width: 220px;
   height: 220px;
@@ -297,7 +318,7 @@ a:hover {
   cursor: pointer;
   transition: background .25s ease, transform .06s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .toggle-btn:active {
@@ -310,7 +331,6 @@ a:hover {
   background: var(--outer-sun);
 }
 
-/* inner circle stays the same */
 .icon-shell {
   position: relative;
   width: 110px;
@@ -321,12 +341,11 @@ a:hover {
   transform-origin: center;
 }
 
-/* use your PNG for the sun */
 .sun-icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 80px;   /* adjust if you want it bigger/smaller */
+  width: 80px;
   height: 80px;
   background-image: url("https://raw.githubusercontent.com/rem357/idm241-rem357/refs/heads/main/images/dark%3Alight%20mode/Vector%20Background%20Removed.png");
   background-size: contain;
@@ -335,7 +354,6 @@ a:hover {
   transition: opacity .2s ease, transform .2s ease;
 }
 
-/* keep your moon as-is */
 .moon-icon {
   position: absolute;
   inset: 0;
@@ -346,6 +364,7 @@ a:hover {
   transform: scale(.8);
   transition: opacity .2s ease .1s, transform .2s ease .1s;
 }
+
 .moon-icon::before {
   content: "";
   position: absolute;
@@ -356,6 +375,7 @@ a:hover {
   background: #ffffff;
   border-radius: 999px;
 }
+
 .moon-icon::after {
   content: "";
   position: absolute;
@@ -368,29 +388,62 @@ a:hover {
   transform: translateX(-11px);
 }
 
-/* dark state (same as before) */
 .appearance.dark {
   background: var(--outer-moon);
 }
+
 .appearance.dark .icon-shell {
   background: #000000;
   transform: rotate(180deg);
 }
+
 .appearance.dark .sun-icon {
   opacity: 0;
   transform: scale(.7);
 }
+
 .appearance.dark .moon-icon {
   opacity: 1;
   transform: scale(1);
 }
 
+.cc-panel .toggle-btn {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+}
 
-/* -----------------------------------------
-   Low Power Mode Button
------------------------------------------ */
+.cc-panel .toggle-btn .icon-shell {
+  width: 48px;
+  height: 48px;
+}
+
+.cc-panel .toggle-btn .sun-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.cc-panel .toggle-btn .moon-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.cc-panel .toggle-btn .moon-icon::before,
+.cc-panel .toggle-btn .moon-icon::after {
+  width: 24px;
+  height: 24px;
+}
+
+.cc-panel .toggle-btn .moon-icon::after {
+  transform: translateX(-6px);
+}
+
+/* =========================================
+   LOW POWER MODE
+========================================= */
+
 .lp-btn {
-  position: relative;         /* anchor confetti to the button */
+  position: relative;
   width: 220px;
   height: 220px;
   border: 0;
@@ -400,7 +453,7 @@ a:hover {
   cursor: pointer;
   background: #5b6c5f;
   box-shadow: 0 12px 30px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.05);
+              inset 0 1px 0 rgba(255,255,255,.05);
   transition: transform .06s ease;
 }
 
@@ -438,7 +491,7 @@ a:hover {
   width: 10px;
   height: 22px;
   border-radius: 5px;
-  background: rgba(255,255,255,.85);
+  background: rgb(255, 255, 255);
   transition: background .25s ease;
 }
 
@@ -480,47 +533,21 @@ a:hover {
 }
 
 @keyframes lp-on {
-  0% { background: #5b6c5f; }
-  40% { background: #c7cec6; }
+  0%   { background: #5b6c5f; }
+  40%  { background: #c7cec6; }
   100% { background: #ffffff; }
 }
 
 @keyframes lp-off {
-  0% { background: #ffffff; }
-  40% { background: #c7cec6; }
+  0%   { background: #ffffff; }
+  40%  { background: #c7cec6; }
   100% { background: #5b6c5f; }
 }
 
-/* fill burst on first (ON) click */
 .lp-btn.burst .lp-fill {
   animation: lp-fill-burst 0.6s ease-out forwards;
 }
 
-/* sparks from the battery */
-.lp-btn.burst .lp-battery::before,
-.lp-btn.burst .lp-battery::after {
-  content: "";
-  position: relative;         
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #f6c949;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-}
-
-.lp-btn.burst .lp-battery::before {
-  animation: lp-spark-left 0.45s ease-out forwards;
-}
-
-.lp-btn.burst .lp-battery::after {
-  animation: lp-spark-right 0.45s ease-out forwards;
-}
-
-/* fill: grow → shrink back to normal ON width (54px) */
 @keyframes lp-fill-burst {
   0%   { width: 40px; background: rgba(255,255,255,.35); }
   25%  { width: 80px; background: #f6c949; }
@@ -528,80 +555,36 @@ a:hover {
   100% { width: 54px; background: #f6c949; }
 }
 
-@keyframes lp-spark-left {
-  0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
-  100% { opacity: 0; transform: translate(-120%, -130%) scale(1); }
+.cc-panel .lp-btn {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
 }
 
-@keyframes lp-spark-right {
-  0%   { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
-  100% { opacity: 0; transform: translate(40%, -140%) scale(1); }
-}
-
-
-/* =========================================
-   Layout refinements
-========================================= */
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 320px));
-  gap: 16px;
-  justify-content: center;
-}
-
-.spec-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: left;
-}
-
-.spec-col .ringer,
-.spec-col .toggle-btn,
-.spec-col .lp-btn,
-.spec-col .orientation-btn,
-.spec-col .cc-wrapper {
-  align-self: center;
-}
-
-.spec-col ul,
-.spec-col ol,
-.spec-col ul ul,
-.spec-col ol ul,
-.spec-col ul ol,
-.spec-col ol ol {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.spec-col > ul > li,
-.spec-col section > ul > li {
-  margin-left: 0;
-}
-
-.spec-col ul ul > li,
-.spec-col ol ul > li,
-.spec-col ul ol > li,
-.spec-col section ul ul > li {
-  margin-left: 1.25rem;
+.cc-panel .lp-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 115px;
+  height: 115px;
+  transform: translate(-50%, -50%) scale(0.45);
 }
 
 /* =========================================
-   SCREEN ORIENTATION LOCK BUTTON
+   ORIENTATION LOCK 
 ========================================= */
 
 .orientation-btn {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 72px;
+  height: 72px;
   border-radius: 999px;
   border: 0;
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #5b6c5f; 
-  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  background: #5b6c5f;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
   transition: background .30s ease, transform .08s ease;
 }
 
@@ -615,8 +598,8 @@ a:hover {
 
 .orientation-inner {
   position: relative;
-  width: 120px;
-  height: 160px;
+  width: 42px;
+  height: 58px;
   transform-origin: center;
 }
 
@@ -624,41 +607,38 @@ a:hover {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 72px;
-  height: 120px;
-  border-radius: 18px;
-  border: 5px solid #f6f7f0;   
+  width: 26px;
+  height: 44px;
+  border-radius: 8px;
+  border: 3px solid #f6f7f0;
   background: transparent;
-  box-sizing: border-box;
-  transition:
-    border-color .30s ease,
-    background   .30s ease;
+  transition: border-color .30s ease, background .30s ease;
 }
 
 .phone-screen {
   position: absolute;
-  inset: 10px 8px;
-  border-radius: 12px;
+  inset: 5px 4px;
+  border-radius: 5px;
   background: transparent;
 }
 
 .lock-icon {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
   pointer-events: none;
-  transform: translateY(-2px);
 }
 
 .lock-svg {
   position: absolute;
-  width: 34px;
+  top: 50%;
+  left: 50%;
+  width: 14px;
   height: auto;
   opacity: 0;
   transform-origin: center;
-  transition:
-    opacity   .22s ease,
+  transform: translate(-50%, -50%);
+  transition: opacity .22s ease;
+  display: block;
 }
 
 .orientation-btn.locked {
@@ -666,7 +646,7 @@ a:hover {
 }
 
 .orientation-btn.locked .phone {
-  border-color: #ff8fa0;                
+  border-color: #ff8fa0;
   background: rgba(255,208,213,.26);
 }
 
@@ -683,8 +663,8 @@ a:hover {
 }
 
 .orientation-btn:not(.locked) .phone {
-  border-color: #ffffff;                
-  background: transparent;               
+  border-color: #ffffff;
+  background: transparent;
 }
 
 .orientation-btn:not(.locked) .lock-svg--unlocked {
@@ -702,13 +682,13 @@ a:hover {
   100% { transform: rotate(0deg); }
 }
 
-.orientation-btn.anim-lock .orientation-inner {
-  animation: orient-tilt-bounce .45s ease-out;
-}
-
 @keyframes orient-spin {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.orientation-btn.anim-lock .orientation-inner {
+  animation: orient-tilt-bounce .45s ease-out;
 }
 
 .orientation-btn.anim-unlock .orientation-inner {
@@ -716,47 +696,11 @@ a:hover {
 }
 
 .orientation-btn.anim-unlock .lock-svg--unlocked {
-  transform: rotate(360deg);
+  transform: translate(-50%, -50%) rotate(360deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================
-              CONTROL CENTER
+   CONTROL CENTER CONTAINER
 ========================================= */
 
 .cc-simple {
@@ -771,23 +715,20 @@ a:hover {
   border: 0;
   cursor: pointer;
   padding: 0;
-  width: 72px;            
+  width: 72px;
   height: 72px;
-  border-radius: 999px;     
+  border-radius: 999px;
   background: var(--cc-bg);
-  box-shadow: 0 12px 28px rgba(0,0,0,.35);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition:
     width .18s ease,
     height .18s ease,
     border-radius .18s ease,
     transform .06s ease;
-  position: relative;  
-  z-index: 2; 
+  position: relative;
+  z-index: 2;
 }
 
 .cc-trigger:active {
@@ -801,37 +742,34 @@ a:hover {
 }
 
 .cc-simple.trigger-open .cc-trigger {
-  width: 120px;            
-  height: 56px;          
-  border-radius: 999px;    
+  width: 120px;
+  height: 56px;
+  border-radius: 999px;
 }
 
 .cc-panel {
-  width: 118px;
+  width: 116px;
   height: 400px;
   transform-origin: top;
-  transform: scaleY(0) translateY(-8px);   
+  transform: scaleY(0) translateY(-8px);
   background: #8E9C8D;
   border-radius: 20px;
   overflow: hidden;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
   padding: 40px 0 18px;
   margin-top: -25px;
-
   z-index: 1;
-  transition:
-    transform .38s cubic-bezier(.25, .9, .25, 1.05) .10s; 
+  transition: transform .38s cubic-bezier(.25, .9, .25, 1.05) .10s;
 }
 
 .cc-simple.is-open .cc-panel {
   transform: scaleY(1) translateY(0);
 }
-
 
 .cc-slot {
   width: 72px;
@@ -842,112 +780,52 @@ a:hover {
   position: relative;
 }
 
-.cc-slot::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border-radius: 999px;
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .top-row {
+    grid-template-columns: 1fr;
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* -----------------------------------------
-   Responsive grid
------------------------------------------ */
 @media (max-width: 1100px) {
   .spec-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+  
+  #triggers-spec {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  #loops-spec {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  #rules-spec {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  #feedback-spec {
+    grid-column: 2;
+    grid-row: 2;
   }
 }
 
 @media (max-width: 720px) {
   .spec-grid {
     grid-template-columns: 1fr;
-    justify-content: auto;
   }
-
-  .spec-col .ringer,
-  .spec-col .toggle-btn,
-  .spec-col .lp-btn,
-  .spec-col .orientation-btn,
-  .spec-col .cc-wrapper {
-    align-self: center;
-  }
-}
-
-@media (min-width: 1100px) {
-  #ringer-interaction,
-  #appearance-interaction,
-  #lowpower-interaction,
-  #orientation-interaction,
-  #controlcenter-interaction {
-    width: 320px;
-    height: 141.5px;
-  }
-
-  #ringer-triggers,
-  #appearance-triggers,
-  #lowpower-triggers,
-  #orientation-triggers,
-  #controlcenter-triggers {
-    width: 320px;
-    height: 207.5px;
-  }
-
-  #ringer-rules,
-  #appearance-rules,
-  #lowpower-rules,
-  #orientation-rules,
-  #controlcenter-rules {
-    width: 320px;
-    height: 589.5px;
-    overflow-y: auto;
-  }
-
-  #ringer-feedback,
-  #appearance-feedback,
-  #lowpower-feedback,
-  #orientation-feedback,
-  #controlcenter-feedback {
-    width: 320px;
-    height: 603.5px;
-    overflow-y: auto;
-  }
-}
-
-@media (max-width: 1099px) {
-  .spec-col section {
-    width: 100%;
-    height: auto;
-    max-height: none;
+  
+  #triggers-spec,
+  #loops-spec,
+  #rules-spec,
+  #feedback-spec {
+    grid-column: 1;
+    grid-row: auto;
   }
 }
