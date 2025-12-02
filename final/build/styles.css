@@ -116,11 +116,6 @@ li {
   list-style: circle;
 }
 
-/* Bold first list items (Hover) */
-.spec-col section > ul > li:first-child {
-  font-weight: bold;
-}
-
 /* Links */
 a {
   color: var(--accent);
