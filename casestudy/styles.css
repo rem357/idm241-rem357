@@ -1,21 +1,241 @@
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-        }
-        .overview {
-            background-color: #ecf0f1;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
+
+
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --muted: #6c7a89;
+  --text: #1c1f2b;
+  --accent: #4da3ff;
+}
+
+/* =========================================
+   BASE LAYOUT & TYPOGRAPHY
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  background: #c3dde6;
+  color: var(--text);
+}
+
+header {
+  padding: 40px 20px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 0 0 8px;
+}
+
+header h2 {
+  margin: 0 0 6px;
+  font-size: clamp(18px, 2.4vw, 22px);
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 2.5vw, 26px);
+}
+
+h3 {
+  margin: 8px 0 4px;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+}
+
+h4 {
+  margin: 8px 0 4px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+p {
+  margin: 0 0 6px;
+  line-height: 1.4;
+  font-size: 0.97rem;
+}
+
+ul,
+ol {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* =========================================
+   CARD / SECTION STRUCTURE
+========================================= */
+
+.spec-col {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+
+.case-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.case-row > .spec-col:only-child {
+  grid-column: 1 / -1;
+}
+
+.case-hero-text,
+.case-hero-media {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.case-hero-media h3 {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.case-hero-placeholder {
+  margin-top: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.case-hero-gif {
+  width: auto;
+  max-height: 420px;
+  border-radius: 12px;
+  display: block;
+}
+
+/* =========================================
+   SOLUTIONS GRID 
+========================================= */
+
+.case-solutions-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.case-solution-card {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid #bbbbbb;
+  padding: 14px 14px 12px;
+}
+
+.case-solution-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 0;
+}
+
+.case-solution-card h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.case-chip {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(77, 163, 255, 0.12);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.case-solution-card h4 {
+  margin-top: 8px;
+}
+
+.case-solution-card ul {
+  margin-top: 2px;
+  padding-left: 1.25rem;
+}
+
+/* =========================================
+   RESULTS GRID
+========================================= */
+
+.case-results-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.case-results-grid h3 {
+  margin-top: 0;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  main {
+    padding: 16px;
+  }
+
+  .case-row {
+    grid-template-columns: 1fr;
+  }
+
+  .case-solutions-grid,
+  .case-results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
